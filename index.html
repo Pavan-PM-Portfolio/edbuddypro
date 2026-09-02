@@ -741,22 +741,22 @@
   }
 
   .exp-item:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 2px 4px rgba(11,30,58,0.06), 0 12px 26px rgba(11,30,58,0.12); }
-
   .exp-icb {
     display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    width: 34px; height: 34px; border-radius: 9px;
-    background: color-mix(in srgb, var(--ic, #0559B3) 13%, #fff);
-    transition: background 0.18s;
+    width: 30px; height: 30px;
+    background: none; border-radius: 0;
   }
 
-  .exp-icb svg { width: 18px; height: 18px; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .exp-icb svg { width: 28px; height: 28px; fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
 
   .exp-it-title { font-size: 14px; font-weight: 600; color: inherit; line-height: 1.25; }
+  input:checked + .exp-item .exp-icb svg,
+  .exp-item.is-on .exp-icb svg { stroke: currentColor; }
 @media (max-width: 1000px) { .exp-rail { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 640px) {
     .exp-rail { grid-template-columns: repeat(5, 1fr); gap: 8px; }
     .exp-item { flex-direction: column; align-items: center; text-align: center; gap: 7px; padding: 12px 5px; min-width: 0; }
-    .exp-icb svg { width: 19px; height: 19px; }
+    .exp-icb svg { width: 26px; height: 26px; }
     .exp-it-title { font-size: 10px; line-height: 1.18; overflow-wrap: break-word; hyphens: auto; max-width: 100%; }
   }
 @media (max-width: 400px) { .exp-rail { gap: 6px; } .exp-item { padding: 10px 3px; } .exp-it-title { font-size: 9px; } }
@@ -868,7 +868,7 @@
   #role-7:checked ~ .exp-rail label[for="role-7"] .exp-icb,
   #role-8:checked ~ .exp-rail label[for="role-8"] .exp-icb,
   #role-9:checked ~ .exp-rail label[for="role-9"] .exp-icb,
-  #role-10:checked ~ .exp-rail label[for="role-10"] .exp-icb { background: rgba(255,255,255,0.2); }
+  #role-10:checked ~ .exp-rail label[for="role-10"] .exp-icb { background: none; }
 
 
 
@@ -2875,6 +2875,15 @@
   @media (prefers-reduced-motion: reduce) {
     .cx-card { transition: none; }
   }
+
+  /* ── performance: nothing animates while it is off screen ── */
+  .testimonials:not(.in-view) .flip-inner,
+  .testimonials:not(.in-view) .flip-front,
+  .testimonials:not(.in-view) .flip-back { animation-play-state: paused; }
+  .sp-hero:not(.in-view) .sp-slide { animation-play-state: paused; }
+  /* promote a layer only while the card is actually flipping */
+  .flip-inner { will-change: auto; }
+  .testimonials.in-view .flip-inner { will-change: transform; }
 </style>
 </head>
 <body>
@@ -4133,6 +4142,22 @@ document.querySelectorAll('[data-card]').forEach(function (card) {
   start();
   window.addEventListener('load', start);
   window.addEventListener('resize', mark, { passive: true });
+})();
+</script>
+
+<script>
+/* Pause off-screen animation. Keeping a dozen keyframe animations running on
+   sections nobody can see is pure wasted compositing. */
+(function () {
+  var targets = document.querySelectorAll('.testimonials, .sp-hero');
+  if (!targets.length || !('IntersectionObserver' in window)) {
+    targets.forEach(function (t) { t.classList.add('in-view'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { e.target.classList.toggle('in-view', e.isIntersecting); });
+  }, { rootMargin: '120px' });
+  targets.forEach(function (t) { io.observe(t); });
 })();
 </script>
 </body>
