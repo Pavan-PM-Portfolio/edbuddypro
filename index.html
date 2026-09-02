@@ -2495,8 +2495,8 @@
 
   .ct-carousel .pj-dot.on { width: 24px; border-radius: 4px; background: #0559B3; }
 @media (max-width: 640px) {
-    .ct-carousel .pj-stage { height: 470px; }
-    .ct-card.cert-card { width: 290px; height: 400px; margin-left: -145px; }
+    .ct-carousel .pj-stage { height: 592px; }
+    
   }
 
 
@@ -2783,7 +2783,7 @@
     color: #0559B3; background: rgba(5,89,179,.08); padding: 5px 10px; border-radius: 100px;
     white-space: nowrap; }
   @media (max-width: 640px) {
-    .ct-card { width: 300px; height: 545px; margin-left: -150px; }
+    .ct-card { width: 300px; margin-left: -150px; }
     .cc-ph { height: 150px; }
     .cc-bd { padding: 16px 18px 18px; }
     .cc-t { font-size: 17px; }
@@ -2806,6 +2806,27 @@
     .sp-stage { height: 500px; }
     .sp-slide img { object-position: 72% 28%; }
     .sp-copy { top: 34px; }
+  }
+
+  /* iOS Safari renders both faces when the 3D context flattens — show the
+     front only on small screens rather than depending on backface-visibility */
+  @media (max-width: 760px) {
+    .flip-inner { animation: none !important; transform: none !important;
+      transform-style: flat; -webkit-transform-style: flat; }
+    .flip-back { display: none; }
+    .flip-card { height: auto; }
+    .flip-face { position: relative; inset: auto; height: auto; }
+  }
+  .flip-inner { -webkit-transform-style: preserve-3d; }
+
+  /* ── certification card: give the mobile card room for its content ── */
+  @media (max-width: 640px) {
+    .ct-card { height: auto; min-height: 545px; }
+    .cc-bd { padding: 16px 18px 20px; }
+    .cc-tl { gap: 8px; }
+    .cc-tl li { font-size: 12.5px; }
+    .ct-card .pc-tools { margin-top: 12px; padding-top: 11px; }
+    .ct-card .pc-tool svg { width: 21px; height: 21px; }
   }
 </style>
 </head>
@@ -3948,8 +3969,9 @@
       var a = Math.abs(d), vw = window.innerWidth;
       if (a > 2) { c.style.opacity = 0; c.style.pointerEvents = 'none';
         c.style.transform = 'translateX(' + (d * 340) + 'px) translateZ(-900px)'; return; }
+      var narrow = vw < 700;
       c.style.pointerEvents = a === 0 ? 'auto' : 'none';
-      c.style.opacity = a === 0 ? 1 : (a === 1 ? .5 : .22);
+      c.style.opacity = a === 0 ? 1 : (narrow ? 0 : (a === 1 ? .5 : .22));
       c.style.filter = a === 0 ? 'none' : 'blur(' + (a * 2.6) + 'px) saturate(' + (1 - a * .35) + ')';
       c.style.zIndex = 100 - a;
       var step = vw < 600 ? vw * 0.46 : (vw < 900 ? vw * 0.34 : 316),
