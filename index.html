@@ -2466,34 +2466,23 @@
   /* ═══ certifications — original cards, projects 3D coverflow ═══ */
   .ct-carousel { margin-top: 40px; overflow: hidden; }
 
-  .ct-carousel .pj-stage { position: relative; height: 640px; perspective: 1600px; overflow: hidden; }
+  .ct-carousel .pj-stage { position: relative; height: 610px; perspective: 1600px; overflow: hidden; }
 
   .ct-carousel .pj-track { position: absolute; inset: 0; transform-style: preserve-3d; }
 
   .ct-card.cert-card {
     position: absolute; left: 50%; top: 24px; margin-left: -230px;
     width: 460px; height: 575px; flex: none; cursor: pointer;
-    transition: transform .75s cubic-bezier(.22,1,.36,1), opacity .75s, filter .75s, box-shadow .75s;
+    transition: transform .45s cubic-bezier(.22,1,.36,1), opacity .45s, filter .45s, box-shadow .45s;
     will-change: transform, opacity;
   }
 
-  .ct-carousel .pj-ctr { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 20px; }
 
-  .ct-carousel .pj-nav { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--neutral-200);
-    background: #fff; color: var(--black); cursor: pointer; display: flex; align-items: center;
-    justify-content: center; transition: .2s; padding: 0; }
 
-  .ct-carousel .pj-nav:hover { border-color: rgba(5,89,179,.5); color: #0559B3; }
 
-  .ct-carousel .pj-nav svg { width: 17px; height: 17px; fill: none; stroke: currentColor;
-    stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 
-  .ct-carousel .pj-dots { display: flex; gap: 7px; }
 
-  .ct-carousel .pj-dot { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%;
-    background: #C2CBD8; cursor: pointer; transition: width .35s cubic-bezier(.22,1,.36,1), background .2s; }
 
-  .ct-carousel .pj-dot.on { width: 24px; border-radius: 4px; background: #0559B3; }
 @media (max-width: 640px) {
     .ct-carousel .pj-stage { height: 592px; }
     
@@ -2739,7 +2728,7 @@
   /* ═══ certification carousel — enrol-rail card, 460x575 ═══ */
   .ct-card {
     position: absolute; left: 50%; top: 24px; cursor: pointer;
-    transition: transform .75s cubic-bezier(.22,1,.36,1), opacity .75s, filter .75s, box-shadow .75s;
+    transition: transform .45s cubic-bezier(.22,1,.36,1), opacity .45s, filter .45s, box-shadow .45s;
     will-change: transform, opacity;
     width: 460px; height: 575px; margin-left: -230px;
     background: #fff; border: 1px solid rgba(11,18,32,.10); border-radius: 22px;
@@ -2828,6 +2817,13 @@
     .ct-card .pc-tools { margin-top: 12px; padding-top: 11px; }
     .ct-card .pc-tool svg { width: 21px; height: 21px; }
   }
+
+  /* swipeable carousel — no arrows */
+  .ct-carousel .pj-stage { touch-action: pan-y; user-select: none; -webkit-user-select: none;
+    overscroll-behavior-x: contain; }
+  .ct-card img { -webkit-user-drag: none; user-drag: none; pointer-events: none; }
+  .ct-carousel .pj-stage * { -webkit-user-drag: none; }
+  .ct-card a { pointer-events: auto; }
 </style>
 </head>
 <body>
@@ -3003,12 +2999,7 @@
           </div>
         </article>
     </div></div>
-    <div class="pj-ctr">
-      <button class="pj-nav pj-prev" aria-label="Previous course"><svg viewBox="0 0 24 24"><polyline points="15 5 8 12 15 19"/></svg></button>
-      <div class="pj-dots"><button class="pj-dot on" data-i="0" aria-label="Course 1"></button><button class="pj-dot" data-i="1" aria-label="Course 2"></button><button class="pj-dot" data-i="2" aria-label="Course 3"></button><button class="pj-dot" data-i="3" aria-label="Course 4"></button><button class="pj-dot" data-i="4" aria-label="Course 5"></button></div>
-      <button class="pj-nav pj-next" aria-label="Next course"><svg viewBox="0 0 24 24"><polyline points="9 5 16 12 9 19"/></svg></button>
-    </div>
-    </div>
+  </div>
   </section>
 
 
@@ -3959,7 +3950,6 @@
 (function () {
   var root = document.querySelector('[data-ct]'); if (!root) return;
   var cards = [].slice.call(root.querySelectorAll('.ct-card')),
-      dots  = [].slice.call(root.querySelectorAll('.pj-dot')),
       cur = 0, timer = null,
       reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function render() {
@@ -3980,16 +3970,84 @@
       c.style.transform = 'translateX(' + (d * step) + 'px) translateZ(' + (-a * depth) + 'px) rotateY('
         + (-d * rot) + 'deg) scale(' + (1 - a * .07) + ')';
       c.style.boxShadow = a === 0
-        ? '0 6px 12px rgba(11,30,58,.07), 0 30px 60px rgba(11,30,58,.20)'
-        : '0 2px 6px rgba(11,30,58,.05), 0 12px 28px rgba(11,30,58,.09)';
+        ? '0 1px 3px rgba(11,30,58,.06), 0 8px 20px rgba(11,30,58,.09)'
+        : 'none';
     });
-    dots.forEach(function (d, i) { d.classList.toggle('on', i === cur); });
   }
   function go(n) { cur = (n + cards.length) % cards.length; render(); }
   function restart() { if (reduce) return; clearInterval(timer); timer = setInterval(function () { go(cur + 1); }, 3000); }
-  root.querySelector('.pj-prev').onclick = function () { go(cur - 1); restart(); };
-  root.querySelector('.pj-next').onclick = function () { go(cur + 1); restart(); };
-  dots.forEach(function (d) { d.onclick = function () { go(+d.dataset.i); restart(); }; });
+  /* ── gestures: two-finger trackpad swipe on desktop, touch swipe on mobile ── */
+  var stage = root.querySelector('.pj-stage');
+
+  /* trackpad: a horizontal two-finger swipe arrives as wheel events with deltaX.
+     Accumulate until the gesture is decisive, then fire once and lock until it settles. */
+  var accX = 0, lastFire = 0, lastEvt = 0, wheelIdle = null;
+  var WHEEL_STEP = 42,      // how far a gesture must travel to count
+      COOLDOWN   = 260;     // shortest gap between two card changes
+
+  stage.addEventListener('wheel', function (e) {
+    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;   // vertical scroll: leave alone
+    e.preventDefault();
+    clearInterval(timer);
+    clearTimeout(wheelIdle);
+
+    var now = e.timeStamp || Date.now();
+    if (now - lastEvt > 140) accX = 0;      // a fresh gesture starts from zero
+    lastEvt = now;
+    accX += e.deltaX;
+
+    if (Math.abs(accX) > WHEEL_STEP && now - lastFire > COOLDOWN) {
+      go(accX > 0 ? cur + 1 : cur - 1);
+      lastFire = now;
+      accX = 0;
+    }
+
+    wheelIdle = setTimeout(function () { accX = 0; restart(); }, 200);
+  }, { passive: false });
+
+  /* touch: one-finger swipe */
+  var startX = 0, startY = 0, tracking = false, decided = false, horizontal = false;
+  var THRESHOLD = 45;
+
+  stage.addEventListener('touchstart', function (e) {
+    if (e.touches.length !== 1) return;
+    startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+    tracking = true; decided = false; horizontal = false;
+    clearInterval(timer);
+  }, { passive: true });
+
+  stage.addEventListener('touchmove', function (e) {
+    if (!tracking) return;
+    var dx = e.touches[0].clientX - startX, dy = e.touches[0].clientY - startY;
+    if (!decided && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
+      decided = true;
+      horizontal = Math.abs(dx) > Math.abs(dy);
+    }
+    if (horizontal && e.cancelable) e.preventDefault();
+  }, { passive: false });
+
+  stage.addEventListener('touchend', function (e) {
+    if (!tracking) return;
+    tracking = false;
+    var dx = ((e.changedTouches[0] || {}).clientX || startX) - startX;
+    if (horizontal && Math.abs(dx) > THRESHOLD) go(dx < 0 ? cur + 1 : cur - 1);
+    restart();
+  });
+
+  /* a swipe must not trigger the card's link */
+  stage.addEventListener('click', function (e) {
+    if (horizontal) { e.preventDefault(); e.stopPropagation(); }
+    horizontal = false;
+  }, true);
+
+  /* keyboard, since the arrows are gone */
+  root.setAttribute('tabindex', '0');
+  root.setAttribute('role', 'region');
+  root.setAttribute('aria-label', 'Course carousel, use arrow keys');
+  root.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft')  { go(cur - 1); restart(); }
+    if (e.key === 'ArrowRight') { go(cur + 1); restart(); }
+  });
   cards.forEach(function (c) {
     c.addEventListener('click', function (e) {
       if (+c.dataset.i !== cur) { e.preventDefault(); go(+c.dataset.i); restart(); }
