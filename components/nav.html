@@ -471,7 +471,7 @@
 
 
   /* Mobile nav: hamburger + slide-down panel */
-  .nav-toggle { display: none; margin-left: auto; flex-shrink: 0; width: 42px; height: 42px; padding: 11px 9px; background: none; border: none; cursor: pointer; }
+  .nav-toggle { display: none; flex-direction: column; justify-content: center; margin-left: auto; flex-shrink: 0; width: 42px; height: 42px; padding: 11px 9px; background: none; border: none; cursor: pointer; }
 
 
   .nav-toggle span { display: block; height: 2px; width: 100%; background: #0a0a0a; border-radius: 2px; transition: transform 0.25s ease, opacity 0.2s ease; }
@@ -513,7 +513,7 @@
   /* ─── responsive ─── */
   @media (max-width: 900px) {
     .nav-links { display: none !important; }
-    .nav-toggle { display: flex !important; }
+    .nav-toggle { display: flex; flex-direction: column; justify-content: center; }
   }
   @media (max-width: 640px) {
     .nav-logo .ebp-lk { height: 30px; }
@@ -528,7 +528,7 @@
   @media (max-width: 900px) {
     .nav-links { display: none; }
     .nav-right { display: none; }
-    .nav-toggle { display: block; }
+    .nav-toggle { display: flex; flex-direction: column; justify-content: center; }
   }
   @media (max-width: 640px) {
     .nav-logo .ebp-lk { height: 28px; }
