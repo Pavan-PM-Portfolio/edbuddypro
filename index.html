@@ -2470,7 +2470,7 @@
   .ct-card.cert-card {
     position: absolute; left: 50%; top: 24px; 
     width: 460px; height: 575px; flex: none; cursor: pointer;
-    transition: transform .45s cubic-bezier(.22,1,.36,1), opacity .45s, filter .45s, box-shadow .45s;
+    transition: transform .34s cubic-bezier(.22,1,.36,1), opacity .34s, filter .34s, box-shadow .34s;
     will-change: transform, opacity;
   }
 
@@ -2833,38 +2833,28 @@
   }
 
 
-  /* ═══ certifications rail — native scroll with snap points ═══ */
+  /* ═══ certifications — transform-driven track ═══ */
   .ct-carousel { position: relative; }
   .ct-rail {
-    position: relative;
-    display: flex; gap: 26px; align-items: flex-start;
+    position: relative; overflow: hidden;
     perspective: 1600px; perspective-origin: 50% 45%;
-    overflow-x: auto; overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-x: contain;
     padding: 26px 0 34px;
-    scrollbar-width: none;
+    touch-action: pan-y;
+    user-select: none; -webkit-user-select: none;
   }
-  .ct-rail::-webkit-scrollbar { display: none; }
-  /* first and last card can still centre */
-  .ct-rail::before, .ct-rail::after { content: ""; flex: 0 0 calc((100% - 460px) / 2); min-width: 16px; }
+  .ct-track { display: flex; gap: 26px; align-items: flex-start; will-change: transform; }
+  .ct-track.is-animating { transition: transform .42s cubic-bezier(.22,1,.36,1); }
   .ct-card { transform-origin: 50% 50%; }
-  /* one card per gesture on touch; free scrolling with snap on trackpads */
-  @media (pointer: coarse) { .ct-card { scroll-snap-stop: always; } }
-
-  .ct-rail.is-settling .ct-card { transition: transform .28s ease-out, opacity .28s ease-out; }
 
   @media (max-width: 640px) {
-    .ct-rail { gap: 14px; padding: 18px 0 26px; }
-    .ct-rail::before, .ct-rail::after { flex-basis: calc((100% - 300px) / 2); }
+    .ct-rail { padding: 18px 0 26px; }
+    .ct-track { gap: 14px; }
     .ct-card { flex: 0 0 300px; width: 300px; }
-
   }
   @media (prefers-reduced-motion: reduce) {
-    .ct-rail { scroll-behavior: auto; }
+    .ct-track.is-animating { transition: none; }
     .ct-card { transition: none; }
+  }
   }
 </style>
 </head>
@@ -3994,139 +3984,152 @@
   if (!root) return;
   var rail = root.querySelector('[data-rail]');
   if (!rail) return;
+
   var originals = [].slice.call(rail.querySelectorAll('.ct-card'));
   if (!originals.length) return;
+  var setLen = originals.length,
+      reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ── infinite loop: flank the real cards with a clone set on each side, then
-     silently rewind the scroll position whenever the viewer crosses into one.
-     The jump is exactly one set wide, so nothing moves on screen. ── */
-  var SETS = 3, setLen = originals.length;
-  function cloneSet(where) {
+  /* wrap the cards in a track we can slide */
+  var track = document.createElement('div');
+  track.className = 'ct-track';
+  rail.insertBefore(track, originals[0]);
+  originals.forEach(function (c) { track.appendChild(c); });
+
+  /* a clone set either side, so the loop never runs out */
+  function cloneSet(before) {
     originals.forEach(function (c) {
       var k = c.cloneNode(true);
       k.setAttribute('aria-hidden', 'true');
       k.setAttribute('data-clone', '');
       k.querySelectorAll('a').forEach(function (a) { a.setAttribute('tabindex', '-1'); });
-      rail.insertBefore(k, where);
+      track.insertBefore(k, before);
     });
   }
-  cloneSet(originals[0]);          // a set before
-  cloneSet(null);                  // a set after
+  cloneSet(originals[0]);
+  cloneSet(null);
 
-  var cards = [].slice.call(rail.querySelectorAll('.ct-card'));
+  var cards = [].slice.call(track.querySelectorAll('.ct-card')),
+      cur = setLen + Math.floor(setLen / 2);
 
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-      timer = null, held = false, raf = null;
+  /* slide the track so card `cur` sits dead centre, and set each card's depth
+     purely from its distance to `cur` — no scroll position involved, so it is
+     exact every time. */
+  function render(animate) {
+    var c = cards[cur],
+        offset = rail.clientWidth / 2 - (c.offsetLeft + c.offsetWidth / 2),
+        narrow = window.innerWidth < 700;
 
-  /* which card is nearest the centre */
-  function centreIndex() {
-    var mid = rail.scrollLeft + rail.clientWidth / 2, best = 0, bestD = Infinity;
-    cards.forEach(function (c, i) {
-      var d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid);
-      if (d < bestD) { bestD = d; best = i; }
-    });
-    return best;
-  }
+    track.classList.toggle('is-animating', !!animate && !reduce);
+    track.style.transform = 'translate3d(' + offset + 'px,0,0)';
 
-  /* depth is a pure function of how far each card sits from the rail centre,
-     so it stays exact while the browser scrolls natively */
-  function paint() {
-    var mid = rail.scrollLeft + rail.clientWidth / 2,
-        narrow = window.innerWidth < 700,
-        span = cards[0].offsetWidth + 26;
-
-    cards.forEach(function (c) {
-      var d = (c.offsetLeft + c.offsetWidth / 2 - mid) / span;   // -2 .. +2
-      var a = Math.min(Math.abs(d), 2.2);
-
+    cards.forEach(function (card, i) {
+      var d = i - cur, a = Math.min(Math.abs(d), 2.2);
       var rot   = narrow ? -d * 16 : -d * 26,
           depth = narrow ? -a * 120 : -a * 240,
           scale = 1 - a * 0.07,
-          op    = a < 0.05 ? 1 : Math.max(0.14, 1 - a * 0.5),
-          blur  = a < 0.05 ? 0 : Math.min(a * 1.8, 3.2);
+          op    = a === 0 ? 1 : Math.max(0.14, 1 - a * 0.5),
+          blur  = a === 0 ? 0 : Math.min(a * 1.8, 3);
 
-      c.style.transform = 'translateZ(' + depth + 'px) rotateY(' + rot + 'deg) scale(' + scale + ')';
-      c.style.opacity = op;
-      c.style.filter = blur ? 'blur(' + blur.toFixed(2) + 'px)' : 'none';
-      c.style.zIndex = String(100 - Math.round(a * 10));
-      c.style.pointerEvents = a < 0.5 ? 'auto' : 'none';
-      c.style.boxShadow = a < 0.5
+      card.style.transform = 'translateZ(' + depth + 'px) rotateY(' + rot + 'deg) scale(' + scale + ')';
+      card.style.opacity = op;
+      card.style.filter = blur ? 'blur(' + blur.toFixed(2) + 'px)' : 'none';
+      card.style.zIndex = String(100 - Math.round(a * 10));
+      card.style.pointerEvents = a === 0 ? 'auto' : 'none';
+      card.style.boxShadow = a === 0
         ? '0 1px 3px rgba(11,30,58,.06), 0 8px 20px rgba(11,30,58,.09)'
         : 'none';
     });
-    raf = null;
   }
 
-  function setWidth() {
-    return cards[setLen].offsetLeft - cards[0].offsetLeft;
+  /* One step. Re-homing into the middle set happens once the viewer pauses, so
+     it can never land in the middle of a step and swallow a card. */
+  var homeTimer = null;
+  function reHome() {
+    if (cur >= setLen && cur < setLen * 2) return;
+    cur += (cur < setLen ? setLen : -setLen);
+    render(false);
+  }
+  function move(dir) {
+    cur += dir;
+    if (cur < 1) cur += setLen;            // hard edge: never run off the clones
+    else if (cur > cards.length - 2) cur -= setLen;
+    render(true);
+    clearTimeout(homeTimer);
+    homeTimer = setTimeout(reHome, 500);
   }
 
-  /* keep the centre of view inside the middle set; the jump is exactly one
-     set wide so the picture on screen is identical before and after */
-  function rewind() {
-    var w = setWidth(),
-        lo = cards[setLen].offsetLeft,                 // first card of the middle set
-        hi = cards[setLen * 2].offsetLeft,             // first card of the trailing clones
-        mid = rail.scrollLeft + rail.clientWidth / 2,
-        shift = 0;
-    if (mid < lo) shift = w;
-    else if (mid >= hi) shift = -w;
-    if (!shift) return;
-    var prevB = rail.style.scrollBehavior, prevS = rail.style.scrollSnapType;
-    rail.style.scrollBehavior = 'auto';
-    rail.style.scrollSnapType = 'none';
-    rail.scrollLeft += shift;
-    rail.offsetHeight;                                  // force the jump to apply
-    rail.style.scrollSnapType = prevS;
-    rail.style.scrollBehavior = prevB;
-  }
+  /* ── trackpad: one gesture, one card ── */
+  var acc = 0, locked = false, endTimer = null;
+  rail.addEventListener('wheel', function (e) {
+    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;   // vertical is the page's
+    e.preventDefault();
+    clearTimeout(endTimer);
+    endTimer = setTimeout(function () { acc = 0; locked = false; }, 140);
+    if (locked) return;
+    acc += e.deltaX;
+    if (Math.abs(acc) < 30) return;
+    locked = true;
+    move(acc > 0 ? 1 : -1);
+    acc = 0;
+  }, { passive: false });
 
-  rail.addEventListener('scroll', function () {
-    if (!raf) raf = requestAnimationFrame(function () { rewind(); paint(); });
-    stop();
-    clearTimeout(rail._idle);
-    rail._idle = setTimeout(start, 1200);
+  /* ── touch: follow the finger, settle on release ── */
+  var tStartX = 0, tStartY = 0, tDx = 0, tracking = false, horizontal = false, decided = false;
+  var baseOffset = 0;
+
+  rail.addEventListener('touchstart', function (e) {
+    if (e.touches.length !== 1) return;
+    tracking = true; decided = false; horizontal = false; tDx = 0;
+    tStartX = e.touches[0].clientX; tStartY = e.touches[0].clientY;
+    var c = cards[cur];
+    baseOffset = rail.clientWidth / 2 - (c.offsetLeft + c.offsetWidth / 2);
+    track.classList.remove('is-animating');
   }, { passive: true });
 
-  function scrollToCard(i) {
-    var c = cards[Math.max(0, Math.min(cards.length - 1, i))];
-    rail.scrollTo({ left: c.offsetLeft - (rail.clientWidth - c.offsetWidth) / 2,
-                    behavior: reduce ? 'auto' : 'smooth' });
-  }
+  rail.addEventListener('touchmove', function (e) {
+    if (!tracking) return;
+    var dx = e.touches[0].clientX - tStartX,
+        dy = e.touches[0].clientY - tStartY;
+    if (!decided && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
+      decided = true; horizontal = Math.abs(dx) > Math.abs(dy);
+    }
+    if (!horizontal) return;
+    if (e.cancelable) e.preventDefault();
+    tDx = dx;
+    track.style.transform = 'translate3d(' + (baseOffset + dx) + 'px,0,0)';
+  }, { passive: false });
 
-  /* autoplay */
-  function tick() { if (!held) scrollToCard(centreIndex() + 1); }
-  function start() { if (reduce) return; stop(); timer = setInterval(tick, 3000); }
-  function stop()  { clearInterval(timer); }
+  rail.addEventListener('touchend', function () {
+    if (!tracking) return;
+    tracking = false;
+    if (horizontal && Math.abs(tDx) > 45) move(tDx < 0 ? 1 : -1);
+    else render(true);
+  });
 
-  rail.addEventListener('pointerenter', function () { held = true;  stop(); });
-  rail.addEventListener('pointerleave', function () { held = false; start(); });
-  rail.addEventListener('touchstart', function () { held = true; stop(); }, { passive: true });
-  rail.addEventListener('touchend',   function () { held = false; });
-
-  /* click-and-drag for mouse users; touch and trackpad are native */
-  var down = false, startX = 0, startScroll = 0, moved = false;
+  /* ── mouse drag ── */
+  var down = false, mStartX = 0, mDx = 0, moved = false;
   rail.addEventListener('pointerdown', function (e) {
     if (e.pointerType !== 'mouse' || e.button !== 0) return;
-    down = true; moved = false;
-    startX = e.clientX; startScroll = rail.scrollLeft;
-    rail.style.scrollSnapType = 'none';
-    rail.style.scrollBehavior = 'auto';
+    down = true; moved = false; mDx = 0;
+    mStartX = e.clientX;
+    var c = cards[cur];
+    baseOffset = rail.clientWidth / 2 - (c.offsetLeft + c.offsetWidth / 2);
+    track.classList.remove('is-animating');
     rail.style.cursor = 'grabbing';
   });
   window.addEventListener('pointermove', function (e) {
     if (!down) return;
-    var dx = e.clientX - startX;
-    if (Math.abs(dx) > 4) moved = true;
-    rail.scrollLeft = startScroll - dx;
+    mDx = e.clientX - mStartX;
+    if (Math.abs(mDx) > 4) moved = true;
+    track.style.transform = 'translate3d(' + (baseOffset + mDx) + 'px,0,0)';
   });
   window.addEventListener('pointerup', function () {
     if (!down) return;
     down = false;
     rail.style.cursor = '';
-    rail.style.scrollSnapType = '';
-    rail.style.scrollBehavior = '';
-    scrollToCard(centreIndex());
+    if (Math.abs(mDx) > 60) move(mDx < 0 ? 1 : -1);
+    else render(true);
   });
   rail.addEventListener('click', function (e) {
     if (moved) { e.preventDefault(); e.stopPropagation(); }
@@ -4134,30 +4137,18 @@
   }, true);
   rail.addEventListener('dragstart', function (e) { e.preventDefault(); });
 
-  /* keyboard */
+  /* ── keyboard ── */
   rail.setAttribute('tabindex', '0');
   rail.setAttribute('role', 'region');
   rail.setAttribute('aria-label', 'Course carousel');
   rail.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowLeft')  { e.preventDefault(); scrollToCard(centreIndex() - 1); }
-    if (e.key === 'ArrowRight') { e.preventDefault(); scrollToCard(centreIndex() + 1); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); move(-1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); move(1); }
   });
 
-  /* open on a middle card so there is depth on both sides, not a left edge */
-  function centreOnStart() {
-    var mid = setLen + Math.floor(setLen / 2), c = cards[mid];
-    var prev = rail.style.scrollBehavior;
-    rail.style.scrollBehavior = 'auto';          // jump, do not animate
-    rail.scrollLeft = c.offsetLeft - (rail.clientWidth - c.offsetWidth) / 2;
-    rail.style.scrollBehavior = prev;
-    paint();
-  }
-  centreOnStart();
-  requestAnimationFrame(centreOnStart);
-  window.addEventListener('load', function () { setTimeout(centreOnStart, 60); });
-
-  start();
-  window.addEventListener('resize', function () { scrollToCard(centreIndex()); }, { passive: true });
+  render(false);
+  window.addEventListener('load', function () { render(false); });
+  window.addEventListener('resize', function () { render(false); }, { passive: true });
 })();
 </script>
 
