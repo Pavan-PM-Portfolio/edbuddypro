@@ -1,0 +1,294 @@
+<!-- ═══════════════════════════════════════════════════════════
+     Bottom Bar — self-contained: markup, styles and behaviour.
+     Dropped in by <div data-include="bottom-bar"></div>.
+     Uses var(--token, fallback) so it renders standalone.
+     ═══════════════════════════════════════════════════════════ -->
+<style>
+.cbar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+    background: #fff; border-top: 1px solid #EAEEF4;
+    box-shadow: 0 -2px 14px rgba(11,30,58,0.07);
+    transform: translateY(100%); visibility: hidden;
+    transition: transform .34s cubic-bezier(.22,1,.36,1), visibility .34s;
+  }
+
+
+  .cbar.is-on { transform: none; visibility: visible; }
+
+
+  .cbar-in {
+    max-width: 1240px; margin: 0 auto; height: 60px;
+    display: flex; align-items: center; gap: 34px;
+    padding-left: max(24px, calc((100vw - 1240px) / 2));
+  }
+
+
+  .cbar-item {
+    display: inline-flex; align-items: center; gap: 11px;
+    font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+    font-size: 15px; font-weight: 600; letter-spacing: -0.01em;
+    color: #0B1220; background: none; border: 0; padding: 0;
+    text-decoration: none; cursor: pointer; white-space: nowrap;
+    transition: color .18s;
+  }
+
+
+  .cbar-item:hover { color: #0559B3; }
+
+
+  .cbar-item b { font-weight: 700; }
+
+
+  .cbar-ic {
+    width: 32px; height: 32px; flex: none; border-radius: 50%;
+    background: #0559B3; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+
+  .cbar-ic svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+
+  .cbar-chat {
+    margin-left: auto; align-self: stretch; border: 0; cursor: pointer;
+    background: #0559B3; color: #fff;
+    font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+    font-size: 15px; font-weight: 600; letter-spacing: -0.01em;
+    display: inline-flex; align-items: center; gap: 10px; padding: 0 30px;
+    transition: background .18s;
+  }
+
+
+  .cbar-chat:hover { background: #04478f; }
+
+
+  .cbar-chat .cbar-ic { background: #fff; color: #0559B3; width: 28px; height: 28px; }
+
+
+
+  /* ── panel ── */
+  .cbp {
+    position: fixed; bottom: 60px; left: max(24px, calc((100vw - 1240px) / 2));
+    width: 380px; max-height: calc(100vh - 90px); overflow-y: auto; z-index: 95;
+    background: #fff; border: 1px solid #EAEEF4; border-bottom: 0;
+    border-radius: 14px 14px 0 0; overflow-x: hidden;
+    box-shadow: 0 -4px 30px rgba(11,30,58,0.16);
+  }
+
+
+  .cbp[hidden] { display: none; }
+
+
+  .cbp-head {
+    background: #0B1220; color: #fff; padding: 15px 18px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 3px solid #0559B3;
+    font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+    font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+
+
+  .cbp-min { background: none; border: 0; color: #fff; cursor: pointer; padding: 0 2px; line-height: 1; display: flex; }
+
+
+  .cbp-min svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+
+
+  .cbp-body { padding: 20px 18px 22px; }
+
+
+  .cbp-lead { font-size: 14.5px; color: #5A6B82; line-height: 1.5; margin: 0 0 18px; }
+
+
+  .cbp-f { width: 100%; font-family: var(--font, 'Inter', -apple-system, sans-serif); font-size: 15px; color: #0B1220;
+    border: 0; border-bottom: 1px solid #DCE3EC; background: none;
+    padding: 10px 2px; margin-bottom: 16px; outline: none; transition: border-color .18s; }
+
+
+  .cbp-f::placeholder { color: #9AA6B6; }
+
+
+  .cbp-f:focus { border-bottom-color: #0559B3; }
+
+
+  select.cbp-f { cursor: pointer; }
+
+
+  .cbp-tel { display: flex; gap: 10px; align-items: flex-end; }
+
+
+  .cbp-cc { width: 96px; flex: none; }
+
+
+  .cbp-seg { display: flex; gap: 8px; margin: 4px 0 18px; }
+
+
+  .cbp-seg button {
+    flex: 1; cursor: pointer; font-family: var(--font, 'Inter', -apple-system, sans-serif); font-size: 13.5px; font-weight: 600;
+    padding: 9px 8px; border-radius: 8px; border: 1px solid #DCE3EC;
+    background: none; color: #5A6B82; transition: all .18s;
+  }
+
+
+  .cbp-seg button[aria-pressed="true"] { border-color: #0559B3; background: rgba(5,89,179,.07); color: #0559B3; }
+
+
+  .cbp-con { display: flex; gap: 10px; align-items: flex-start; font-size: 12.5px; color: #5A6B82; line-height: 1.5; }
+
+
+  .cbp-con input { width: 17px; height: 17px; flex: none; margin: 1px 0 0; accent-color: #0559B3; cursor: pointer; }
+
+
+  .cbp-con a { color: #0559B3; }
+
+
+  .cbp-sub {
+    width: 100%; margin-top: 18px; cursor: pointer; border: 0;
+    background: #0559B3; color: #fff; border-radius: 8px; padding: 14px;
+    font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+    font-size: 15px; font-weight: 600; letter-spacing: -0.01em;
+    transition: opacity .18s, transform .18s;
+  }
+
+
+  .cbp-sub:hover { opacity: .9; }
+
+
+  .cbp-sub:active { transform: scale(.99); }
+
+
+  .cbp-err { font-size: 12.5px; color: #C0392B; margin: 8px 0 0; }
+</style>
+
+<div class="cbar">
+  <div class="cbar-in">
+    <button type="button" class="cbar-item" id="cbTrigger" aria-expanded="false" aria-controls="cbPanel">
+      <span class="cbar-ic"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.5-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.6 2.6.7a2 2 0 0 1 1.7 2z"/></svg></span>
+      Request a callback
+    </button>
+    <a class="cbar-item" href="tel:+911800000000">
+      <span class="cbar-ic"><svg viewBox="0 0 24 24"><polyline points="16 2 16 8 22 8"/><line x1="22" y1="2" x2="16" y2="8"/><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.5-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.6 2.6.7a2 2 0 0 1 1.7 2z"/></svg></span>
+      <span class="lbl-full">Call us on&nbsp;</span><b>1800 000 0000</b>
+    </a>
+    <button type="button" class="cbar-chat" id="cbChat">
+      <span class="cbar-ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.5-4.7A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg></span>
+      Live chat
+    </button>
+  </div>
+
+<div class="cbp" id="cbPanel" hidden role="dialog" aria-modal="false" aria-label="Request a call back">
+  <div class="cbp-head">
+    Request a call back
+    <button type="button" class="cbp-min" id="cbClose" aria-label="Close"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+  </div>
+  <form class="cbp-body" id="cbForm" novalidate>
+    <p class="cbp-lead">Leave your details and a training advisor will get back to you.</p>
+    <input class="cbp-f" type="text" id="cbName" placeholder="Name*" aria-label="Name">
+    <input class="cbp-f" type="email" id="cbEmail" placeholder="Email*" aria-label="Email">
+    <div class="cbp-tel">
+      <select class="cbp-f cbp-cc" aria-label="Country code">
+        <option>IN +91</option><option>US +1</option><option>UK +44</option>
+        <option>AE +971</option><option>SG +65</option><option>AU +61</option>
+      </select>
+      <input class="cbp-f" type="tel" id="cbPhone" placeholder="Phone number*" aria-label="Phone number">
+    </div>
+    <select class="cbp-f" id="cbProgram" aria-label="Select program">
+      <option value="">Select program</option>
+      <option>AI for HR Professionals</option>
+      <option>AI for Finance Teams</option>
+      <option>AI for Product</option>
+      <option>Co-Pilot for Everyday Use</option>
+      <option>Claude &amp; ChatGPT Combo</option>
+      <option>AI for Sales &amp; Marketing</option>
+      <option>Not sure yet</option>
+    </select>
+    <div class="cbp-seg" role="group" aria-label="Who is this for">
+      <button type="button" aria-pressed="true">For myself</button>
+      <button type="button" aria-pressed="false">For my team</button>
+    </div>
+    <label class="cbp-con">
+      <input type="checkbox" id="cbConsent">
+      <span>I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>, and to be contacted about this enquiry.</span>
+    </label>
+    <p class="cbp-err" id="cbErr" hidden></p>
+    <button type="submit" class="cbp-sub">Submit</button>
+  </form>
+</div>
+
+<script>
+(function () {
+  var bar = document.querySelector('.cbar');
+  if (!bar) return;
+
+  var trig  = document.getElementById('cbTrigger'),
+      panel = document.getElementById('cbPanel'),
+      close = document.getElementById('cbClose'),
+      form  = document.getElementById('cbForm'),
+      err   = document.getElementById('cbErr'),
+      chat  = document.getElementById('cbChat');
+
+  function open(v) {
+    if (!panel) return;
+    panel.hidden = !v;
+    if (trig) trig.setAttribute('aria-expanded', v ? 'true' : 'false');
+    if (v) { var n = document.getElementById('cbName'); if (n) n.focus(); }
+  }
+
+  if (trig)  trig.addEventListener('click', function () { open(panel.hidden); });
+  if (close) close.addEventListener('click', function () { open(false); trig && trig.focus(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && panel && !panel.hidden) { open(false); trig && trig.focus(); }
+  });
+
+  if (panel) panel.querySelectorAll('.cbp-seg button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      panel.querySelectorAll('.cbp-seg button').forEach(function (o) {
+        o.setAttribute('aria-pressed', o === b ? 'true' : 'false');
+      });
+    });
+  });
+
+  ['cbName', 'cbEmail', 'cbPhone', 'cbProgram', 'cbConsent'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (!el || !err) return;
+    el.addEventListener('input',  function () { err.hidden = true; });
+    el.addEventListener('change', function () { err.hidden = true; });
+  });
+
+  if (form) form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = function (id) { var n = document.getElementById(id); return n ? n.value.trim() : ''; },
+        ok = document.getElementById('cbConsent'), msg = '';
+    if (!v('cbName')) msg = 'Enter your name.';
+    else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v('cbEmail'))) msg = 'Enter a valid email address.';
+    else if (v('cbPhone').replace(/\D/g, '').length < 7) msg = 'Enter a valid phone number.';
+    else if (!v('cbProgram')) msg = 'Choose a program.';
+    else if (ok && !ok.checked) msg = 'Please accept the terms to continue.';
+    if (err) {
+      if (msg) { err.textContent = msg; err.hidden = false; return; }
+      err.hidden = true;
+    }
+    /* TODO: POST to the enquiry endpoint */
+  });
+
+  if (chat) chat.addEventListener('click', function () { /* TODO: live chat provider */ });
+
+  var ticking = false;
+  function threshold() {
+    var hero = document.querySelector('.sp-hero, .co-hero');
+    return hero ? hero.offsetTop + hero.offsetHeight - 120
+                : Math.round(window.innerHeight * 0.7);
+  }
+  function sync() {
+    var on = window.pageYOffset > threshold();
+    bar.classList.toggle('is-on', on);
+    if (!on && panel && !panel.hidden) open(false);
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(sync); }
+  }, { passive: true });
+  window.addEventListener('resize', sync, { passive: true });
+  sync();
+})();
+</script>
