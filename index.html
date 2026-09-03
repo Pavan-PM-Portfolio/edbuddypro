@@ -98,7 +98,6 @@
   .trust,
   .roles,
   .courses-section,
-  .testimonials,
   .faq,
   .compete,
   footer {
@@ -553,10 +552,7 @@
   }
 
 
-  .roles-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+  .roles-inner { max-width: 1160px; margin: 0 auto; }
 
 
   .roles-inner .section-title { white-space: nowrap; max-width: none; }
@@ -709,187 +705,58 @@
   .role-card:hover .role-link svg { transform: translateX(3px); }
 
 
-  /* ── Roles explorer (rail + swapping panel) ── */
-  .exp {
-    margin: 52px auto 0;
-    max-width: 1080px;
-  }
-
-  .exp > input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 
 
-  /* tab grid — 5 buttons per row, 2 rows */
-  .exp-rail {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 12px;
-    margin-bottom: 18px;
-  }
 
-  .exp-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    min-height: 54px;
-    padding: 14px 16px;
-    border-radius: 12px;
-    background: #fff;
-    color: var(--neutral-700);
-    cursor: pointer;
-    box-shadow: 0 1px 2px rgba(11,30,58,0.05), 0 6px 16px rgba(11,30,58,0.07);
-    transition: background 0.18s, color 0.18s, box-shadow 0.22s var(--ease), transform 0.22s var(--ease);
-  }
 
-  .exp-item:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 2px 4px rgba(11,30,58,0.06), 0 12px 26px rgba(11,30,58,0.12); }
-  .exp-icb {
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    width: 30px; height: 30px;
-    background: none; border-radius: 0;
-  }
 
-  .exp-icb svg { width: 28px; height: 28px; fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
 
-  .exp-it-title { font-size: 14px; font-weight: 600; color: inherit; line-height: 1.25; }
-  input:checked + .exp-item .exp-icb svg,
-  .exp-item.is-on .exp-icb svg { stroke: currentColor; }
+
 @media (max-width: 1000px) { .exp-rail { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 640px) {
-    .exp-rail { grid-template-columns: repeat(5, 1fr); gap: 8px; }
-    .exp-item { flex-direction: column; align-items: center; text-align: center; gap: 7px; padding: 12px 5px; min-width: 0; }
-    .exp-icb svg { width: 26px; height: 26px; }
-    .exp-it-title { font-size: 10px; line-height: 1.18; overflow-wrap: break-word; hyphens: auto; max-width: 100%; }
   }
 @media (max-width: 400px) { .exp-rail { gap: 6px; } .exp-item { padding: 10px 3px; } .exp-it-title { font-size: 9px; } }
 
 
-  .exp-panel {
-    display: none;
-    grid-template-columns: 0.85fr 1fr;
-    gap: 34px;
-    align-items: stretch;
-    background: var(--white);
-    border: 1px solid var(--black);
-    border-radius: 20px;
-    box-shadow: 0 1px 2px rgba(10,10,10,0.04);
-    padding: 34px 36px;
-    min-height: 340px;
-  }
 
-  .exp-panel-body { min-width: 0; order: 2; }
 
-  .exp-panel-img {
-    border-radius: 14px;
-    overflow: hidden;
-    background: var(--neutral-200);
-    align-self: stretch;
-    min-height: 240px;
-    order: 1;
-  }
 
-  .exp-panel-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-  .exp-panel-img.is-ph { display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #ededed, #dedede); }
 
   .ph-ic { width: 38px; height: 38px; stroke: var(--neutral-400); fill: none; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
 @media (max-width: 760px) { .exp-panel { grid-template-columns: 1fr; } .exp-panel-img { min-height: 200px; } }
 
 
-  .exp-actions { display: flex; justify-content: center; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
-
-  .exp-btn { display: inline-flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; padding: 12px 24px; border-radius: 8px; text-decoration: none; transition: opacity 0.15s, background 0.15s; }
-
-  .exp-btn.primary { background: #0559B3; color: #ffffff; border: 1px solid #0559B3; }
-
-  .exp-btn.primary:hover { opacity: 0.85; }
-
-  .exp-btn.secondary { background: var(--white); color: var(--black); border: 1px solid #D3DAE6; }
-
-  .exp-btn.secondary:hover { background: var(--neutral-100); }
-
-  .exp-eyebrow { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--neutral-400); margin-bottom: 12px; }
-
-  .exp-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
-
-  .exp-title { font-size: clamp(26px, 2.6vw, 34px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; color: var(--black); }
-
-  .exp-tag { display: inline-flex; align-items: center; margin-top: 14px; padding: 6px 12px; border-radius: 8px; background: var(--neutral-100); font-size: 13px; font-weight: 500; color: var(--neutral-600); }
-
-  .exp-ico { width: 60px; height: 60px; border-radius: 16px; background: var(--black); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-
-  .exp-ico svg { width: 28px; height: 28px; stroke: #fff; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-
-  .exp-desc { font-size: 16px; line-height: 1.65; color: var(--neutral-600); margin-top: 24px; }
-
-  .exp-master-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--neutral-400); margin-top: 28px; margin-bottom: 14px; }
-
-  .exp-list { display: flex; flex-direction: column; gap: 12px; }
-
-  .exp-list li { display: flex; align-items: flex-start; gap: 11px; font-size: 15px; color: var(--neutral-700, #404040); list-style: none; line-height: 1.45; }
-
-  .exp-check { width: 20px; height: 20px; border-radius: 50%; background: var(--neutral-100); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-
-  .exp-check svg { width: 12px; height: 12px; stroke: var(--black); fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
-
-
-  /* active rail item + panel swap (CSS :checked) */
-  #role-1:checked ~ .exp-rail label[for="role-1"],
-  #role-2:checked ~ .exp-rail label[for="role-2"],
-  #role-3:checked ~ .exp-rail label[for="role-3"],
-  #role-4:checked ~ .exp-rail label[for="role-4"],
-  #role-5:checked ~ .exp-rail label[for="role-5"],
-  #role-6:checked ~ .exp-rail label[for="role-6"],
-  #role-7:checked ~ .exp-rail label[for="role-7"],
-  #role-8:checked ~ .exp-rail label[for="role-8"],
-  #role-9:checked ~ .exp-rail label[for="role-9"],
-  #role-10:checked ~ .exp-rail label[for="role-10"] {
-    background: #0559B3;
-    color: #ffffff;
-  }
-
-
-  #role-1:checked ~ .exp-rail label[for="role-1"] svg,
-  #role-2:checked ~ .exp-rail label[for="role-2"] svg,
-  #role-3:checked ~ .exp-rail label[for="role-3"] svg,
-  #role-4:checked ~ .exp-rail label[for="role-4"] svg,
-  #role-5:checked ~ .exp-rail label[for="role-5"] svg,
-  #role-6:checked ~ .exp-rail label[for="role-6"] svg,
-  #role-7:checked ~ .exp-rail label[for="role-7"] svg,
-  #role-8:checked ~ .exp-rail label[for="role-8"] svg,
-  #role-9:checked ~ .exp-rail label[for="role-9"] svg,
-  #role-10:checked ~ .exp-rail label[for="role-10"] svg { stroke: #ffffff; }
-
-
-  #role-1:checked ~ .exp-rail label[for="role-1"] .exp-icb,
-  #role-2:checked ~ .exp-rail label[for="role-2"] .exp-icb,
-  #role-3:checked ~ .exp-rail label[for="role-3"] .exp-icb,
-  #role-4:checked ~ .exp-rail label[for="role-4"] .exp-icb,
-  #role-5:checked ~ .exp-rail label[for="role-5"] .exp-icb,
-  #role-6:checked ~ .exp-rail label[for="role-6"] .exp-icb,
-  #role-7:checked ~ .exp-rail label[for="role-7"] .exp-icb,
-  #role-8:checked ~ .exp-rail label[for="role-8"] .exp-icb,
-  #role-9:checked ~ .exp-rail label[for="role-9"] .exp-icb,
-  #role-10:checked ~ .exp-rail label[for="role-10"] .exp-icb { background: none; }
 
 
 
-  #role-1:checked ~ .exp-panels .exp-panel:nth-child(1),
-  #role-2:checked ~ .exp-panels .exp-panel:nth-child(2),
-  #role-3:checked ~ .exp-panels .exp-panel:nth-child(3),
-  #role-4:checked ~ .exp-panels .exp-panel:nth-child(4),
-  #role-5:checked ~ .exp-panels .exp-panel:nth-child(5),
-  #role-6:checked ~ .exp-panels .exp-panel:nth-child(6),
-  #role-7:checked ~ .exp-panels .exp-panel:nth-child(7),
-  #role-8:checked ~ .exp-panels .exp-panel:nth-child(8),
-  #role-9:checked ~ .exp-panels .exp-panel:nth-child(9),
-  #role-10:checked ~ .exp-panels .exp-panel:nth-child(10) { display: grid; }
 
 
-  .exp input:focus-visible ~ .exp-rail label[for] { outline: none; }
 
-  .exp-item:focus-within { box-shadow: 0 0 0 3px rgba(10,10,10,0.12); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 860px) {
-    .exp { grid-template-columns: 1fr; }
-    .exp-panel { padding: 28px 24px; min-height: 0; }
   }
 
 
@@ -1101,101 +968,6 @@
 
 
   .course-enroll-btn:hover { opacity: 0.75; }
-
-
-  /* ─── TESTIMONIALS ─── */
-  .testimonials {
-    padding: 96px 32px;
-    background: transparent;
-  }
-
-
-  .testimonials-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-
-  .testimonials-inner .section-title { white-space: nowrap; max-width: none; }
-
-
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    max-width: 1100px;
-    margin: 52px auto 0;
-  }
-
-  .flip-card.d1 .flip-back, .flip-card.d2 .flip-back, .flip-card.d5 .flip-back { transform: rotateY(180deg); }
-
-  .flip-card.d3 .flip-back, .flip-card.d4 .flip-back, .flip-card.d6 .flip-back { transform: rotateX(180deg); }
-
-
-  .tf-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0; position: relative; z-index: 1; }
-
-  .tf-logo { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--black); white-space: nowrap; }
-
-  .tf-logo svg { width: 17px; height: 17px; flex-shrink: 0; }
-
-  .tf-mark { position: absolute; top: 38px; right: 22px; font-size: 86px; line-height: 1; color: rgba(10,10,10,0.045); font-family: Georgia, serif; pointer-events: none; z-index: 0; }
-
-
-  .testimonial-stars {
-    display: flex;
-    gap: 3px;
-    margin-bottom: 16px;
-  }
-
-
-  .testimonial-stars svg {
-    width: 14px;
-    height: 14px;
-    fill: var(--black);
-  }
-
-
-  .testimonial-quote {
-    font-size: 14px;
-    line-height: 1.65;
-    color: var(--neutral-700, #404040);
-    margin-bottom: 22px;
-  }
-
-
-  .testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-
-  .testimonial-avatar {
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    background: var(--neutral-200);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--neutral-600);
-    flex-shrink: 0;
-  }
-
-
-  .testimonial-name {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--black);
-  }
-
-
-  .testimonial-role {
-    font-size: 12px;
-    color: var(--neutral-500);
-  }
  0%,42% { transform: rotateY(0deg); }
  50%,92% { transform: rotateY(180deg); }
  100% { transform: rotateY(360deg); }
@@ -1416,7 +1188,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 24px;
     align-items: center;
-    max-width: 1000px;
+    max-width: 1160px;
     margin: 52px auto 0;
   }
 
@@ -1853,7 +1625,6 @@
   @media (max-width: 900px) {
     .roles-grid { grid-template-columns: repeat(2, 1fr); }
     .courses-grid { grid-template-columns: repeat(2, 1fr); }
-    .testimonials-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   }
 @media (max-width: 600px) {
     :root { --grid-size: 40px; }
@@ -1861,13 +1632,10 @@
     .hero-inner { padding: 64px 20px 36px; }
     .trust { padding: 32px 16px; }
     .cta-section { padding: 64px 16px; }
-    .catalog-strip, .roles, .courses-section, .testimonials, .compete, .values, .contact, .faq, .lead { padding-top: 64px; padding-bottom: 64px; }
+    .catalog-strip, .roles, .courses-section, .compete, .values, .contact, .faq, .lead { padding-top: 64px; padding-bottom: 64px; }
     .cta-inner { padding: 48px 24px; border-radius: 18px; }
     .catalog-head .section-title { white-space: normal; }
     .roles-inner .section-title { white-space: normal; }
-    .testimonials-inner .section-title { white-space: normal; }
-    .testimonials-grid { grid-template-columns: 1fr; max-width: 440px; }
-    .flip-card.d3, .flip-card.d4, .flip-card.d5, .flip-card.d6 { display: none; }
     .trust-inner { padding: 32px 22px; border-radius: 18px; }
     .trust-stats { gap: 22px 26px; }
     .trust-divider { display: none; }
@@ -2517,13 +2285,6 @@
   .back .turn:hover { color: #0559B3; opacity: 1; }
 
   .back .turn:hover svg { transform: translateX(-2px); }
-
-  .ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-  .ph::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 92px; pointer-events: none;
-    background: linear-gradient(180deg, rgba(11,18,32,.72) 0%, rgba(11,18,32,.42) 45%, rgba(11,18,32,0) 100%); }
-
-  .fk svg { width: 15px; height: 15px; }
 @media (prefers-reduced-motion: reduce) {
   }
 @media (max-width: 1040px) { .flip-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -2533,7 +2294,7 @@
 
   /* sections must sit above the fixed .page-grid lattice */
   .values, .catalog-strip, .courses-section, .trust,
-  .testimonials, .compete, .roles, .contact, .lead, .faq {
+  .compete, .roles, .contact, .lead, .faq {
     position: relative; z-index: 1;
   }
 
@@ -2611,10 +2372,6 @@
   }
 
   /* ─── keyframes ─── */
-@keyframes flipY { 0%,42% { transform: rotateY(0deg); } 50%,92% { transform: rotateY(180deg); } 100% { transform: rotateY(360deg); } }
-@keyframes flipYr { 0%,42% { transform: rotateY(0deg); } 50%,92% { transform: rotateY(-180deg); } 100% { transform: rotateY(-360deg); } }
-@keyframes flipX { 0%,42% { transform: rotateX(0deg); } 50%,92% { transform: rotateX(180deg); } 100% { transform: rotateX(360deg); } }
-@keyframes flipXr { 0%,42% { transform: rotateX(0deg); } 50%,92% { transform: rotateX(-180deg); } 100% { transform: rotateX(-360deg); } }
 @keyframes aicaret { 50% { opacity: 0; } }
 @keyframes fadeUp {
     from { opacity: 0; transform: translateY(16px); }
@@ -2633,22 +2390,6 @@
   /* Face visibility is animated in step with the rotation, so the flip works
      even where backface-visibility is unreliable (iOS Safari). */
   /* hard switch while the card is edge-on, so the two faces never co-exist */
-  @keyframes faceA {
-    0%, 45.9% { opacity: 1; visibility: visible; }
-    46%, 95.9% { opacity: 0; visibility: hidden; }
-    96%, 100% { opacity: 1; visibility: visible; }
-  }
-  @keyframes faceB {
-    0%, 45.9% { opacity: 0; visibility: hidden; }
-    46%, 95.9% { opacity: 1; visibility: visible; }
-    96%, 100% { opacity: 0; visibility: hidden; }
-  }
-  .flip-card.d2 .flip-front, .flip-card.d2 .flip-back { animation-delay: -3.6s; }
-  .flip-card.d3 .flip-front, .flip-card.d3 .flip-back { animation-delay: -7.2s; }
-  .flip-card.d4 .flip-front, .flip-card.d4 .flip-back { animation-delay: -10.8s; }
-  .flip-card.d5 .flip-front, .flip-card.d5 .flip-back { animation-delay: -1.8s; }
-  .flip-card.d6 .flip-front, .flip-card.d6 .flip-back { animation-delay: -9s; }
-  .flip-card:hover .flip-front, .flip-card:hover .flip-back { animation-play-state: paused; }
   @media (prefers-reduced-motion: reduce) {
     .flip-front, .flip-back { animation: none; }
   }
@@ -2748,13 +2489,8 @@
     .cx-card { transition: none; }
   }
 
-  /* ── performance: nothing animates while it is off screen ── */
-  .testimonials:not(.in-view) .flip-inner,
-  .testimonials:not(.in-view) .flip-front,
-  .testimonials:not(.in-view) .flip-back { animation-play-state: paused; }
-  .sp-hero:not(.in-view) .sp-slide { animation-play-state: paused; }
+  /* ── performance: nothing animates while it is off screen ── */  .sp-hero:not(.in-view) .sp-slide { animation-play-state: paused; }
   /* promote a layer only while the card is actually flipping */
-  .testimonials.in-view .flip-inner { will-change: transform; }
 
   /* ═══ Ready to reimagine — nav-style cards, filters beside the heading ═══ */
   .rc-top { display: flex; align-items: flex-end; justify-content: space-between;
@@ -2802,6 +2538,61 @@
     .rc-cat { font-size: 13.5px; padding: 8px 12px; background: var(--neutral-100, #F4F6F9); }
   }
   @media (prefers-reduced-motion: reduce) { .rc { transition: none; } }
+
+  /* ═══ roles — left rail, the nav pattern ═══ */
+  .rl-split { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 44px; align-items: start; }
+  .rl-rail { display: flex; flex-direction: column; gap: 2px; position: sticky; top: 88px; }
+  .rl-head { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--neutral-400, #94A3B8); padding: 0 13px 12px; }
+  .rl-item { display: flex; align-items: center; gap: 11px; width: 100%; text-align: left;
+    font-family: inherit; background: none; border: 0; cursor: pointer; color: #52627A;
+    padding: 11px 13px; border-radius: 9px; transition: background .15s, color .15s; }
+  .rl-item:hover { background: #F5F8FC; color: var(--ink, #0B1220); }
+  .rl-item.on { background: #EEF4FC; color: #0559B3; }
+  .rl-item.on .rl-t { font-weight: 600; }
+  .rl-item:focus-visible { outline: 2px solid #0559B3; outline-offset: 2px; }
+  .rl-ic { display: flex; align-items: center; justify-content: center; flex: none; color: var(--ic); }
+  .rl-ic svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.9;
+    stroke-linecap: round; stroke-linejoin: round; }
+  .rl-t { font-size: 14.5px; font-weight: 500; }
+
+  .rp { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 34px; align-items: center; }
+  .rp[hidden] { display: none; }
+  .rp-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--neutral-400, #94A3B8); margin: 0 0 10px; }
+  .rp-title { font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif); font-size: 26px;
+    font-weight: 700; letter-spacing: -.025em; margin: 0 0 8px; }
+  .rp-tag { display: inline-block; font-size: 12.5px; font-weight: 600; color: #0559B3;
+    background: #EEF4FC; padding: 5px 11px; border-radius: 7px; margin-bottom: 16px; }
+  .rp-desc { font-size: 16px; line-height: 1.65; color: var(--muted, #5A6B82); margin: 0 0 20px; max-width: 520px; }
+  .rp-lbl { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--neutral-400, #94A3B8); margin: 0 0 12px; }
+  .rp-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; }
+  .rp-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 15.5px;
+    line-height: 1.5; color: #3F4650; }
+  .rp-ck { width: 17px; height: 17px; flex: none; margin-top: 2px; color: #0559B3;
+    fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+  .rp-img { border-radius: 16px; overflow: hidden; background: #EEF1F6; aspect-ratio: 3 / 4; }
+  .rp-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  @media (max-width: 960px) {
+    .rl-split { grid-template-columns: 1fr; gap: 26px; }
+    .rl-rail { position: static; flex-direction: row; flex-wrap: wrap; gap: 6px; }
+    .rl-head { display: none; }
+    .rl-item { width: auto; background: var(--neutral-100, #F4F6F9); padding: 9px 13px; }
+    .rl-item .rl-t { font-size: 13.5px; }
+    .rp { grid-template-columns: 1fr; gap: 24px; }
+    .rp-img { aspect-ratio: 16 / 9; order: -1; }
+  }
+  @media (prefers-reduced-motion: reduce) { .rl-item { transition: none; } }
+
+  /* actions row, still in use */
+  .exp-actions { display: flex; justify-content: center; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
+  .exp-btn { display: inline-flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; padding: 12px 24px; border-radius: 8px; text-decoration: none; transition: opacity 0.15s, background 0.15s; }
+  .exp-btn.primary { background: #0559B3; color: #ffffff; border: 1px solid #0559B3; }
+  .exp-btn.secondary { background: var(--white); color: var(--black); border: 1px solid #D3DAE6; }
+  .exp-btn.primary:hover { opacity: 0.85; }
+  .exp-btn.secondary:hover { background: var(--neutral-100); }
 </style>
 </head>
 <body>
@@ -3114,188 +2905,7 @@
 
 
 <!-- ─── TESTIMONIALS ─── -->
-<section class="testimonials">
-  <div class="testimonials-inner">
-    <h2 class="section-title">Real outcomes, <em>real professionals</em></h2>
-    <p class="section-sub">From HR to product, hear how professionals are putting these skills to work every day.</p>
-    <div class="testimonials-grid">
 
-      <div class="flip-card d1">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="tf-mark">”</span>
-            <div class="tf-head">
-              <div class="testimonial-stars">★★★★★</div>
-              <span class="tf-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#00b67a"/><path fill="#fff" d="M12 5l1.8 3.9 4.3.46-3.35 2.83 1.05 4.6L12 14.6 8.15 16.8l1.05-4.6L5.85 9.36l4.3-.46z"/></svg>Trustpilot</span>
-            </div>
-            <p class="testimonial-quote">"I automated our monthly HR reporting in week two. Three hours of work now takes ten minutes — worth every rupee."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">PR</div>
-              <div><div class="testimonial-name">Priya Rajan</div><div class="testimonial-role">HR Manager, Infosys</div></div>
-            </div>
-          </div>
-          <div class="flip-face flip-back">
-            <span class="tf-mark">”</span>
-            <div class="tf-head">
-              <div class="testimonial-stars">★★★★★</div>
-              <span class="tf-logo"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-.792 2.237-2.231 4.166-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>Google</span>
-            </div>
-            <p class="testimonial-quote">"Onboarding docs that used to take a full day now take twenty minutes. It genuinely changed how I work."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">MJ</div>
-              <div><div class="testimonial-name">Meera Joshi</div><div class="testimonial-role">HR Business Partner, TCS</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card d2">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="tf-mark">”</span>
-            <div class="tf-head">
-              <div class="testimonial-stars">★★★★★</div>
-              <span class="tf-logo"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-.792 2.237-2.231 4.166-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>Google</span>
-            </div>
-            <p class="testimonial-quote">"Explained in finance terms, not tech terms. I built my first AI-assisted forecast model on day three."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">AK</div>
-              <div><div class="testimonial-name">Arjun Khanna</div><div class="testimonial-role">Finance Analyst, Deloitte</div></div>
-            </div>
-          </div>
-          <div class="flip-face flip-back">
-            <span class="tf-mark">”</span>
-            <div class="tf-head">
-              <div class="testimonial-stars">★★★★★</div>
-              <span class="tf-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#00b67a"/><path fill="#fff" d="M12 5l1.8 3.9 4.3.46-3.35 2.83 1.05 4.6L12 14.6 8.15 16.8l1.05-4.6L5.85 9.36l4.3-.46z"/></svg>Trustpilot</span>
-            </div>
-            <p class="testimonial-quote">"Built an AI forecast model I actually trust — and the certificate was a nice bonus at appraisal time."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">VR</div>
-              <div><div class="testimonial-name">Vikram Rao</div><div class="testimonial-role">Finance Manager, Paytm</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card d3">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="tf-mark">”</span>
-            <div class="tf-head">
-              <div class="testimonial-stars">★★★★★</div>
-              <span class="tf-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#00b67a"/><path fill="#fff" d="M12 5l1.8 3.9 4.3.46-3.35 2.83 1.05 4.6L12 14.6 8.15 16.8l1.05-4.6L5.85 9.36l4.3-.46z"/></svg>Trustpilot</span>
-            </div>
-            <p class="testimonial-quote">"I use Claude daily for user-story drafting now. It's cut my writing time clean in half."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">SM</div>
-              <div><div class="testimonial-name">Sneha Mehta</div><div class="testimonial-role">Senior PM, Razorpay</div></div>
-            </div>
-          </div>
-          <div class="flip-face flip-back">
-            <span class="tf-mark">”</span>
-            <div class="tf-head">
-              <div class="testimonial-stars">★★★★★</div>
-              <span class="tf-logo"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-.792 2.237-2.231 4.166-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>Google</span>
-            </div>
-            <p class="testimonial-quote">"Clear and practical, zero jargon. I finally understand what these tools can and can't do."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">KN</div>
-              <div><div class="testimonial-name">Karthik Nair</div><div class="testimonial-role">Product Designer, Zoho</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card d4">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="tf-mark">”</span>
-            <div class="tf-head">
-              <div class="testimonial-stars">★★★★★</div>
-              <span class="tf-logo"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-.792 2.237-2.231 4.166-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>Google</span>
-            </div>
-            <p class="testimonial-quote">"Went from copy-pasting prompts to building real workflows. My team ships campaigns twice as fast."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">RV</div>
-              <div><div class="testimonial-name">Rahul Verma</div><div class="testimonial-role">Marketing Lead, Swiggy</div></div>
-            </div>
-          </div>
-          <div class="flip-face flip-back">
-            <span class="tf-mark">”</span>
-            <div class="tf-head">
-              <div class="testimonial-stars">★★★★★</div>
-              <span class="tf-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#00b67a"/><path fill="#fff" d="M12 5l1.8 3.9 4.3.46-3.35 2.83 1.05 4.6L12 14.6 8.15 16.8l1.05-4.6L5.85 9.36l4.3-.46z"/></svg>Trustpilot</span>
-            </div>
-            <p class="testimonial-quote">"The everyday-use track is gold. My weekly reports and inbox triage now take minutes, not hours."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">AI</div>
-              <div><div class="testimonial-name">Ananya Iyer</div><div class="testimonial-role">Ops Manager, Flipkart</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card d5">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="tf-mark">”</span>
-            <div class="tf-head">
-              <div class="testimonial-stars">★★★★★</div>
-              <span class="tf-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#00b67a"/><path fill="#fff" d="M12 5l1.8 3.9 4.3.46-3.35 2.83 1.05 4.6L12 14.6 8.15 16.8l1.05-4.6L5.85 9.36l4.3-.46z"/></svg>Trustpilot</span>
-            </div>
-            <p class="testimonial-quote">"Recruitment screening that used to eat my mornings now runs itself — I review, AI drafts."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">DN</div>
-              <div><div class="testimonial-name">Deepa Nair</div><div class="testimonial-role">Talent Lead, Wipro</div></div>
-            </div>
-          </div>
-          <div class="flip-face flip-back">
-            <span class="tf-mark">”</span>
-            <div class="tf-head">
-              <div class="testimonial-stars">★★★★★</div>
-              <span class="tf-logo"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-.792 2.237-2.231 4.166-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>Google</span>
-            </div>
-            <p class="testimonial-quote">"I automate the boring 80% of my reporting now. The other 20% is where I actually add value."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">SG</div>
-              <div><div class="testimonial-name">Sanjay Gupta</div><div class="testimonial-role">Data Analyst, Myntra</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card d6">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="tf-mark">”</span>
-            <div class="tf-head">
-              <div class="testimonial-stars">★★★★★</div>
-              <span class="tf-logo"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-.792 2.237-2.231 4.166-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>Google</span>
-            </div>
-            <p class="testimonial-quote">"Briefs, outlines, first drafts — what used to take a week now takes an afternoon."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">NP</div>
-              <div><div class="testimonial-name">Nisha Pillai</div><div class="testimonial-role">Content Strategist, Nykaa</div></div>
-            </div>
-          </div>
-          <div class="flip-face flip-back">
-            <span class="tf-mark">”</span>
-            <div class="tf-head">
-              <div class="testimonial-stars">★★★★★</div>
-              <span class="tf-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#00b67a"/><path fill="#fff" d="M12 5l1.8 3.9 4.3.46-3.35 2.83 1.05 4.6L12 14.6 8.15 16.8l1.05-4.6L5.85 9.36l4.3-.46z"/></svg>Trustpilot</span>
-            </div>
-            <p class="testimonial-quote">"Status reports and meeting notes write themselves now. My calendar finally breathes."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">RD</div>
-              <div><div class="testimonial-name">Rohan Desai</div><div class="testimonial-role">Project Manager, Infosys</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 
@@ -3339,268 +2949,117 @@
   <div class="roles-inner">
     <h2 class="section-title">Finally, AI explained <em>in your context</em></h2>
     <p class="section-sub">No generic tutorials. Every course is designed around the real workflows of your specific role.</p>
-    <div class="exp">
-      <input type="radio" name="role" id="role-1" checked>
-      <input type="radio" name="role" id="role-2">
-      <input type="radio" name="role" id="role-3">
-      <input type="radio" name="role" id="role-4">
-      <input type="radio" name="role" id="role-5">
-      <input type="radio" name="role" id="role-6">
-      <input type="radio" name="role" id="role-7">
-      <input type="radio" name="role" id="role-8">
-      <input type="radio" name="role" id="role-9">
-      <input type="radio" name="role" id="role-10">
-
-      <div class="exp-rail">
-        <label class="exp-item" for="role-1">
-          <span class="exp-icb" style="--ic:#0559B3"><svg viewBox="0 0 24 24" fill="none" stroke="#0559B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/> <path d="M16 3.128a4 4 0 0 1 0 7.744"/> <path d="M22 21v-2a4 4 0 0 0-3-3.87"/> <circle cx="9" cy="7" r="4"/></svg></span>
-          <span class="exp-it-title">HR Professionals</span>
-        </label>
-        <label class="exp-item" for="role-2">
-          <span class="exp-icb" style="--ic:#0E9F6E"><svg viewBox="0 0 24 24" fill="none" stroke="#0E9F6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 18v-7"/> <path d="M11.119 2.205a2 2 0 0 1 1.762 0l7.84 3.846A.5.5 0 0 1 20.5 7h-17a.5.5 0 0 1-.22-.949z"/> <path d="M14 18v-7"/> <path d="M18 18v-7"/> <path d="M3 22h18"/> <path d="M6 18v-7"/></svg></span>
-          <span class="exp-it-title">Finance Professionals</span>
-        </label>
-        <label class="exp-item" for="role-3">
-          <span class="exp-icb" style="--ic:#7C3AED"><svg viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/> <rect width="7" height="7" x="14" y="3" rx="1"/> <rect width="7" height="7" x="14" y="14" rx="1"/> <rect width="7" height="7" x="3" y="14" rx="1"/></svg></span>
-          <span class="exp-it-title">Product Managers</span>
-        </label>
-        <label class="exp-item" for="role-4">
-          <span class="exp-icb" style="--ic:#EA580C"><svg viewBox="0 0 24 24" fill="none" stroke="#EA580C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/> <path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14"/> <path d="M8 6v8"/></svg></span>
-          <span class="exp-it-title">Marketing &amp; Content</span>
-        </label>
-        <label class="exp-item" for="role-5">
-          <span class="exp-icb" style="--ic:#0891B2"><svg viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 7h6v6"/> <path d="m22 7-8.5 8.5-5-5L2 17"/></svg></span>
-          <span class="exp-it-title">Sales Teams</span>
-        </label>
-        <label class="exp-item" for="role-6">
-          <span class="exp-icb" style="--ic:#475569"><svg viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/> <circle cx="12" cy="12" r="3"/></svg></span>
-          <span class="exp-it-title">Operations</span>
-        </label>
-        <label class="exp-item" for="role-7">
-          <span class="exp-icb" style="--ic:#4F46E5"><svg viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/> <path d="M18 17V9"/> <path d="M13 17V5"/> <path d="M8 17v-3"/></svg></span>
-          <span class="exp-it-title">Data &amp; Analytics</span>
-        </label>
-        <label class="exp-item" for="role-8">
-          <span class="exp-icb" style="--ic:#DB2777"><svg viewBox="0 0 24 24" fill="none" stroke="#DB2777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg></span>
-          <span class="exp-it-title">Customer Support</span>
-        </label>
-        <label class="exp-item" for="role-9">
-          <span class="exp-icb" style="--ic:#D97706"><svg viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/> <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/></svg></span>
-          <span class="exp-it-title">Leadership &amp; Strategy</span>
-        </label>
-        <label class="exp-item" for="role-10">
-          <span class="exp-icb" style="--ic:#0E7490"><svg viewBox="0 0 24 24" fill="none" stroke="#0E7490" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/> <line x1="8" x2="16" y1="21" y2="21"/> <line x1="12" x2="12" y1="17" y2="21"/></svg></span>
-          <span class="exp-it-title">Everyday Professionals</span>
-        </label>
-      </div>
-
-      <div class="exp-panels">
-        <div class="exp-panel">
-          <div class="exp-panel-body">
-          <p class="exp-eyebrow">Role 01</p>
-          <div class="exp-head">
-            <div>
-              <h3 class="exp-title">HR Professionals</h3>
-              <span class="exp-tag">For HR teams</span>
-            </div>
-            <div class="exp-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-          </div>
-          <p class="exp-desc">Use AI to transform hiring, automate onboarding, and generate policy documents in minutes — without touching a line of code.</p>
-          <p class="exp-master-label">What you'll master</p>
-          <ul class="exp-list">
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Screen and shortlist candidates faster</li>
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Draft job descriptions, offers, and policy docs</li>
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Automate onboarding and repetitive paperwork</li>
-          </ul>
-          </div>
-          <div class="exp-panel-img"><img src="images/role-hr.webp" alt="AI for HR professionals"></div>
+    <div class="rl-split">
+      <aside class="rl-rail" role="tablist" aria-label="Browse by role">
+        <span class="rl-head">Browse by role</span><button type="button" class="rl-item on" data-i="0" style="--ic:#0559B3" role="tab" aria-selected="true" aria-controls="rp-0"><span class="rl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0559B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/> <path d="M16 3.128a4 4 0 0 1 0 7.744"/> <path d="M22 21v-2a4 4 0 0 0-3-3.87"/> <circle cx="9" cy="7" r="4"/></svg></span><span class="rl-t">HR Professionals</span></button><button type="button" class="rl-item" data-i="1" style="--ic:#0E9F6E" role="tab" aria-selected="false" aria-controls="rp-1"><span class="rl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0E9F6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 18v-7"/> <path d="M11.119 2.205a2 2 0 0 1 1.762 0l7.84 3.846A.5.5 0 0 1 20.5 7h-17a.5.5 0 0 1-.22-.949z"/> <path d="M14 18v-7"/> <path d="M18 18v-7"/> <path d="M3 22h18"/> <path d="M6 18v-7"/></svg></span><span class="rl-t">Finance Professionals</span></button><button type="button" class="rl-item" data-i="2" style="--ic:#7C3AED" role="tab" aria-selected="false" aria-controls="rp-2"><span class="rl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/> <rect width="7" height="7" x="14" y="3" rx="1"/> <rect width="7" height="7" x="14" y="14" rx="1"/> <rect width="7" height="7" x="3" y="14" rx="1"/></svg></span><span class="rl-t">Product Managers</span></button><button type="button" class="rl-item" data-i="3" style="--ic:#EA580C" role="tab" aria-selected="false" aria-controls="rp-3"><span class="rl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#EA580C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/> <path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14"/> <path d="M8 6v8"/></svg></span><span class="rl-t">Marketing &amp; Content</span></button><button type="button" class="rl-item" data-i="4" style="--ic:#0891B2" role="tab" aria-selected="false" aria-controls="rp-4"><span class="rl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 7h6v6"/> <path d="m22 7-8.5 8.5-5-5L2 17"/></svg></span><span class="rl-t">Sales Teams</span></button><button type="button" class="rl-item" data-i="5" style="--ic:#475569" role="tab" aria-selected="false" aria-controls="rp-5"><span class="rl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/> <circle cx="12" cy="12" r="3"/></svg></span><span class="rl-t">Operations</span></button><button type="button" class="rl-item" data-i="6" style="--ic:#4F46E5" role="tab" aria-selected="false" aria-controls="rp-6"><span class="rl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/> <path d="M18 17V9"/> <path d="M13 17V5"/> <path d="M8 17v-3"/></svg></span><span class="rl-t">Data &amp; Analytics</span></button><button type="button" class="rl-item" data-i="7" style="--ic:#DB2777" role="tab" aria-selected="false" aria-controls="rp-7"><span class="rl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#DB2777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg></span><span class="rl-t">Customer Support</span></button><button type="button" class="rl-item" data-i="8" style="--ic:#D97706" role="tab" aria-selected="false" aria-controls="rp-8"><span class="rl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/> <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/></svg></span><span class="rl-t">Leadership &amp; Strategy</span></button><button type="button" class="rl-item" data-i="9" style="--ic:#0E7490" role="tab" aria-selected="false" aria-controls="rp-9"><span class="rl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0E7490" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/> <line x1="8" x2="16" y1="21" y2="21"/> <line x1="12" x2="12" y1="17" y2="21"/></svg></span><span class="rl-t">Everyday Professionals</span></button>
+      </aside>
+      <div class="rl-panes"><div class="rp" id="rp-0" data-i="0" role="tabpanel">
+        <div class="rp-body">
+          <p class="rp-eyebrow">Role 01</p>
+          <h3 class="rp-title">HR Professionals</h3>
+          <span class="rp-tag">For HR teams</span>
+          <p class="rp-desc">Use AI to transform hiring, automate onboarding, and generate policy documents in minutes — without touching a line of code.</p>
+          <p class="rp-lbl">What you'll master</p>
+          <ul class="rp-list"><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Screen and shortlist candidates faster</li><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Draft job descriptions, offers, and policy docs</li><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Automate onboarding and repetitive paperwork</li></ul>
         </div>
-        <div class="exp-panel">
-          <div class="exp-panel-body">
-          <p class="exp-eyebrow">Role 02</p>
-          <div class="exp-head">
-            <div>
-              <h3 class="exp-title">Finance Professionals</h3>
-              <span class="exp-tag">For finance teams</span>
-            </div>
-            <div class="exp-ico"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-          </div>
-          <p class="exp-desc">AI-driven forecasting, automated reporting, and smarter risk analysis — explained in finance terms, not tech terms.</p>
-          <p class="exp-master-label">What you'll master</p>
-          <ul class="exp-list">
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Build AI-assisted forecast models</li>
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Automate recurring financial reports</li>
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Spot risk and anomalies faster</li>
-          </ul>
-          </div>
-          <div class="exp-panel-img"><img src="images/role-finance.webp" alt="AI for finance teams"></div>
+        <div class="rp-img"><img src="images/role-hr.webp" alt="AI for HR professionals" loading="lazy"></div>
+      </div><div class="rp" id="rp-1" data-i="1" role="tabpanel" hidden>
+        <div class="rp-body">
+          <p class="rp-eyebrow">Role 02</p>
+          <h3 class="rp-title">Finance Professionals</h3>
+          <span class="rp-tag">For finance teams</span>
+          <p class="rp-desc">AI-driven forecasting, automated reporting, and smarter risk analysis — explained in finance terms, not tech terms.</p>
+          <p class="rp-lbl">What you'll master</p>
+          <ul class="rp-list"><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Build AI-assisted forecast models</li><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Automate recurring financial reports</li><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Spot risk and anomalies faster</li></ul>
         </div>
-        <div class="exp-panel">
-          <div class="exp-panel-body">
-          <p class="exp-eyebrow">Role 03</p>
-          <div class="exp-head">
-            <div>
-              <h3 class="exp-title">Product Managers</h3>
-              <span class="exp-tag">For product teams</span>
-            </div>
-            <div class="exp-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
-          </div>
-          <p class="exp-desc">Build better roadmaps, run AI-assisted user research, and prioritise faster with real clarity — from idea to ship.</p>
-          <p class="exp-master-label">What you'll master</p>
-          <ul class="exp-list">
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Draft PRDs and user stories in minutes</li>
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Synthesise user research at speed</li>
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Prioritise with AI-assisted analysis</li>
-          </ul>
-          </div>
-          <div class="exp-panel-img"><img src="images/role-product.webp" alt="AI for product managers"></div>
+        <div class="rp-img"><img src="images/role-finance.webp" alt="AI for finance teams" loading="lazy"></div>
+      </div><div class="rp" id="rp-2" data-i="2" role="tabpanel" hidden>
+        <div class="rp-body">
+          <p class="rp-eyebrow">Role 03</p>
+          <h3 class="rp-title">Product Managers</h3>
+          <span class="rp-tag">For product teams</span>
+          <p class="rp-desc">Build better roadmaps, run AI-assisted user research, and prioritise faster with real clarity — from idea to ship.</p>
+          <p class="rp-lbl">What you'll master</p>
+          <ul class="rp-list"><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Draft PRDs and user stories in minutes</li><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Synthesise user research at speed</li><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Prioritise with AI-assisted analysis</li></ul>
         </div>
-        <div class="exp-panel">
-          <div class="exp-panel-body">
-          <p class="exp-eyebrow">Role 04</p>
-          <div class="exp-head">
-            <div>
-              <h3 class="exp-title">Marketing &amp; Content</h3>
-              <span class="exp-tag">For marketing teams</span>
-            </div>
-            <div class="exp-ico"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 16.5 8.5 11.5 1 19"/><polyline points="17 6 23 6 23 12"/></svg></div>
-          </div>
-          <p class="exp-desc">Generate campaigns, on-brand copy, and SEO content at speed — and test more ideas in far less time.</p>
-          <p class="exp-master-label">What you'll master</p>
-          <ul class="exp-list">
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Draft campaigns, emails, and ad copy</li>
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Research keywords and brief content</li>
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Repurpose one asset into many</li>
-          </ul>
-          </div>
-          <div class="exp-panel-img"><img src="images/role-marketing.webp" alt="AI for marketing &amp; content teams"></div>
+        <div class="rp-img"><img src="images/role-product.webp" alt="AI for product managers" loading="lazy"></div>
+      </div><div class="rp" id="rp-3" data-i="3" role="tabpanel" hidden>
+        <div class="rp-body">
+          <p class="rp-eyebrow">Role 04</p>
+          <h3 class="rp-title">Marketing &amp; Content</h3>
+          <span class="rp-tag">For marketing teams</span>
+          <p class="rp-desc">Generate campaigns, on-brand copy, and SEO content at speed — and test more ideas in far less time.</p>
+          <p class="rp-lbl">What you'll master</p>
+          <ul class="rp-list"><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Draft campaigns, emails, and ad copy</li><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Research keywords and brief content</li><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Repurpose one asset into many</li></ul>
         </div>
-        <div class="exp-panel">
-          <div class="exp-panel-body">
-          <p class="exp-eyebrow">Role 05</p>
-          <div class="exp-head">
-            <div>
-              <h3 class="exp-title">Sales Teams</h3>
-              <span class="exp-tag">For sales teams</span>
-            </div>
-            <div class="exp-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
-          </div>
-          <p class="exp-desc">Personalise outreach, draft proposals, and keep your CRM clean — so you spend more of your day actually selling.</p>
-          <p class="exp-master-label">What you'll master</p>
-          <ul class="exp-list">
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Write personalised outreach at scale</li>
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Generate proposals and follow-ups</li>
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Summarise calls and update the CRM</li>
-          </ul>
-          </div>
-          <div class="exp-panel-img"><img src="images/role-sales.webp" alt="AI for sales teams"></div>
+        <div class="rp-img"><img src="images/role-marketing.webp" alt="AI for marketing &amp; content teams" loading="lazy"></div>
+      </div><div class="rp" id="rp-4" data-i="4" role="tabpanel" hidden>
+        <div class="rp-body">
+          <p class="rp-eyebrow">Role 05</p>
+          <h3 class="rp-title">Sales Teams</h3>
+          <span class="rp-tag">For sales teams</span>
+          <p class="rp-desc">Personalise outreach, draft proposals, and keep your CRM clean — so you spend more of your day actually selling.</p>
+          <p class="rp-lbl">What you'll master</p>
+          <ul class="rp-list"><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Write personalised outreach at scale</li><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Generate proposals and follow-ups</li><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Summarise calls and update the CRM</li></ul>
         </div>
-        <div class="exp-panel">
-          <div class="exp-panel-body">
-          <p class="exp-eyebrow">Role 06</p>
-          <div class="exp-head">
-            <div>
-              <h3 class="exp-title">Operations</h3>
-              <span class="exp-tag">For ops teams</span>
-            </div>
-            <div class="exp-ico"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
-          </div>
-          <p class="exp-desc">Document processes, streamline logistics, and turn messy workflows into clear, repeatable standard operating procedures.</p>
-          <p class="exp-master-label">What you'll master</p>
-          <ul class="exp-list">
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Draft and standardise SOPs</li>
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Automate status updates and trackers</li>
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Clean and reconcile operational data</li>
-          </ul>
-          </div>
-          <div class="exp-panel-img"><img src="images/role-operations.webp" alt="AI for operations teams"></div>
+        <div class="rp-img"><img src="images/role-sales.webp" alt="AI for sales teams" loading="lazy"></div>
+      </div><div class="rp" id="rp-5" data-i="5" role="tabpanel" hidden>
+        <div class="rp-body">
+          <p class="rp-eyebrow">Role 06</p>
+          <h3 class="rp-title">Operations</h3>
+          <span class="rp-tag">For ops teams</span>
+          <p class="rp-desc">Document processes, streamline logistics, and turn messy workflows into clear, repeatable standard operating procedures.</p>
+          <p class="rp-lbl">What you'll master</p>
+          <ul class="rp-list"><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Draft and standardise SOPs</li><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Automate status updates and trackers</li><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Clean and reconcile operational data</li></ul>
         </div>
-        <div class="exp-panel">
-          <div class="exp-panel-body">
-          <p class="exp-eyebrow">Role 07</p>
-          <div class="exp-head">
-            <div>
-              <h3 class="exp-title">Data &amp; Analytics</h3>
-              <span class="exp-tag">For data teams</span>
-            </div>
-            <div class="exp-ico"><svg viewBox="0 0 24 24"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg></div>
-          </div>
-          <p class="exp-desc">Explore data, build dashboards, and turn raw numbers into clear insight — with AI handling the heavy lifting.</p>
-          <p class="exp-master-label">What you'll master</p>
-          <ul class="exp-list">
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Query and summarise data in plain English</li>
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Build charts and dashboards faster</li>
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Explain findings to non-technical teams</li>
-          </ul>
-          </div>
-          <div class="exp-panel-img"><img src="images/role-data.webp" alt="AI for data &amp; analytics teams"></div>
+        <div class="rp-img"><img src="images/role-operations.webp" alt="AI for operations teams" loading="lazy"></div>
+      </div><div class="rp" id="rp-6" data-i="6" role="tabpanel" hidden>
+        <div class="rp-body">
+          <p class="rp-eyebrow">Role 07</p>
+          <h3 class="rp-title">Data &amp; Analytics</h3>
+          <span class="rp-tag">For data teams</span>
+          <p class="rp-desc">Explore data, build dashboards, and turn raw numbers into clear insight — with AI handling the heavy lifting.</p>
+          <p class="rp-lbl">What you'll master</p>
+          <ul class="rp-list"><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Query and summarise data in plain English</li><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Build charts and dashboards faster</li><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Explain findings to non-technical teams</li></ul>
         </div>
-        <div class="exp-panel">
-          <div class="exp-panel-body">
-          <p class="exp-eyebrow">Role 08</p>
-          <div class="exp-head">
-            <div>
-              <h3 class="exp-title">Customer Support</h3>
-              <span class="exp-tag">For support teams</span>
-            </div>
-            <div class="exp-ico"><svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></div>
-          </div>
-          <p class="exp-desc">Resolve tickets faster, draft consistent on-tone replies, and keep your knowledge base always up to date.</p>
-          <p class="exp-master-label">What you'll master</p>
-          <ul class="exp-list">
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Draft accurate, on-tone replies</li>
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Summarise and route tickets</li>
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Generate and update help articles</li>
-          </ul>
-          </div>
-          <div class="exp-panel-img"><img src="images/role-support.webp" alt="AI for customer support teams"></div>
+        <div class="rp-img"><img src="images/role-data.webp" alt="AI for data &amp; analytics teams" loading="lazy"></div>
+      </div><div class="rp" id="rp-7" data-i="7" role="tabpanel" hidden>
+        <div class="rp-body">
+          <p class="rp-eyebrow">Role 08</p>
+          <h3 class="rp-title">Customer Support</h3>
+          <span class="rp-tag">For support teams</span>
+          <p class="rp-desc">Resolve tickets faster, draft consistent on-tone replies, and keep your knowledge base always up to date.</p>
+          <p class="rp-lbl">What you'll master</p>
+          <ul class="rp-list"><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Draft accurate, on-tone replies</li><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Summarise and route tickets</li><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Generate and update help articles</li></ul>
         </div>
-        <div class="exp-panel">
-          <div class="exp-panel-body">
-          <p class="exp-eyebrow">Role 09</p>
-          <div class="exp-head">
-            <div>
-              <h3 class="exp-title">Leadership &amp; Strategy</h3>
-              <span class="exp-tag">For leaders</span>
-            </div>
-            <div class="exp-ico"><svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
-          </div>
-          <p class="exp-desc">Make sharper decisions, communicate clearly, and plan with AI as your always-on thinking partner.</p>
-          <p class="exp-master-label">What you'll master</p>
-          <ul class="exp-list">
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Synthesise reports into decisions</li>
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Draft updates, memos, and board decks</li>
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Pressure-test strategy and scenarios</li>
-          </ul>
-          </div>
-          <div class="exp-panel-img"><img src="images/role-leadership.webp" alt="AI for leaders &amp; strategists"></div>
+        <div class="rp-img"><img src="images/role-support.webp" alt="AI for customer support teams" loading="lazy"></div>
+      </div><div class="rp" id="rp-8" data-i="8" role="tabpanel" hidden>
+        <div class="rp-body">
+          <p class="rp-eyebrow">Role 09</p>
+          <h3 class="rp-title">Leadership &amp; Strategy</h3>
+          <span class="rp-tag">For leaders</span>
+          <p class="rp-desc">Make sharper decisions, communicate clearly, and plan with AI as your always-on thinking partner.</p>
+          <p class="rp-lbl">What you'll master</p>
+          <ul class="rp-list"><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Synthesise reports into decisions</li><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Draft updates, memos, and board decks</li><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Pressure-test strategy and scenarios</li></ul>
         </div>
-        <div class="exp-panel">
-          <div class="exp-panel-body">
-          <p class="exp-eyebrow">Role 10</p>
-          <div class="exp-head">
-            <div>
-              <h3 class="exp-title">Everyday Professionals</h3>
-              <span class="exp-tag">For everyone</span>
-            </div>
-            <div class="exp-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-          </div>
-          <p class="exp-desc">Master AI tools for emails, meetings, and documents — and become the most productive person on your team.</p>
-          <p class="exp-master-label">What you'll master</p>
-          <ul class="exp-list">
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Write and reply to email in seconds</li>
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Summarise meetings and long documents</li>
-            <li><span class="exp-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Automate repetitive daily tasks</li>
-          </ul>
-          </div>
-          <div class="exp-panel-img"><img src="images/role-everyday.webp" alt="AI for everyday professionals"></div>
+        <div class="rp-img"><img src="images/role-leadership.webp" alt="AI for leaders &amp; strategists" loading="lazy"></div>
+      </div><div class="rp" id="rp-9" data-i="9" role="tabpanel" hidden>
+        <div class="rp-body">
+          <p class="rp-eyebrow">Role 10</p>
+          <h3 class="rp-title">Everyday Professionals</h3>
+          <span class="rp-tag">For everyone</span>
+          <p class="rp-desc">Master AI tools for emails, meetings, and documents — and become the most productive person on your team.</p>
+          <p class="rp-lbl">What you'll master</p>
+          <ul class="rp-list"><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Write and reply to email in seconds</li><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Summarise meetings and long documents</li><li><svg class="rp-ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Automate repetitive daily tasks</li></ul>
         </div>
-      </div>
+        <div class="rp-img"><img src="images/role-everyday.webp" alt="AI for everyday professionals" loading="lazy"></div>
+      </div></div>
     </div>
     <div class="exp-actions">
       <a href="#courses" class="exp-btn primary">Browse all courses</a>
       <a href="#contact" class="exp-btn secondary">Get a recommendation</a>
     </div>
+  
   </div>
 </section>
 
@@ -3905,7 +3364,7 @@
 /* Pause off-screen animation. Keeping a dozen keyframe animations running on
    sections nobody can see is pure wasted compositing. */
 (function () {
-  var targets = document.querySelectorAll('.testimonials, .sp-hero');
+  var targets = document.querySelectorAll('.sp-hero');
   if (!targets.length || !('IntersectionObserver' in window)) {
     targets.forEach(function (t) { t.classList.add('in-view'); });
     return;
@@ -3936,6 +3395,34 @@
         var has = (' ' + (c.dataset.cat || '') + ' ').indexOf(' ' + want + ' ') > -1;
         c.hidden = !(want === 'all' || has);
       });
+    });
+  });
+})();
+</script>
+
+<script>
+/* roles — the rail swaps the panel */
+(function () {
+  var sec = document.getElementById('roles');
+  if (!sec) return;
+  var btns = [].slice.call(sec.querySelectorAll('.rl-item')),
+      panes = [].slice.call(sec.querySelectorAll('.rp'));
+  function show(k) {
+    btns.forEach(function (b) {
+      var on = b.dataset.i === k;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    panes.forEach(function (p) { p.hidden = p.dataset.i !== k; });
+  }
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () { show(b.dataset.i); });
+    b.addEventListener('keydown', function (e) {
+      var n = btns.indexOf(b), t = null;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') t = btns[(n + 1) % btns.length];
+      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') t = btns[(n - 1 + btns.length) % btns.length];
+      if (!t) return;
+      e.preventDefault(); t.focus(); show(t.dataset.i);
     });
   });
 })();
