@@ -2823,16 +2823,32 @@
       display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
     }
 
-    /* 3 · Curriculum — the sticky stack pins a 100vh frame around a card
-       taller than the viewport, so the card is clipped and the download
-       link lands on top of the text. Let the modules simply flow. */
+    /* 3 · Curriculum — keep the desktop pile. The card is taller than a
+       phone screen, so cap it to the space under the nav and let the body
+       scroll inside; the heading and download stay pinned and visible. */
     .stk { margin-top: 24px; }
-    .stk-w { height: auto; position: static; display: block; margin-bottom: 14px; }
-    .stk-card { height: auto; max-height: none; overflow: visible;
-      transform: none !important; opacity: 1 !important; }
-    .stk-body { max-height: none; overflow: visible; }
-    .stk-dl { position: static; margin-top: 16px; display: inline-flex; }
-    .stk-count { position: static; margin-top: 8px; }
+    .stk-w {
+      height: calc(100vh - var(--nav-h, 64px));
+      height: calc(100dvh - var(--nav-h, 64px));
+      position: sticky;
+      top: var(--nav-h, 64px);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .stk-card {
+      display: flex; flex-direction: column;
+      max-height: calc(100vh - var(--nav-h, 64px) - 24px);
+      max-height: calc(100dvh - var(--nav-h, 64px) - 24px);
+      overflow: hidden;
+    }
+    .stk-head { flex: 0 0 auto; }
+    .stk-body {
+      flex: 1 1 auto; min-height: 0;
+      overflow-y: auto; -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+      padding-right: 4px;
+    }
+    .stk-dl, .stk-count { flex: 0 0 auto; }
+    .stk-dl { margin-top: 14px; }
 
     /* 4 · Hero — the enrol card duplicates the price and CTA that the
        fixed bottom bar already carries. */
