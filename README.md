@@ -1,54 +1,43 @@
-# edBuddy Pro — site
+# edBuddy Pro — legal pages
 
-## Structure
+Eight policy pages, plus the shared components they need to render.
 
-    /                          one HTML file per page
-    /components/nav.html       markup + styles + behaviour, self-contained
-    /components/footer.html
-    /components/bottom-bar.html
-    /js/site.js                swaps the slots for the components
+    privacy-policy.html
+    terms-of-service.html
+    cookie-policy.html
+    refund-policy.html
+    acceptable-use.html
+    accessibility.html
+    security.html
+    do-not-sell-my-info.html
 
-Each component is a single file: its `<style>`, its markup and its
-`<script>` together. Nothing else to link, nothing to import. To change
-the nav, open `components/nav.html`.
-
-Components use `var(--token, fallback)` throughout, so they render
-correctly even on a page that defines no design tokens.
+    components/   nav · footer · bottom-bar   (copies of the live ones)
+    js/site.js    injects the components
 
 ## Running it
 
 `fetch()` is blocked on `file://`, so serve the folder:
 
     python3 -m http.server 8000
-    # http://localhost:8000/index.html
+    # http://localhost:8000/privacy-policy.html
 
-## Adding a page
+## Before publishing
 
-Copy any existing page and keep these four lines:
+These are DRAFTS. They have not been reviewed by a lawyer and must be.
 
-    <div data-include="nav"></div>
-    ... page content ...
-    <div data-include="footer"></div>
-    <div data-include="bottom-bar"></div>
-    <script src="js/site.js" defer></script>
+Every open decision is marked in the page with a note beginning **Open:**.
+Search the files for `lg-note` to find all of them — there are 24.
 
-Page-specific CSS goes in that page's own `<style>` block, along with
-the `:root` tokens, reset and `.page-grid` lattice.
+The three that block publication:
 
-Nav active state is automatic — the nav component matches the current
-filename against its own links and sets `aria-current="page"`.
+1. **Refund window.** Course pages advertise seven days; that has never
+   been confirmed. It is a contractual promise and must match here, on
+   every course page, and at checkout.
+2. **Do Not Sell My Info.** A Californian right. If edBuddy Pro does not
+   meet the CCPA thresholds, linking this page implies a compliance
+   programme that does not exist. Remove it or build the process.
+3. **Accessibility.** Do not claim WCAG 2.2 AA conformance until an audit
+   has been done, and list the known gaps when it has.
 
-`site:ready` fires on `document` once every component is in place. Hook
-any page script that touches the nav, footer or bottom bar to it:
-
-    document.addEventListener('site:ready', function () { ... });
-
-## Notes
-
-- Images are inlined as base64 for now. Every `<img>` carries
-  `data-src` with its real path for when the server is up.
-- The mega-menu links HR only; marketing, finance, sales and product
-  are not in it yet, so their nav active state never fires.
-- `about.html` is linked from the nav and footer but does not exist.
-- Inline `onclick` handlers have been removed from the nav in favour of
-  listeners in the component script.
+Also still to fill in: registered entity name and CIN, the grievance
+officer, the sub-processor list, retention periods, and the cookie table.

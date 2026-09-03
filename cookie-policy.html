@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!--
+  ═══════════════════════════════════════════════════════════════════
+  COOKIE POLICY — DRAFT. NOT REVIEWED BY A LAWYER.
+  Written to give the site a complete, readable policy. It must be
+  reviewed before publication. Every <p class="lg-note"> marks a
+  decision or a fact only the business can supply — search "lg-note".
+  ═══════════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookie Policy | edBuddy Pro</title>
+<meta name="description" content="What we store on your device, why we store it, and how to turn it off.">
+<link rel="canonical" href="https://edbuddy.pro/cookie-policy.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --font-display:'Plus Jakarta Sans',var(--font);
+    --black:#0B1220;--white:#fff;--blue:#0559B3;
+    --neutral-100:#F4F6F9;--neutral-200:#E4E9F0;--neutral-400:#94A3B8;
+    --neutral-500:#6B7A8F;--neutral-600:#52627A;--nav-h:64px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:92px}
+  body{margin:0;font-family:var(--font);color:var(--black);background:#fff;
+    overflow-x:clip;padding-bottom:60px;-webkit-font-smoothing:antialiased}
+  a{color:var(--blue)}
+  .page-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:linear-gradient(var(--neutral-200) 1px,transparent 1px),
+      linear-gradient(90deg,var(--neutral-200) 1px,transparent 1px);
+    background-size:48px 48px;opacity:.26}
+
+  .lg{position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:0 28px;
+    display:grid;grid-template-columns:322px minmax(0,1fr);gap:0;align-items:start}
+
+  .lg-side{position:sticky;top:88px;padding:56px 40px 56px 0;border-right:1px solid var(--neutral-200)}
+  .lg-kicker{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--blue);margin:0 0 12px}
+  .lg-side h1{font-family:var(--font-display);font-size:31px;font-weight:700;letter-spacing:-.03em;
+    line-height:1.15;margin:0 0 10px}
+  .lg-updated{font-size:13px;color:var(--neutral-500);margin:0 0 28px}
+  .lg-toc{display:flex;flex-direction:column;gap:1px;border-top:1px solid var(--neutral-200);padding-top:18px}
+  .lg-toc a{font-size:14.5px;color:var(--neutral-600);text-decoration:none;padding:9px 12px;
+    border-radius:9px;line-height:1.4;transition:background .16s,color .16s}
+  .lg-toc a:hover{background:#EEF4FC;color:var(--blue)}
+  .lg-toc a.on{background:#EEF4FC;color:var(--blue);font-weight:600}
+
+  .lg-main{padding:56px 0 60px 56px;max-width:760px}
+  .lg-lede{font-size:18px;line-height:1.62;color:#3F4650;margin:0 0 46px;letter-spacing:-.005em}
+  .lg-sec{margin-bottom:44px;scroll-margin-top:92px}
+  .lg-head{display:flex;align-items:center;gap:13px;margin-bottom:15px}
+  .lg-ic{width:34px;height:34px;flex:none;color:var(--blue);
+    display:flex;align-items:center;justify-content:center}
+  .lg-ic svg{width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:1.6;
+    stroke-linecap:round;stroke-linejoin:round}
+  .lg-sec h2{font-family:var(--font-display);font-size:21px;font-weight:700;letter-spacing:-.02em;margin:0}
+  .lg-sec p{font-size:16.5px;line-height:1.72;color:#3F4650;margin:0 0 15px}
+  .lg-sec b{color:var(--black);font-weight:600}
+  .lg-note{font-size:15px;line-height:1.65;color:var(--neutral-500);
+    border-left:2px solid var(--neutral-200);padding:2px 0 2px 16px;margin:18px 0 0}
+  .lg-note b{color:var(--neutral-600);font-weight:600}
+
+  .lg-end{border-top:1px solid var(--neutral-200);padding-top:28px;margin-top:8px}
+  .lg-end h3{font-family:var(--font-display);font-size:18px;font-weight:700;margin:0 0 6px}
+  .lg-end p{font-size:15.5px;color:var(--neutral-500);margin:0 0 18px}
+  .lg-other{display:flex;flex-wrap:wrap;gap:8px 20px}
+  .lg-other a{font-size:14.5px;color:var(--neutral-600);text-decoration:none}
+  .lg-other a:hover{color:var(--blue)}
+
+  @media (max-width:960px){
+    .lg{grid-template-columns:1fr;padding:0 22px}
+    .lg-side{position:static;border-right:0;border-bottom:1px solid var(--neutral-200);
+      padding:40px 0 26px}
+    .lg-main{padding:32px 0 50px}
+    .lg-toc{flex-direction:row;flex-wrap:wrap;gap:6px}
+    .lg-toc a{background:var(--neutral-100);font-size:13.5px;padding:8px 12px}
+  }
+  @media (max-width:560px){
+    .lg-side h1{font-size:27px}
+    .lg-lede{font-size:16.5px}
+    .lg-sec p{font-size:16px}
+    .lg-ic{width:30px;height:30px}
+    .lg-ic svg{width:28px;height:28px}
+  }
+
+  .lg-spot{display:block;width:100%;max-width:196px;height:auto;margin:0 0 26px}
+  .lg-ex{margin:20px 0 0;border:1px solid var(--neutral-200);border-radius:12px;background:#FBFCFE}
+  .lg-ex[open]{background:#fff}
+  .lg-ex summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;
+    padding:14px 16px;font-family:var(--font-display);font-size:15px;font-weight:600;
+    color:var(--blue);border-radius:12px}
+  .lg-ex summary::-webkit-details-marker{display:none}
+  .lg-ex summary:hover{background:#F5F8FC}
+  .lg-ex-chev{width:15px;height:15px;flex:none;fill:none;stroke:currentColor;stroke-width:2.2;
+    stroke-linecap:round;stroke-linejoin:round;transition:transform .2s ease}
+  .lg-ex[open] .lg-ex-chev{transform:rotate(180deg)}
+  .lg-ex-body{padding:0 16px 16px}
+  .lg-ex-body p{font-size:15.5px;line-height:1.68;color:#3F4650;margin:0 0 12px}
+  .lg-ex-body p:last-child{margin-bottom:0}
+  @media (max-width:960px){ .lg-spot{max-width:150px;margin-bottom:20px} }
+</style>
+</head>
+<body>
+
+<div data-include="nav"></div>
+<div class="page-grid"></div>
+
+<div class="lg">
+  <aside class="lg-side">
+    <svg class="lg-spot" viewBox="0 0 184 160" aria-hidden="true">
+<circle cx="94" cy="86" r="52" fill="#DCE9F8" stroke="#0559B3" stroke-width="2.4"/>
+<circle cx="76" cy="70" r="7" fill="#fff" stroke="#0559B3" stroke-width="2.2"/>
+<circle cx="108" cy="78" r="5.5" fill="#fff" stroke="#0559B3" stroke-width="2.2"/>
+<circle cx="88" cy="106" r="6.5" fill="#fff" stroke="#0559B3" stroke-width="2.2"/>
+<circle cx="114" cy="104" r="4" fill="#0E9F6E"/>
+<path d="M146 44v14M139 51h14" stroke="#0559B3" stroke-width="2.4" stroke-linecap="round"/>
+</svg>
+    <p class="lg-kicker">Legal</p>
+    <h1>Cookie Policy</h1>
+    <p class="lg-updated">Updated DD Month YYYY</p>
+    <nav class="lg-toc" aria-label="On this page"><a href="#what-cookies-are">What cookies are</a><a href="#what-we-use-them-for">What we use them for</a><a href="#turning-them-off">Turning them off</a></nav>
+  </aside>
+
+  <main class="lg-main">
+    <p class="lg-lede">What we store on your device, why we store it, and how to turn it off.</p>
+    <section class="lg-sec" id="what-cookies-are"><div class="lg-head"><span class="lg-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="9.5" r="1.1"/><circle cx="14.5" cy="11" r="1.1"/><circle cx="11" cy="15" r="1.1"/></svg></span><h2>What cookies are</h2></div><p>Cookies are small files a site keeps in your browser. Local storage and pixels do a similar job. We use the word cookies for all of them.</p></section><section class="lg-sec" id="what-we-use-them-for"><div class="lg-head"><span class="lg-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8.5"/><path d="M12 1v2.5"/><path d="M12 20.5V23"/><path d="M1 12h2.5"/><path d="M20.5 12H23"/></svg></span><h2>What we use them for</h2></div><p><b>Strictly necessary.</b> Keeping you signed in, remembering your place in a course, protecting forms from abuse. The site does not work without these.</p><p><b>Analytics.</b> Telling us which lessons get used and where people get stuck, in aggregate, so we can improve the course.</p><p class="lg-note"><b>Open:</b> the actual cookie names, provider, purpose and lifetime, as a table. This is a legal requirement, not a nicety, and it can only be written once the stack is final.</p><details class="lg-ex"><summary>Why the necessary ones can't be switched off <svg class="lg-ex-chev" viewBox="0 0 16 16" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg></summary><div class="lg-ex-body"><p>Without them the site cannot tell one visitor from another between page loads. You'd be signed out on every click, your place in a course wouldn't save, and the enrolment form couldn't tell a person from a bot. They carry no advertising value to anyone.</p></div></details></section><section class="lg-sec" id="turning-them-off"><div class="lg-head"><span class="lg-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="10" rx="5"/><circle cx="16" cy="12" r="3"/></svg></span><h2>Turning them off</h2></div><p>You can accept or reject non-essential cookies when you first arrive, and change your mind whenever you like. Every browser can block or clear cookies too &mdash; though blocking the strictly necessary ones will stop you staying signed in.</p></section>
+    <section class="lg-end">
+      <h3>Still not clear?</h3>
+      <p>Write to <a href="mailto:hello@edbuddy.pro">hello@edbuddy.pro</a> and a person will answer &mdash;
+        Monday to Saturday, 10am to 7pm IST.</p>
+      <div class="lg-other"><a href="privacy-policy.html">Privacy Policy</a><a href="terms-of-service.html">Terms of Service</a><a href="refund-policy.html">Refund Policy</a><a href="acceptable-use.html">Acceptable Use</a><a href="accessibility.html">Accessibility</a><a href="security.html">Security</a><a href="do-not-sell-my-info.html">Do Not Sell My Info</a></div>
+    </section>
+  </main>
+</div>
+
+<div data-include="footer"></div>
+<div data-include="bottom-bar"></div>
+
+<script>
+(function () {
+  var links = [].slice.call(document.querySelectorAll('.lg-toc a')),
+      secs  = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var i = secs.indexOf(e.target);
+      links.forEach(function (a, n) { a.classList.toggle('on', n === i); });
+    });
+  }, { rootMargin: '-88px 0px -68% 0px' });
+  secs.forEach(function (s) { if (s) io.observe(s); });
+})();
+</script>
+<script src="js/site.js" defer></script>
+</body>
+</html>

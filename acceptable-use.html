@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<!--
+  ═══════════════════════════════════════════════════════════════════
+  ACCEPTABLE USE — DRAFT. NOT REVIEWED BY A LAWYER.
+  Written to give the site a complete, readable policy. It must be
+  reviewed before publication. Every <p class="lg-note"> marks a
+  decision or a fact only the business can supply — search "lg-note".
+  ═══════════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acceptable Use | edBuddy Pro</title>
+<meta name="description" content="What you can and cannot do with edBuddy Pro, and with the AI tools we teach you to use.">
+<link rel="canonical" href="https://edbuddy.pro/acceptable-use.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --font-display:'Plus Jakarta Sans',var(--font);
+    --black:#0B1220;--white:#fff;--blue:#0559B3;
+    --neutral-100:#F4F6F9;--neutral-200:#E4E9F0;--neutral-400:#94A3B8;
+    --neutral-500:#6B7A8F;--neutral-600:#52627A;--nav-h:64px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:92px}
+  body{margin:0;font-family:var(--font);color:var(--black);background:#fff;
+    overflow-x:clip;padding-bottom:60px;-webkit-font-smoothing:antialiased}
+  a{color:var(--blue)}
+  .page-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:linear-gradient(var(--neutral-200) 1px,transparent 1px),
+      linear-gradient(90deg,var(--neutral-200) 1px,transparent 1px);
+    background-size:48px 48px;opacity:.26}
+
+  .lg{position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:0 28px;
+    display:grid;grid-template-columns:322px minmax(0,1fr);gap:0;align-items:start}
+
+  .lg-side{position:sticky;top:88px;padding:56px 40px 56px 0;border-right:1px solid var(--neutral-200)}
+  .lg-kicker{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--blue);margin:0 0 12px}
+  .lg-side h1{font-family:var(--font-display);font-size:31px;font-weight:700;letter-spacing:-.03em;
+    line-height:1.15;margin:0 0 10px}
+  .lg-updated{font-size:13px;color:var(--neutral-500);margin:0 0 28px}
+  .lg-toc{display:flex;flex-direction:column;gap:1px;border-top:1px solid var(--neutral-200);padding-top:18px}
+  .lg-toc a{font-size:14.5px;color:var(--neutral-600);text-decoration:none;padding:9px 12px;
+    border-radius:9px;line-height:1.4;transition:background .16s,color .16s}
+  .lg-toc a:hover{background:#EEF4FC;color:var(--blue)}
+  .lg-toc a.on{background:#EEF4FC;color:var(--blue);font-weight:600}
+
+  .lg-main{padding:56px 0 60px 56px;max-width:760px}
+  .lg-lede{font-size:18px;line-height:1.62;color:#3F4650;margin:0 0 46px;letter-spacing:-.005em}
+  .lg-sec{margin-bottom:44px;scroll-margin-top:92px}
+  .lg-head{display:flex;align-items:center;gap:13px;margin-bottom:15px}
+  .lg-ic{width:34px;height:34px;flex:none;color:var(--blue);
+    display:flex;align-items:center;justify-content:center}
+  .lg-ic svg{width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:1.6;
+    stroke-linecap:round;stroke-linejoin:round}
+  .lg-sec h2{font-family:var(--font-display);font-size:21px;font-weight:700;letter-spacing:-.02em;margin:0}
+  .lg-sec p{font-size:16.5px;line-height:1.72;color:#3F4650;margin:0 0 15px}
+  .lg-sec b{color:var(--black);font-weight:600}
+  .lg-note{font-size:15px;line-height:1.65;color:var(--neutral-500);
+    border-left:2px solid var(--neutral-200);padding:2px 0 2px 16px;margin:18px 0 0}
+  .lg-note b{color:var(--neutral-600);font-weight:600}
+
+  .lg-end{border-top:1px solid var(--neutral-200);padding-top:28px;margin-top:8px}
+  .lg-end h3{font-family:var(--font-display);font-size:18px;font-weight:700;margin:0 0 6px}
+  .lg-end p{font-size:15.5px;color:var(--neutral-500);margin:0 0 18px}
+  .lg-other{display:flex;flex-wrap:wrap;gap:8px 20px}
+  .lg-other a{font-size:14.5px;color:var(--neutral-600);text-decoration:none}
+  .lg-other a:hover{color:var(--blue)}
+
+  @media (max-width:960px){
+    .lg{grid-template-columns:1fr;padding:0 22px}
+    .lg-side{position:static;border-right:0;border-bottom:1px solid var(--neutral-200);
+      padding:40px 0 26px}
+    .lg-main{padding:32px 0 50px}
+    .lg-toc{flex-direction:row;flex-wrap:wrap;gap:6px}
+    .lg-toc a{background:var(--neutral-100);font-size:13.5px;padding:8px 12px}
+  }
+  @media (max-width:560px){
+    .lg-side h1{font-size:27px}
+    .lg-lede{font-size:16.5px}
+    .lg-sec p{font-size:16px}
+    .lg-ic{width:30px;height:30px}
+    .lg-ic svg{width:28px;height:28px}
+  }
+
+  .lg-spot{display:block;width:100%;max-width:196px;height:auto;margin:0 0 26px}
+  .lg-ex{margin:20px 0 0;border:1px solid var(--neutral-200);border-radius:12px;background:#FBFCFE}
+  .lg-ex[open]{background:#fff}
+  .lg-ex summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;
+    padding:14px 16px;font-family:var(--font-display);font-size:15px;font-weight:600;
+    color:var(--blue);border-radius:12px}
+  .lg-ex summary::-webkit-details-marker{display:none}
+  .lg-ex summary:hover{background:#F5F8FC}
+  .lg-ex-chev{width:15px;height:15px;flex:none;fill:none;stroke:currentColor;stroke-width:2.2;
+    stroke-linecap:round;stroke-linejoin:round;transition:transform .2s ease}
+  .lg-ex[open] .lg-ex-chev{transform:rotate(180deg)}
+  .lg-ex-body{padding:0 16px 16px}
+  .lg-ex-body p{font-size:15.5px;line-height:1.68;color:#3F4650;margin:0 0 12px}
+  .lg-ex-body p:last-child{margin-bottom:0}
+  @media (max-width:960px){ .lg-spot{max-width:150px;margin-bottom:20px} }
+</style>
+</head>
+<body>
+
+<div data-include="nav"></div>
+<div class="page-grid"></div>
+
+<div class="lg">
+  <aside class="lg-side">
+    <svg class="lg-spot" viewBox="0 0 184 160" aria-hidden="true">
+<circle cx="92" cy="86" r="54" fill="#DCE9F8"/>
+<circle cx="92" cy="86" r="54" fill="none" stroke="#0559B3" stroke-width="2.4"/>
+<polygon points="112,64 100,98 66,110 78,76" fill="#fff" stroke="#0559B3" stroke-width="2.4" stroke-linejoin="round"/>
+<circle cx="92" cy="86" r="5" fill="#0559B3"/>
+<path d="M150 40l6 6M156 40l-6 6" stroke="#0E9F6E" stroke-width="2.6" stroke-linecap="round"/>
+</svg>
+    <p class="lg-kicker">Legal</p>
+    <h1>Acceptable Use</h1>
+    <p class="lg-updated">Updated DD Month YYYY</p>
+    <nav class="lg-toc" aria-label="On this page"><a href="#the-principle">The principle</a><a href="#your-enrolment">Your enrolment</a><a href="#the-materials">The materials</a><a href="#using-ai-responsibly">Using AI responsibly</a><a href="#the-platform-itself">The platform itself</a><a href="#if-you-breach-this">If you breach this</a></nav>
+  </aside>
+
+  <main class="lg-main">
+    <p class="lg-lede">What you can and cannot do with edBuddy Pro, and with the AI tools we teach you to use.</p>
+    <section class="lg-sec" id="the-principle"><div class="lg-head"><span class="lg-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polygon points="15.5 8.5 13.5 13.5 8.5 15.5 10.5 10.5"/></svg></span><h2>The principle</h2></div><p>These courses exist to make you better at your job. Everything below follows from that one idea.</p></section><section class="lg-sec" id="your-enrolment"><div class="lg-head"><span class="lg-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></span><h2>Your enrolment</h2></div><p>Your login is yours. Don't share it, sell access, or run a team off one enrolment. A business enrolment costs less per person than the workaround does.</p></section><section class="lg-sec" id="the-materials"><div class="lg-head"><span class="lg-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><polyline points="14 3 14 8 19 8"/><path d="M9 13h6"/><path d="M9 17h4"/></svg></span><h2>The materials</h2></div><p>Use the templates, prompts and lab files in your own work as much as you like. Don't republish them, package them into another course, or present them as your own material.</p></section><section class="lg-sec" id="using-ai-responsibly"><div class="lg-head"><span class="lg-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4"/><circle cx="12" cy="3" r="1.4"/><circle cx="9" cy="14" r="1.2"/><circle cx="15" cy="14" r="1.2"/></svg></span><h2>Using AI responsibly</h2></div><p>What we teach you <i>not</i> to do matters as much as what we teach you to do. Don't use anything you learn here to make an employment, credit or other significant decision about a person without human review; to process personal data you have no lawful basis to process; to produce deceptive, defamatory or unlawful material; or to impersonate a person or organisation.</p><details class="lg-ex"><summary>Concretely, what we mean <svg class="lg-ex-chev" viewBox="0 0 16 16" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg></summary><div class="lg-ex-body"><p><b>Don't:</b> paste a shortlist of candidates into a chatbot and let its ranking decide who gets interviewed. Don't feed a colleague's medical note into a summariser. Don't generate a reference in someone else's name.</p><p><b>Do:</b> use AI to draft the interview questions, then choose them yourself. Use it to structure your own notes. Use it to check your writing.</p></div></details></section><section class="lg-sec" id="the-platform-itself"><div class="lg-head"><span class="lg-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01"/><path d="M7 16.5h.01"/></svg></span><h2>The platform itself</h2></div><p>Don't attack, probe, overload, scrape or reverse-engineer the platform. If you find a weakness, tell us &mdash; see <a href="security.html">Security</a>.</p></section><section class="lg-sec" id="if-you-breach-this"><div class="lg-head"><span class="lg-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><h2>If you breach this</h2></div><p>Where we can, we'll contact you and give you a chance to put it right. For serious or repeated breaches we may suspend or end access.</p><p class="lg-note"><b>Open:</b> whether termination for breach carries a refund, and how that sits with the refund policy.</p></section>
+    <section class="lg-end">
+      <h3>Still not clear?</h3>
+      <p>Write to <a href="mailto:hello@edbuddy.pro">hello@edbuddy.pro</a> and a person will answer &mdash;
+        Monday to Saturday, 10am to 7pm IST.</p>
+      <div class="lg-other"><a href="privacy-policy.html">Privacy Policy</a><a href="terms-of-service.html">Terms of Service</a><a href="cookie-policy.html">Cookie Policy</a><a href="refund-policy.html">Refund Policy</a><a href="accessibility.html">Accessibility</a><a href="security.html">Security</a><a href="do-not-sell-my-info.html">Do Not Sell My Info</a></div>
+    </section>
+  </main>
+</div>
+
+<div data-include="footer"></div>
+<div data-include="bottom-bar"></div>
+
+<script>
+(function () {
+  var links = [].slice.call(document.querySelectorAll('.lg-toc a')),
+      secs  = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var i = secs.indexOf(e.target);
+      links.forEach(function (a, n) { a.classList.toggle('on', n === i); });
+    });
+  }, { rootMargin: '-88px 0px -68% 0px' });
+  secs.forEach(function (s) { if (s) io.observe(s); });
+})();
+</script>
+<script src="js/site.js" defer></script>
+</body>
+</html>
