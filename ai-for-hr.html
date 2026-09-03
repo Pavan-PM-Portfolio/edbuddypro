@@ -2827,18 +2827,22 @@
        phone screen, so cap it to the space under the nav and let the body
        scroll inside; the heading and download stay pinned and visible. */
     .stk { margin-top: 24px; }
+    /* the fixed enrol bar owns the bottom 65px — the card has to clear it
+       or its last rows sit underneath and read as clipped */
     .stk-w {
-      height: calc(100vh - var(--nav-h, 64px));
-      height: calc(100dvh - var(--nav-h, 64px));
+      height: calc(100vh - var(--nav-h, 64px) - 74px);
+      height: calc(100dvh - var(--nav-h, 64px) - 74px);
       position: sticky;
       top: var(--nav-h, 64px);
       display: flex; align-items: center; justify-content: center;
     }
     .stk-card {
       display: flex; flex-direction: column;
-      max-height: calc(100vh - var(--nav-h, 64px) - 24px);
-      max-height: calc(100dvh - var(--nav-h, 64px) - 24px);
+      max-height: calc(100vh - var(--nav-h, 64px) - 90px);
+      max-height: calc(100dvh - var(--nav-h, 64px) - 90px);
       overflow: hidden;
+      /* a stacking context of its own keeps repaints inside the card */
+      contain: paint;
     }
     .stk-head { flex: 0 0 auto; }
     .stk-body {
@@ -2849,6 +2853,32 @@
     }
     .stk-dl, .stk-count { flex: 0 0 auto; }
     .stk-dl { margin-top: 14px; }
+    /* the benefits section already sits between two other enrol CTAs;
+       on a phone the fixed bar carries the same action permanently */
+    .co-out .sc-cta { display: none; }
+
+    /* performance: the pile animates ten cards at once, so let the
+       compositor own them and stop off-screen ones repainting */
+    .stk-w { will-change: transform; }
+    .stk-card { backface-visibility: hidden; }
+    .co-curr { content-visibility: auto; contain-intrinsic-size: 1px 5000px; }
+    .co-voices, .co-cert, .co-faq { content-visibility: auto; contain-intrinsic-size: 1px 900px; }
+    /* stop off-screen work: six floating icons, two marquee tracks and
+       24 growing salary bars were animating continuously regardless of
+       whether they were on screen */
+    .co-out, .co-tools, .cx-sec { content-visibility: auto; contain-intrinsic-size: 1px 800px; }
+    /* the six floating benefit icons are pure decoration — drop the loop */
+    .co-o-ic { animation: none; }
+    /* slGrow draws the salary bars from scaleX(0); skip the animation but
+       keep the end state, or the bars render at zero width */
+    .sl-fill { animation: none; transform: scaleX(1); }
+
+    /* ten promoted layers on the pile is more than the compositor needs;
+       promote only while it is actually moving */
+    .stk-w { will-change: auto; }
+    .pj-card { will-change: auto; }
+
+
 
     /* 4 · Hero — the enrol card duplicates the price and CTA that the
        fixed bottom bar already carries. */
