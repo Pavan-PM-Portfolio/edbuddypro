@@ -81,9 +81,9 @@
 
 
   .cbp-head {
-    background: #0B1220; color: #fff; padding: 15px 18px;
+    background: #0559B3; color: #fff; padding: 15px 18px;
     display: flex; align-items: center; justify-content: space-between;
-    border-bottom: 3px solid #0559B3;
+    border-bottom: 0;
     font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
     font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
   }
@@ -179,6 +179,39 @@
     .cbar-chat { padding: 0 13px; font-size: 12.5px; }
     .cbar-chat .cbar-ic { width: 24px; height: 24px; }
   }
+
+  /* close control, on the blue header */
+  .cbp-min {
+    width: 30px; height: 30px; border-radius: 8px; border: 0; cursor: pointer;
+    background: rgba(255,255,255,.16); color: #fff;
+    display: flex; align-items: center; justify-content: center; padding: 0;
+    transition: background .18s;
+  }
+  .cbp-min:hover { background: rgba(255,255,255,.28); }
+  .cbp-min svg { width: 15px; height: 15px; fill: none; stroke: currentColor;
+    stroke-width: 2.2; stroke-linecap: round; }
+
+  /* ── mobile: a sheet, sized to the viewport, that scrolls on its own ── */
+  @media (max-width: 720px) {
+    .cbp {
+      left: 0; right: 0; bottom: 56px; width: auto;
+      border-radius: 16px 16px 0 0;
+      display: flex; flex-direction: column;
+      /* leave room for the fixed nav above and the sticky bar below */
+      max-height: calc(100vh - 56px - var(--nav-h, 64px) - 12px);
+      max-height: calc(100dvh - 56px - var(--nav-h, 64px) - 12px);
+      overflow: hidden;                 /* the body scrolls, not the panel */
+    }
+    .cbp-head { flex: none; border-radius: 16px 16px 0 0; padding: 16px 18px; }
+    .cbp-body {
+      flex: 1 1 auto; overflow-y: auto; -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+      padding: 18px 18px calc(20px + env(safe-area-inset-bottom, 0px));
+    }
+    /* iOS zooms the page when a field under 16px takes focus */
+    .cbp-body input, .cbp-body select, .cbp-body textarea { font-size: 16px; }
+    .cbp-sub { padding: 15px; font-size: 15.5px; }
+  }
 </style>
 
 <div class="cbar">
@@ -252,7 +285,14 @@
     if (!panel) return;
     panel.hidden = !v;
     if (trig) trig.setAttribute('aria-expanded', v ? 'true' : 'false');
-    if (v) { var n = document.getElementById('cbName'); if (n) n.focus(); }
+    /* Focusing a field on open makes the phone keyboard leap up and cover the
+       form. Move focus to the panel itself instead — keyboard users still land
+       in the right place, and the keyboard appears only when a field is tapped. */
+    if (v) {
+      var coarse = window.matchMedia('(pointer: coarse)').matches;
+      if (coarse) { panel.setAttribute('tabindex', '-1'); panel.focus({ preventScroll: true }); }
+      else { var n = document.getElementById('cbName'); if (n) n.focus(); }
+    }
   }
 
   if (trig)  trig.addEventListener('click', function () { open(panel.hidden); });
