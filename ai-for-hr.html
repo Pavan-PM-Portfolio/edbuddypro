@@ -2751,7 +2751,7 @@
 
   .co-cta-btns .co-lime { display: inline-flex; align-items: center; }
 @media (max-width: 560px) {
-    .co-cta-btns { flex-direction: column; align-items: stretch; }
+    .co-cta-btns { flex-direction: column; align-items: center; }
     .co-cta-btns a { justify-content: center; }
   }
 
@@ -2780,6 +2780,64 @@
   .co-legal{font-size:12.5px;line-height:1.55;color:var(--neutral-400);margin:14px 0 0;text-align:center}
   .co-legal a{color:var(--neutral-500);text-decoration:underline;text-underline-offset:2px}
   .co-legal a:hover{color:#0559B3}
+
+  /* The course pages carry their own fixed enrol bar (#co-mobile). Below 760px
+     it sits on top of the shared callback bar and makes its controls
+     untappable, so the callback bar stands down — the enrol bar takes the
+     bottom edge here. */
+  @media (max-width: 760px) {
+    .cbar { display: none; }
+    .cbp { bottom: 0; }
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     Mobile corrections. Each of these is a desktop layout that does
+     not survive a narrow screen — fixed heights, sticky stacks and
+     full-bleed buttons.
+     ═══════════════════════════════════════════════════════════════ */
+  @media (max-width: 760px) {
+
+    /* 1 · Projects — the stage had a fixed 640px height while the card
+       is ~420px, leaving 220px of dead space under it. */
+    .pj-stage { height: auto; min-height: 0; padding-bottom: 8px; }
+    .pj-track { position: static; }
+    /* the coverflow positions cards with inline transforms; on mobile we
+       stack them and let the existing index drive which one is shown */
+    .pj-card {
+      position: relative; left: auto; top: auto; margin-left: 0;
+      width: 100%; max-width: 100%;
+      transform: none !important; filter: none !important;
+      display: none;
+    }
+    .pj-card[data-show] { display: block; opacity: 1 !important; }
+    .pj-ctr { margin-top: 18px; }
+
+    /* 2 · Buttons — full-bleed reads as a form control, not a button.
+       Match the rest of the site: intrinsic width, centred. */
+    .sc-btn {
+      width: auto; max-width: 100%;
+      padding: 13px 24px; font-size: 14.5px;
+      justify-content: center;
+    }
+    .sc-btns, .co-cta-btns, .tw-cta, .co-out-cta {
+      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+    }
+
+    /* 3 · Curriculum — the sticky stack pins a 100vh frame around a card
+       taller than the viewport, so the card is clipped and the download
+       link lands on top of the text. Let the modules simply flow. */
+    .stk { margin-top: 24px; }
+    .stk-w { height: auto; position: static; display: block; margin-bottom: 14px; }
+    .stk-card { height: auto; max-height: none; overflow: visible;
+      transform: none !important; opacity: 1 !important; }
+    .stk-body { max-height: none; overflow: visible; }
+    .stk-dl { position: static; margin-top: 16px; display: inline-flex; }
+    .stk-count { position: static; margin-top: 8px; }
+
+    /* 4 · Hero — the enrol card duplicates the price and CTA that the
+       fixed bottom bar already carries. */
+    .co-hero-inner > .co-card { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -3878,5 +3936,29 @@
 <div data-include="footer"></div>
 <div data-include="bottom-bar"></div>
 <script src="js/site.js" defer></script>
+
+<script>
+/* mobile: the coverflow is stacked, so flag the active card for CSS */
+(function () {
+  var stage = document.querySelector('.pj-stage');
+  if (!stage) return;
+  var cards = [].slice.call(stage.querySelectorAll('.pj-card'));
+  function mark() {
+    var best = null, bestOp = -1;
+    cards.forEach(function (c) {
+      var op = parseFloat(c.style.opacity || '1');
+      if (op > bestOp) { bestOp = op; best = c; }
+    });
+    cards.forEach(function (c) {
+      if (c === best) c.setAttribute('data-show', '');
+      else c.removeAttribute('data-show');
+    });
+  }
+  mark();
+  new MutationObserver(mark).observe(stage, {
+    subtree: true, attributes: true, attributeFilter: ['style']
+  });
+})();
+</script>
 </body>
 </html>
