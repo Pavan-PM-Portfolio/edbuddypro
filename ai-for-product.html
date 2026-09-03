@@ -372,7 +372,7 @@
     background: var(--white);
     color: var(--black);
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    overflow-x: clip;
     position: relative;
   }
 
@@ -2468,10 +2468,7 @@
     .co-o-ic svg { width: 28px !important; height: 28px !important; }
   }
 /* ═══ mobile navigation ═══ */
-  @media (max-width: 900px) {
-    .nav-links { display: none !important; }
-    .nav-toggle { display: flex !important; }
-  }
+  
 
   .nav-toggle { display: none; width: 42px; height: 42px; border-radius: 10px; border: 1px solid var(--neutral-200);
     background: #fff; cursor: pointer; align-items: center; justify-content: center; margin-left: auto; }
@@ -2754,19 +2751,8 @@
   /* ═══ footer ═══ */
   .ft { background: #fff; border-top: 1px solid rgba(11,18,32,0.42); padding: 64px 0 40px;
     margin-top: 0; position: relative; z-index: 1; }
-@media (max-width: 900px) {
-    .ft-top { grid-template-columns: 1fr; gap: 40px; }
-    .ft-promo { grid-template-columns: 1fr; }
-    .ft-promo a { text-align: center; }
-    .ft-stats { grid-template-columns: repeat(2,1fr); }
-    .ft-stats > div { border-bottom: 1px solid var(--neutral-200); }
-    .ft-cols { grid-template-columns: repeat(2,1fr); gap: 36px 20px; }
-  }
-@media (max-width: 520px) {
-    .ft-stats { grid-template-columns: 1fr; }
-    .ft-cols { grid-template-columns: 1fr; }
-    .ft-nlf { flex-direction: column; }
-  }
+
+
 
 
 
@@ -2779,7 +2765,30 @@
   }
 
   .nav-logo .ebp-lk { height: 38px; }
-@media (max-width: 640px) { .nav-logo .ebp-lk { height: 30px; } }
+
+
+  /* ─── keyframes ─── */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+@keyframes twL { from { transform: translateX(0); } to { transform: translateX(-33.333%); } }
+@keyframes twR { from { transform: translateX(-33.333%); } to { transform: translateX(0); } }
+@keyframes coFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes slFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes slGrow { to { transform: scaleX(1); } }
+
+  /* salary tabs: scroll rather than overflow on narrow screens */
+  @media (max-width: 860px) {
+    .sl-tabs { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 8px;
+      scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-bottom: 4px; }
+    .sl-tabs::-webkit-scrollbar { display: none; }
+    .sl-tab { flex: 0 0 auto; white-space: nowrap; font-size: 13px; padding: 10px 14px; }
+  }
+
+  .co-legal{font-size:12.5px;line-height:1.55;color:var(--neutral-400);margin:14px 0 0;text-align:center}
+  .co-legal a{color:var(--neutral-500);text-decoration:underline;text-underline-offset:2px}
+  .co-legal a:hover{color:#0559B3}
 </style>
 </head>
 <body>
@@ -2854,7 +2863,7 @@
         <a href="#enrol" class="co-btn">Enrol now
           <svg viewBox="0 0 16 16"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/></svg>
         </a>
-        <a href="#curriculum" class="co-btn-2">Preview 3 lessons free</a>
+        <a href="#curriculum" class="co-btn-2">Preview 3 lessons free</a><p class="co-legal">By enrolling you accept our <a href="terms-of-service.html">Terms</a> and <a href="refund-policy.html">Refund Policy</a>.</p>
 
         <ul class="co-incl">
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>60 topics</b> across 10 modules</span></li>
@@ -3781,21 +3790,7 @@
 
 
 <script>
-  // Navbar scroll behavior
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 20);
-  });
-
-  // Close mega menu on outside click
-  document.addEventListener('click', (e) => {
-    const wrapper = e.target.closest('.nav-dropdown-wrapper');
-    document.querySelectorAll('.nav-dropdown-wrapper.open').forEach(el => {
-      if (el !== wrapper) el.classList.remove('open');
-    });
-  });
-
-  // Mobile buy bar — reveal once the enrol card has scrolled away,
+// Mobile buy bar — reveal once the enrol card has scrolled away,
   // hide again over the final CTA so it never covers the same button.
   (function () {
     var bar  = document.getElementById('co-mobile');
