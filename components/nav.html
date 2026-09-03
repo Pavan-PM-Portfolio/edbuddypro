@@ -486,7 +486,10 @@
   }
 
   /* the nav must look identical on a page that has no CSS reset of its own */
+  /* zero the browser's default control margins, but not the toggle's
+     margin-left:auto, which is what pushes it to the right edge */
   #navbar input, #navbar button { margin: 0; font-family: inherit; }
+  #navbar .nav-toggle { margin-left: auto; }
   #navbar .nav-search input { padding: 0; border: 0; background: none; line-height: normal; }
 
   /* The bar itself. This lived in each page's stylesheet as a bare `nav {}`
