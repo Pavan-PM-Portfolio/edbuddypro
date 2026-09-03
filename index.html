@@ -2712,14 +2712,16 @@
   .cc-sv { font-size: 11px; font-weight: 700; letter-spacing: .05em; color: #0559B3;
     background: rgba(5,89,179,.09); padding: 6px 11px; border-radius: 20px; }
   .cc-tm { font-size: 12.5px; color: var(--neutral-500); margin: 0 0 13px; }
-  .cc-b1 { display: flex; align-items: center; justify-content: center; gap: 8px;
-    font-family: var(--font-display,'Plus Jakarta Sans',sans-serif); font-size: 15px; font-weight: 600;
-    background: #0559B3; color: #fff; border-radius: 11px; padding: 14px; text-decoration: none;
-    transition: opacity .2s; }
-  .cc-b1:hover { opacity: .9; }
-  .cc-ar { width: 15px; height: 15px; flex: none; fill: none; stroke: currentColor;
-    stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
-    transition: transform .22s cubic-bezier(.22,1,.36,1); }
+  .cc-b1 {
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display,'Plus Jakarta Sans',sans-serif);
+    font-size: 15px; font-weight: 600;
+    background: #fff; color: #0559B3;
+    border: 1px solid var(--neutral-200, #E4E9F0);
+    border-radius: 11px; padding: 13px 14px; text-decoration: none;
+    transition: border-color .2s, background .2s, color .2s;
+  }
+  .cc-b1:hover { background: #F5F8FC; border-color: rgba(5,89,179,.45); color: #04478F; }
   .cc-rule { height: 1px; background: var(--neutral-200); margin: 15px 0 13px; }
   .cc-tl { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
   .cc-tl li { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px;
@@ -2977,7 +2979,7 @@
             <div class="cc-pr"><span class="cc-p1">&#8377;4,999</span>
               <span class="cc-p2">&#8377;7,999</span><span class="cc-sv">SAVE 38%</span></div>
             <p class="cc-tm">One-time payment &middot; lifetime access &middot; GST included</p>
-            <a class="cc-b1" href="ai-for-hr.html">View course <svg class="cc-ar" viewBox="0 0 16 16"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/></svg></a>
+            <a class="cc-b1" href="ai-for-hr.html">View course</a>
             <div class="cc-rule"></div>
             <ul class="cc-tl"><li><svg class="cc-tk" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>60 topics</b> across 10 modules</span></li><li><svg class="cc-tk" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>39 hands-on labs</b> all self-paced</span></li><li><svg class="cc-tk" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>14 AI tools</b> covered end to end</span></li></ul>
             <div class="pc-tools">
@@ -2995,7 +2997,7 @@
             <div class="cc-pr"><span class="cc-p1">&#8377;4,999</span>
               <span class="cc-p2">&#8377;7,999</span><span class="cc-sv">SAVE 38%</span></div>
             <p class="cc-tm">One-time payment &middot; lifetime access &middot; GST included</p>
-            <a class="cc-b1" href="ai-for-marketing.html">View course <svg class="cc-ar" viewBox="0 0 16 16"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/></svg></a>
+            <a class="cc-b1" href="ai-for-marketing.html">View course</a>
             <div class="cc-rule"></div>
             <ul class="cc-tl"><li><svg class="cc-tk" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Campaign workflows</b> research to launch</span></li><li><svg class="cc-tk" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Hands-on labs</b> all self-paced</span></li><li><svg class="cc-tk" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>AI tools</b> covered end to end</span></li></ul>
             <div class="pc-tools">
@@ -3013,7 +3015,7 @@
             <div class="cc-pr"><span class="cc-p1">&#8377;4,999</span>
               <span class="cc-p2">&#8377;7,999</span><span class="cc-sv">SAVE 38%</span></div>
             <p class="cc-tm">One-time payment &middot; lifetime access &middot; GST included</p>
-            <a class="cc-b1" href="ai-for-finance.html">View course <svg class="cc-ar" viewBox="0 0 16 16"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/></svg></a>
+            <a class="cc-b1" href="ai-for-finance.html">View course</a>
             <div class="cc-rule"></div>
             <ul class="cc-tl"><li><svg class="cc-tk" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Close and reporting</b> end to end</span></li><li><svg class="cc-tk" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Hands-on labs</b> all self-paced</span></li><li><svg class="cc-tk" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>AI tools</b> covered end to end</span></li></ul>
             <div class="pc-tools">
@@ -3031,7 +3033,7 @@
             <div class="cc-pr"><span class="cc-p1">&#8377;4,999</span>
               <span class="cc-p2">&#8377;7,999</span><span class="cc-sv">SAVE 38%</span></div>
             <p class="cc-tm">One-time payment &middot; lifetime access &middot; GST included</p>
-            <a class="cc-b1" href="ai-for-sales.html">View course <svg class="cc-ar" viewBox="0 0 16 16"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/></svg></a>
+            <a class="cc-b1" href="ai-for-sales.html">View course</a>
             <div class="cc-rule"></div>
             <ul class="cc-tl"><li><svg class="cc-tk" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Prospect to proposal</b> the full cycle</span></li><li><svg class="cc-tk" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Hands-on labs</b> all self-paced</span></li><li><svg class="cc-tk" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>AI tools</b> covered end to end</span></li></ul>
             <div class="pc-tools">
@@ -3049,7 +3051,7 @@
             <div class="cc-pr"><span class="cc-p1">&#8377;4,999</span>
               <span class="cc-p2">&#8377;7,999</span><span class="cc-sv">SAVE 38%</span></div>
             <p class="cc-tm">One-time payment &middot; lifetime access &middot; GST included</p>
-            <a class="cc-b1" href="ai-for-product.html">View course <svg class="cc-ar" viewBox="0 0 16 16"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/></svg></a>
+            <a class="cc-b1" href="ai-for-product.html">View course</a>
             <div class="cc-rule"></div>
             <ul class="cc-tl"><li><svg class="cc-tk" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Research to roadmap</b> end to end</span></li><li><svg class="cc-tk" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Hands-on labs</b> all self-paced</span></li><li><svg class="cc-tk" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>AI tools</b> covered end to end</span></li></ul>
             <div class="pc-tools">
