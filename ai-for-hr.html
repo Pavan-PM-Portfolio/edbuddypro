@@ -2935,8 +2935,11 @@
     text-align: center; margin: 0 auto 40px; max-width: 620px; }
 
   /* the trigger: module one, with the rest stacked behind it */
-  .cm-trig { position: relative; max-width: 900px; margin: 0 auto; cursor: pointer;
-    background: none; border: 0; padding: 0; width: 100%; text-align: left;
+  /* full section width, like every other block on the page. A <button> is
+     not a block box by default, so `margin: 0 auto` alone left it hugging
+     the left edge — display:block is what actually centres it. */
+  .cm-trig { display: block; position: relative; width: 100%; margin: 0 auto;
+    cursor: pointer; background: none; border: 0; padding: 0; text-align: left;
     font-family: inherit; transition: transform .22s; }
   .cm-trig:hover { transform: translateY(-3px); }
   .cm-trig:focus-visible { outline: 2px solid #0559B3; outline-offset: 6px; border-radius: 22px; }
