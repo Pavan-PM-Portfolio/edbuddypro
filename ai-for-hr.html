@@ -2987,11 +2987,18 @@
   .cm-trig .cm-tools { display: flex; }
   .cm-trig .cm-tool { display: inline-flex; }
   /* the dialog */
-  .cm-ov { position: fixed; inset: 0; z-index: 200; background: #F7F9FC;
+  /* a dialog, not a takeover — the page stays visible at the margins so it
+     reads as a layer over the page rather than a new screen */
+  .cm-ov { position: fixed; inset: 0; z-index: 200; background: rgba(11,18,32,.55);
+    -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
     opacity: 0; visibility: hidden; transition: opacity .26s, visibility .26s; }
   .cm-ov.is-open { opacity: 1; visibility: visible; }
-  .cm-sheet { position: absolute; inset: 0; display: flex; flex-direction: column;
-    transform: scale(1.01); transition: transform .3s cubic-bezier(.22,1,.36,1); }
+  .cm-sheet { position: absolute; inset: 40px; max-width: 1240px; margin: 0 auto;
+    background: #F7F9FC; border-radius: 20px; overflow: hidden;
+    display: flex; flex-direction: column;
+    transform: translateY(12px) scale(.99);
+    transition: transform .3s cubic-bezier(.22,1,.36,1);
+    box-shadow: 0 30px 90px rgba(0,0,0,.35); }
   .cm-ov.is-open .cm-sheet { transform: none; }
   .cm-prog { position: absolute; left: 0; top: 0; height: 3px; background: #0559B3; width: 0; z-index: 6; }
   .cm-hd { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 16px;
@@ -3009,14 +3016,20 @@
   .cm-bd { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 0 34px; }
   body.cm-locked { overflow: hidden; }
 
+
+  /* below the desktop breakpoint the dialog goes edge to edge again — a 40px
+     inset on a phone wastes most of the screen */
+  @media (max-width: 900px) {
+    .cm-sheet { inset: 0; border-radius: 0; max-width: none; box-shadow: none; }
+  }
   /* the pile */
-  .cm-w { position: sticky; top: 0; height: calc(100vh - 130px);
+  .cm-w { position: sticky; top: 0; height: calc(100vh - 210px);
     display: flex; align-items: center; justify-content: center; }
-  .cm-card { width: 100%; max-width: 900px; background: #fff;
+  .cm-card { width: 100%; max-width: 1040px; background: #fff;
     border: 1px solid var(--neutral-200, #EAEEF4); border-radius: 16px; padding: 24px 28px;
     overflow: hidden; contain: paint;
     box-shadow: 0 1px 2px rgba(11,30,58,.05), 0 14px 34px rgba(11,30,58,.10);
-    transform: scale(calc(1 - (9 - var(--k)) * .012)); transform-origin: 50% 0; }
+    transform: scale(calc(1 - (9 - var(--k)) * .005)); transform-origin: 50% 0; }
   .cm-ch { border-bottom: 1px solid var(--neutral-200, #EAEEF4); padding-bottom: 13px; margin-bottom: 16px; }
   .cm-ch h3 { font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif); font-size: 20px;
     font-weight: 700; letter-spacing: -.02em; margin: 5px 0 0; }
@@ -3042,8 +3055,11 @@
     background: #fff; border: 1px solid var(--neutral-200, #E4E9F0); border-radius: 8px; padding: 6px 10px; }
   .cm-tool svg { width: 16px; height: 16px; flex: none; }
   /* the module footer: a solid button on the left, the counter opposite */
-  .cm-foot-row { display: flex; align-items: center; justify-content: space-between;
-    gap: 16px; margin-top: 18px; }
+  /* the row is a child of the two-column grid, so it has to be told to span
+     both tracks — otherwise it sits in the left column only */
+  .cm-foot-row { grid-column: 1 / -1; display: flex; align-items: center;
+    justify-content: space-between; gap: 16px; margin-top: 18px;
+    padding-top: 18px; border-top: 1px solid var(--neutral-200, #EAEEF4); }
   .cm-dl { display: inline-flex; align-items: center; gap: 8px;
     font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
     font-size: 14px; font-weight: 600; text-decoration: none;
