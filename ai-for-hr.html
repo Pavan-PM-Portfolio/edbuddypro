@@ -899,7 +899,7 @@
     color: var(--neutral-600);
     background: var(--white);
     border: 1px solid var(--neutral-200);
-    border-radius: 100px;
+    border-radius: 8px;   /* matches .co-btn / .btn-primary */
     padding: 7px 14px;
   }
 
@@ -924,18 +924,16 @@
   .co-hero-pts b { color: var(--black); font-weight: 600; }
 
   .co-tick {
-    width: 19px; height: 19px;
-    border-radius: 50%;
-    background: rgba(5,89,179,0.2);
-    color: #043E7D;
+    width: 17px; height: 17px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     margin-top: 2px;
+    color: #0559B3;
   }
 
-  .co-tick svg { width: 11px; height: 11px; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  .co-tick svg { width: 17px; height: 17px; fill: none; stroke: #0559B3; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
 
 
   /* ─── ENROL CARD ─── */
@@ -1067,12 +1065,12 @@
   .co-incl b { color: var(--black); font-weight: 600; }
 
   .co-incl svg {
-    width: 15px; height: 15px;
+    width: 17px; height: 17px;
     flex-shrink: 0;
     margin-top: 2px;
     fill: none;
-    stroke: #043E7D;
-    stroke-width: 2.4;
+    stroke: #0559B3;
+    stroke-width: 2.6;
     stroke-linecap: round;
     stroke-linejoin: round;
   }
@@ -2096,6 +2094,10 @@
   .ovl-li { display: flex; gap: 11px; font-size: 14.5px; line-height: 1.5; color: var(--neutral-800); }
 
   .ovl-li svg { color: #0559B3; flex: none; margin-top: 2px; }
+
+  /* same check as Skills covered — 17px, brand blue, no circle */
+  .ovl-ck { width: 17px; height: 17px; flex: none; fill: none; stroke: #0559B3;
+    stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
 
 
   .ovl-rail { position: sticky; top: 20px; }
@@ -3272,7 +3274,7 @@
         <h2 class="ovl-h">AI for HR Professionals — <em>Course Overview</em></h2>
         <p class="ovl-p">edBuddy Pro's <b>AI for HR course</b> is a hands-on generative AI programme built for the people who actually run HR — hiring, onboarding, performance management and people data. Across <b>10 modules</b> and <b>60 topics</b> you move from AI foundations and <b>prompt engineering for HR</b> through <b>AI-powered talent acquisition</b>, L&amp;D, performance automation, <b>workforce analytics</b>, <b>no-code HR automation</b> and <b>HR AI agents</b> — closing with AI governance, DPDP compliance and an implementation roadmap for your own function. No coding at any point.</p>
 
-        <h3 class="ovl-sub">Who this is for</h3><div class="ovl-two"><div class="ovl-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><circle cx="12" cy="12" r="10" stroke-width="1.4"/><polyline points="8 12.5 11 15.5 16 9.5" stroke-width="2.2"/></svg><span>You run hiring, onboarding or performance for a team</span></div><div class="ovl-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><circle cx="12" cy="12" r="10" stroke-width="1.4"/><polyline points="8 12.5 11 15.5 16 9.5" stroke-width="2.2"/></svg><span>You own the people data leadership actually reads</span></div><div class="ovl-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><circle cx="12" cy="12" r="10" stroke-width="1.4"/><polyline points="8 12.5 11 15.5 16 9.5" stroke-width="2.2"/></svg><span>You are an HR generalist doing five jobs at once</span></div><div class="ovl-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><circle cx="12" cy="12" r="10" stroke-width="1.4"/><polyline points="8 12.5 11 15.5 16 9.5" stroke-width="2.2"/></svg><span>You lead an HR function and want the team AI-fluent</span></div><div class="ovl-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><circle cx="12" cy="12" r="10" stroke-width="1.4"/><polyline points="8 12.5 11 15.5 16 9.5" stroke-width="2.2"/></svg><span>You have tried ChatGPT for HR and got generic answers</span></div><div class="ovl-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><circle cx="12" cy="12" r="10" stroke-width="1.4"/><polyline points="8 12.5 11 15.5 16 9.5" stroke-width="2.2"/></svg><span>You need to move faster without adding headcount</span></div></div><h3 class="ovl-sub">What you will do differently</h3><div class="ovl-two"><div class="ovl-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><circle cx="12" cy="12" r="10" stroke-width="1.4"/><polyline points="8 12.5 11 15.5 16 9.5" stroke-width="2.2"/></svg><span>Screen a CV pile against your own rubric, not a keyword filter</span></div><div class="ovl-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><circle cx="12" cy="12" r="10" stroke-width="1.4"/><polyline points="8 12.5 11 15.5 16 9.5" stroke-width="2.2"/></svg><span>Publish a JD that has passed a bias audit before it goes live</span></div><div class="ovl-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><circle cx="12" cy="12" r="10" stroke-width="1.4"/><polyline points="8 12.5 11 15.5 16 9.5" stroke-width="2.2"/></svg><span>Turn a messy engagement survey into a board-ready summary</span></div><div class="ovl-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><circle cx="12" cy="12" r="10" stroke-width="1.4"/><polyline points="8 12.5 11 15.5 16 9.5" stroke-width="2.2"/></svg><span>Draft a 30/60/90 plan in minutes and keep the template</span></div><div class="ovl-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><circle cx="12" cy="12" r="10" stroke-width="1.4"/><polyline points="8 12.5 11 15.5 16 9.5" stroke-width="2.2"/></svg><span>Write review language that holds up when it is challenged</span></div><div class="ovl-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><circle cx="12" cy="12" r="10" stroke-width="1.4"/><polyline points="8 12.5 11 15.5 16 9.5" stroke-width="2.2"/></svg><span>Answer policy questions from a knowledge base, not from memory</span></div></div><h3 class="ovl-sub">What you need</h3><div class="ovl-two"><div class="ovl-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><circle cx="12" cy="12" r="10" stroke-width="1.4"/><polyline points="8 12.5 11 15.5 16 9.5" stroke-width="2.2"/></svg><span>No coding at any point across the 10 modules</span></div><div class="ovl-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><circle cx="12" cy="12" r="10" stroke-width="1.4"/><polyline points="8 12.5 11 15.5 16 9.5" stroke-width="2.2"/></svg><span>A free ChatGPT or Claude account and a Google account</span></div><div class="ovl-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><circle cx="12" cy="12" r="10" stroke-width="1.4"/><polyline points="8 12.5 11 15.5 16 9.5" stroke-width="2.2"/></svg><span>Self-paced from day one — pause whenever work gets busy</span></div><div class="ovl-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><circle cx="12" cy="12" r="10" stroke-width="1.4"/><polyline points="8 12.5 11 15.5 16 9.5" stroke-width="2.2"/></svg><span>Nothing to install; everything runs in the browser</span></div><div class="ovl-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><circle cx="12" cy="12" r="10" stroke-width="1.4"/><polyline points="8 12.5 11 15.5 16 9.5" stroke-width="2.2"/></svg><span>No prior AI experience, and no statistics background</span></div><div class="ovl-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><circle cx="12" cy="12" r="10" stroke-width="1.4"/><polyline points="8 12.5 11 15.5 16 9.5" stroke-width="2.2"/></svg><span>Your own real documents, if you want to work on those</span></div></div></div>
+        <h3 class="ovl-sub">Who this is for</h3><div class="ovl-two"><div class="ovl-li"><svg class="ovl-ck" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>You run hiring, onboarding or performance for a team</span></div><div class="ovl-li"><svg class="ovl-ck" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>You own the people data leadership actually reads</span></div><div class="ovl-li"><svg class="ovl-ck" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>You are an HR generalist doing five jobs at once</span></div><div class="ovl-li"><svg class="ovl-ck" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>You lead an HR function and want the team AI-fluent</span></div><div class="ovl-li"><svg class="ovl-ck" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>You have tried ChatGPT for HR and got generic answers</span></div><div class="ovl-li"><svg class="ovl-ck" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>You need to move faster without adding headcount</span></div></div><h3 class="ovl-sub">What you will do differently</h3><div class="ovl-two"><div class="ovl-li"><svg class="ovl-ck" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Screen a CV pile against your own rubric, not a keyword filter</span></div><div class="ovl-li"><svg class="ovl-ck" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Publish a JD that has passed a bias audit before it goes live</span></div><div class="ovl-li"><svg class="ovl-ck" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Turn a messy engagement survey into a board-ready summary</span></div><div class="ovl-li"><svg class="ovl-ck" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Draft a 30/60/90 plan in minutes and keep the template</span></div><div class="ovl-li"><svg class="ovl-ck" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Write review language that holds up when it is challenged</span></div><div class="ovl-li"><svg class="ovl-ck" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Answer policy questions from a knowledge base, not from memory</span></div></div><h3 class="ovl-sub">What you need</h3><div class="ovl-two"><div class="ovl-li"><svg class="ovl-ck" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>No coding at any point across the 10 modules</span></div><div class="ovl-li"><svg class="ovl-ck" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>A free ChatGPT or Claude account and a Google account</span></div><div class="ovl-li"><svg class="ovl-ck" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Self-paced from day one — pause whenever work gets busy</span></div><div class="ovl-li"><svg class="ovl-ck" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Nothing to install; everything runs in the browser</span></div><div class="ovl-li"><svg class="ovl-ck" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>No prior AI experience, and no statistics background</span></div><div class="ovl-li"><svg class="ovl-ck" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Your own real documents, if you want to work on those</span></div></div></div>
 
       <aside class="ovl-rail">
         <div class="ovl-card">
