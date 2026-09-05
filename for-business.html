@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<!--
+  ═══════════════════════════════════════════════════════════════════
+  FOR BUSINESS PAGE — BUILT September 2026.
+  Structure and design are final. Every <span class="fx-note"> marks a
+  fact only the business can supply: a client name, a number, a person,
+  a date. Search "fx-note". Nothing in this page invents a statistic,
+  a logo or a testimonial — those slots are left visibly empty on
+  purpose, because the site already carries unverified claims (see
+  HANDOFF §5) and this page must not add more.
+  ═══════════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI training for teams | edBuddy Pro</title>
+<meta name="description" content="Role-based AI training for HR, finance, marketing, sales and product teams. Five tracks, hands-on labs and projects your team keeps. Scoped, piloted and measured.">
+<link rel="canonical" href="https://edbuddy.pro/for-business.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    /* these must match index.html exactly — the shared nav, footer and bottom
+       bar read them, so any drift shows up as a different-looking component */
+    --font:'Inter', -apple-system, sans-serif;
+    --font-display:'Plus Jakarta Sans', -apple-system, sans-serif;
+    --black:#0a0a0a;
+    --ink:#0B1220;
+    --white:#ffffff;
+    --blue:#0559B3;
+    --neutral-50:#fafafa;
+    --neutral-100:#f5f5f5;
+    --neutral-200:#e5e5e5;
+    --neutral-300:#d4d4d4;
+    --neutral-400:#a3a3a3;
+    --neutral-500:#737373;
+    --neutral-600:#525252;
+    --neutral-800:#262626;
+    --neutral-900:#171717;
+    --muted:#5A6B82;
+    --hair:rgba(11,18,32,0.08);
+    --ease:cubic-bezier(0.22, 1, 0.36, 1);
+    --nav-h:64px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:92px}
+  body{margin:0;font-family:var(--font);color:var(--black);background:#fff;
+    overflow-x:clip;padding-bottom:60px;-webkit-font-smoothing:antialiased}
+  a{color:var(--blue)}
+  .page-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:linear-gradient(#E4E9F0 1px,transparent 1px),
+      linear-gradient(90deg,#E4E9F0 1px,transparent 1px);
+    background-size:48px 48px;opacity:.26}
+
+  .lg{position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:0 28px;
+    display:grid;grid-template-columns:322px minmax(0,1fr);gap:0;align-items:start}
+
+  .lg-side{position:sticky;top:88px;padding:56px 40px 56px 0;border-right:1px solid #E4E9F0}
+  .lg-kicker{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--blue);margin:0 0 12px}
+  .lg-side h1{color:#0B1220;font-family:var(--font-display);font-size:31px;font-weight:700;letter-spacing:-.03em;
+    line-height:1.15;margin:0 0 10px}
+  .lg-updated{font-size:13px;color:#6B7A8F;margin:0 0 28px}
+  .lg-toc{display:flex;flex-direction:column;gap:1px;border-top:1px solid #E4E9F0;padding-top:18px}
+  .lg-toc a{font-size:14.5px;color:#52627A;text-decoration:none;padding:9px 12px;
+    border-radius:9px;line-height:1.4;transition:background .16s,color .16s}
+  .lg-toc a:hover{background:#EEF4FC;color:var(--blue)}
+  .lg-toc a.on{background:#EEF4FC;color:var(--blue);font-weight:600}
+
+  .lg-main{padding:56px 0 60px 56px;max-width:760px}
+  .lg-lede{font-size:18px;line-height:1.62;color:#3F4650;margin:0 0 46px;letter-spacing:-.005em}
+  .lg-sec{margin-bottom:44px;scroll-margin-top:92px}
+  .lg-head{display:flex;align-items:center;gap:13px;margin-bottom:15px}
+  .lg-ic{width:34px;height:34px;flex:none;color:var(--blue);
+    display:flex;align-items:center;justify-content:center}
+  .lg-ic svg{width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:1.6;
+    stroke-linecap:round;stroke-linejoin:round}
+  .lg-sec h2{color:#0B1220;font-family:var(--font-display);font-size:21px;font-weight:700;letter-spacing:-.02em;margin:0}
+  .lg-sec p{font-size:16.5px;line-height:1.72;color:#3F4650;margin:0 0 15px}
+  .lg-sec b{color:#0B1220;font-weight:600}
+  .lg-note{font-size:15px;line-height:1.65;color:#6B7A8F;
+    border-left:2px solid #E4E9F0;padding:2px 0 2px 16px;margin:18px 0 0}
+  .lg-note b{color:#52627A;font-weight:600}
+
+  .lg-end{border-top:1px solid #E4E9F0;padding-top:28px;margin-top:8px}
+  .lg-end h3{color:#0B1220;font-family:var(--font-display);font-size:18px;font-weight:700;margin:0 0 6px}
+  .lg-end p{font-size:15.5px;color:#6B7A8F;margin:0 0 18px}
+  .lg-other{display:flex;flex-wrap:wrap;gap:8px 20px}
+  .lg-other a{font-size:14.5px;color:#52627A;text-decoration:none}
+  .lg-other a:hover{color:var(--blue)}
+
+  @media (max-width:960px){
+    .lg{grid-template-columns:1fr;padding:0 22px}
+    .lg-side{position:static;border-right:0;border-bottom:1px solid #E4E9F0;
+      padding:40px 0 26px}
+    .lg-main{padding:32px 0 50px}
+    .lg-toc{flex-direction:row;flex-wrap:wrap;gap:6px}
+    .lg-toc a{background:#F4F6F9;font-size:13.5px;padding:8px 12px}
+  }
+  @media (max-width:560px){
+    .lg-side h1{color:#0B1220;font-size:27px}
+    .lg-lede{font-size:16.5px}
+    .lg-sec p{font-size:16px}
+    .lg-ic{width:30px;height:30px}
+    .lg-ic svg{width:28px;height:28px}
+  }
+
+  .lg-spot{display:block;width:100%;max-width:196px;height:auto;margin:0 0 26px}
+  .lg-ex{margin:20px 0 0;border:1px solid #E4E9F0;border-radius:12px;background:#FBFCFE}
+  .lg-ex[open]{background:#fff}
+  .lg-ex summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;
+    padding:14px 16px;font-family:var(--font-display);font-size:15px;font-weight:600;
+    color:var(--blue);border-radius:12px}
+  .lg-ex summary::-webkit-details-marker{display:none}
+  .lg-ex summary:hover{background:#F5F8FC}
+  .lg-ex-chev{width:15px;height:15px;flex:none;fill:none;stroke:currentColor;stroke-width:2.2;
+    stroke-linecap:round;stroke-linejoin:round;transition:transform .2s ease}
+  .lg-ex[open] .lg-ex-chev{transform:rotate(180deg)}
+  .lg-ex-body{padding:0 16px 16px}
+  .lg-ex-body p{font-size:15.5px;line-height:1.68;color:#3F4650;margin:0 0 12px}
+  .lg-ex-body p:last-child{margin-bottom:0}
+  @media (max-width:960px){ .lg-spot{max-width:150px;margin-bottom:20px} }
+  /* ── page shell ─────────────────────────────────────────────── */
+  .wrap{position:relative;z-index:1;max-width:1160px;margin:0 auto;padding:0 32px}
+  @media(max-width:1208px){.wrap{padding:0 24px}}
+  section{position:relative;z-index:1}
+
+  .sec{padding:88px 0}
+  .sec-sm{padding:64px 0}
+  @media(max-width:760px){.sec{padding:56px 0}.sec-sm{padding:44px 0}}
+
+  .kick{font-size:11.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+    color:var(--blue);margin:0 0 14px}
+  h1,h2,h3{font-family:var(--font-display);color:var(--ink);letter-spacing:-.035em;margin:0}
+  h1{font-size:clamp(34px,4.6vw,56px);font-weight:700;line-height:1.08}
+  h2{font-size:clamp(27px,3.1vw,40px);font-weight:700;line-height:1.16}
+  h3{font-size:19px;font-weight:600;letter-spacing:-.02em;line-height:1.3}
+  h2 em{font-style:normal;color:var(--blue)}
+  .lead{font-size:17.5px;line-height:1.62;color:var(--muted);margin:16px 0 0;max-width:64ch}
+  .sub{font-size:15.5px;line-height:1.62;color:var(--muted);margin:10px 0 0}
+  .ctr{text-align:center}
+  .ctr .lead{margin-left:auto;margin-right:auto}
+
+  /* ── buttons: 8px radius, matching the course pages ─────────── */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    font-size:15px;font-weight:600;padding:14px 26px;border-radius:8px;
+    text-decoration:none;border:1px solid transparent;cursor:pointer;
+    font-family:var(--font);transition:transform .16s var(--ease),box-shadow .2s,background .16s}
+  .btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;
+    stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+  .btn:hover svg{transform:translateX(3px)}
+  .btn-p{background:var(--blue);color:#fff;box-shadow:0 1px 2px rgba(5,89,179,.2),0 8px 20px rgba(5,89,179,.16)}
+  .btn-p:hover{transform:translateY(-1px);box-shadow:0 2px 4px rgba(5,89,179,.22),0 12px 26px rgba(5,89,179,.2)}
+  .btn-g{background:#fff;color:var(--ink);border-color:#DCE3EC}
+  .btn-g:hover{border-color:var(--blue);color:var(--blue)}
+  .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+  .ctr .btns{justify-content:center}
+  @media(prefers-reduced-motion:reduce){.btn,.btn svg{transition:none}}
+
+  /* ── the tick, same as Skills covered ───────────────────────── */
+  .ck{width:17px;height:17px;flex:none;fill:none;stroke:var(--blue);stroke-width:2.6;
+    stroke-linecap:round;stroke-linejoin:round;margin-top:3px}
+
+  /* ── cards ──────────────────────────────────────────────────── */
+  .card{background:#fff;border:1px solid #EAEEF4;border-radius:16px;padding:26px 26px 24px;
+    box-shadow:0 1px 2px rgba(11,30,58,.04),0 8px 22px rgba(11,30,58,.06);
+    transition:border-color .26s,box-shadow .26s var(--ease),transform .26s var(--ease)}
+  .card:hover{border-color:rgba(5,89,179,.2);transform:translateY(-2px);
+    box-shadow:0 2px 4px rgba(11,30,58,.05),0 14px 32px rgba(11,30,58,.1)}
+  .card p{font-size:14.5px;line-height:1.6;color:var(--muted);margin:9px 0 0}
+  @media(prefers-reduced-motion:reduce){.card,.card:hover{transition:none;transform:none}}
+
+  .g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+  .g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+  @media(max-width:980px){.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr}}
+
+  /* ── a fact the business must supply ────────────────────────── */
+  .fx-note{display:inline-block;font-size:12.5px;font-weight:600;color:#8A5A00;
+    background:#FFF6E5;border:1px dashed #E8C57A;border-radius:6px;padding:3px 8px;
+    font-family:var(--font);letter-spacing:0}
+  .fx-block{background:#FFFCF5;border:1px dashed #E8C57A;border-radius:14px;
+    padding:26px;text-align:center}
+  .fx-block p{font-size:14px;color:#8A5A00;margin:8px 0 0;line-height:1.6}
+  .fx-block strong{display:block;font-family:var(--font-display);font-size:16px;color:#6B4700}
+
+  /* ── numbered rail ──────────────────────────────────────────── */
+  .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:40px;
+    border-top:1px solid #EAEEF4}
+  .step{padding:26px 24px 26px 0;border-right:1px solid #EAEEF4}
+  .step:last-child{border-right:0;padding-right:0}
+  .step-n{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--blue);
+    letter-spacing:.02em;margin-bottom:12px}
+  .step h3{font-size:17px}
+  .step p{font-size:14px;line-height:1.6;color:var(--muted);margin:8px 0 0}
+  @media(max-width:900px){.steps{grid-template-columns:1fr}
+    .step{border-right:0;border-bottom:1px solid #EAEEF4;padding:22px 0}
+    .step:last-child{border-bottom:0}}
+
+  /* ── list ───────────────────────────────────────────────────── */
+  .ticks{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:11px}
+  .ticks li{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;
+    line-height:1.55;color:var(--neutral-600)}
+  .ticks b{color:var(--ink);font-weight:600}
+
+  /* ── final CTA ──────────────────────────────────────────────── */
+  .cta{background:var(--ink);border-radius:22px;padding:58px 48px;color:#fff;text-align:center}
+  .cta h2{color:#fff}
+  .cta .lead{color:#AEBACB;margin-left:auto;margin-right:auto}
+  .cta .btn-g{background:transparent;color:#fff;border-color:rgba(255,255,255,.28)}
+  .cta .btn-g:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.06)}
+  @media(max-width:760px){.cta{padding:40px 24px;border-radius:16px}}
+
+  .bz-hero{padding:76px 0 64px}
+  .bz-hero .wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:start}
+  @media(max-width:980px){.bz-hero .wrap{grid-template-columns:1fr;gap:36px}}
+  .bz-pts{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:12px}
+  .bz-pts li{display:flex;gap:11px;font-size:15.5px;line-height:1.5;color:var(--neutral-600)}
+  .bz-pts b{color:var(--ink);font-weight:600}
+  .bz-micro{font-size:13px;color:var(--muted);margin:16px 0 0}
+
+  .bz-form{background:#fff;border:1px solid #EAEEF4;border-radius:18px;padding:30px 28px;
+    box-shadow:0 1px 3px rgba(11,30,58,.06),0 14px 34px rgba(11,30,58,.09)}
+  .bz-form h3{font-size:19px;margin-bottom:4px}
+  .bz-form .sub{margin-top:6px;font-size:14px}
+  .fld{margin-top:16px}
+  .fld label{display:block;font-size:12.5px;font-weight:600;color:var(--neutral-600);margin-bottom:6px}
+  .fld input,.fld select{width:100%;font-family:var(--font);font-size:14.5px;color:var(--ink);
+    padding:12px 13px;border:1px solid #DCE3EC;border-radius:8px;background:#fff;outline:none;
+    transition:border-color .16s,box-shadow .16s}
+  .fld input:focus,.fld select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(5,89,179,.12)}
+  .bz-form .btn{width:100%;margin-top:20px}
+  .bz-fine{font-size:12px;color:var(--neutral-500);line-height:1.55;margin:14px 0 0;text-align:center}
+
+  .bz-strip{border-top:1px solid #EAEEF4;border-bottom:1px solid #EAEEF4;padding:26px 0;background:#FAFBFD}
+  .bz-strip .wrap{display:flex;gap:44px;flex-wrap:wrap;justify-content:center;align-items:center}
+  .bz-stat b{display:block;font-family:var(--font-display);font-size:26px;font-weight:700;
+    color:var(--ink);letter-spacing:-.03em;text-align:center}
+  .bz-stat span{display:block;font-size:13px;color:var(--muted);margin-top:3px;text-align:center}
+
+  .bz-prob{background:#FAFBFD}
+  .bz-prob .card{background:#fff}
+  .bz-x{width:19px;height:19px;flex:none;fill:none;stroke:#C2453C;stroke-width:2.4;
+    stroke-linecap:round;stroke-linejoin:round}
+
+  .trk{display:grid;grid-template-columns:auto 1px 1fr auto;gap:18px;align-items:center;
+    padding:17px 0;border-bottom:1px solid #F2F5F9}
+  .trk:last-child{border-bottom:0}
+  .trk-n{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--blue)}
+  .trk-r{width:1px;height:22px;background:#E6EBF2}
+  .trk-t{font-size:15.5px;font-weight:500;color:var(--ink)}
+  .trk-t span{display:block;font-size:13.5px;font-weight:400;color:var(--muted);margin-top:3px}
+  .trk-m{font-size:13px;color:var(--muted);white-space:nowrap}
+  @media(max-width:640px){.trk{grid-template-columns:auto 1px 1fr}.trk-m{display:none}}
+
+  .fmt{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:38px}
+  @media(max-width:900px){.fmt{grid-template-columns:1fr}}
+  .fmt-c{border:1px solid #EAEEF4;border-radius:16px;padding:26px;background:#fff}
+  .fmt-c.on{border-color:var(--blue);box-shadow:0 0 0 3px rgba(5,89,179,.08)}
+  .fmt-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.09em;
+    text-transform:uppercase;color:var(--blue);background:rgba(5,89,179,.08);
+    border-radius:6px;padding:4px 9px;margin-bottom:12px}
+
+  .bz-sec-split{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+  @media(max-width:900px){.bz-sec-split{grid-template-columns:1fr;gap:32px}}
+  .panel{background:#FAFBFD;border:1px solid #EAEEF4;border-radius:16px;padding:26px}
+  .panel h3{font-size:16px}
+
+  .faqx{border-top:1px solid #EAEEF4;margin-top:34px}
+  .faqx details{border-bottom:1px solid #EAEEF4}
+  .faqx summary{list-style:none;cursor:pointer;padding:19px 0;display:flex;gap:16px;
+    align-items:flex-start;justify-content:space-between;font-family:var(--font-display);
+    font-size:16.5px;font-weight:600;color:var(--ink);letter-spacing:-.02em;line-height:1.4}
+  .faqx summary::-webkit-details-marker{display:none}
+  .faqx summary:hover{color:var(--blue)}
+  .faqx summary:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:4px}
+  .faqx-i{width:17px;height:17px;flex:none;margin-top:3px;fill:none;stroke:var(--neutral-500);
+    stroke-width:2;stroke-linecap:round;transition:transform .25s,stroke .2s}
+  .faqx details[open] .faqx-i{transform:rotate(45deg);stroke:var(--blue)}
+  .faqx-a{padding:0 0 20px;max-width:78ch}
+  .faqx-a p{font-size:14.5px;line-height:1.68;color:var(--muted);margin:0}
+
+  /* outcomes by role */
+  .oc{display:grid;grid-template-columns:250px 1fr;gap:0;margin-top:36px;
+    border:1px solid #EAEEF4;border-radius:16px;overflow:hidden;background:#fff}
+  @media(max-width:860px){.oc{grid-template-columns:1fr}}
+  .oc-rail{border-right:1px solid #EAEEF4;background:#FAFBFD;padding:10px}
+  @media(max-width:860px){.oc-rail{border-right:0;border-bottom:1px solid #EAEEF4;
+    display:flex;gap:6px;overflow-x:auto;padding:10px}}
+  .oc-t{display:block;width:100%;text-align:left;font-family:var(--font);font-size:14.5px;
+    font-weight:500;color:var(--neutral-600);background:none;border:0;border-radius:8px;
+    padding:12px 14px;cursor:pointer;transition:background .16s,color .16s;white-space:nowrap}
+  .oc-t:hover{background:#EEF3F9;color:var(--ink)}
+  .oc-t[aria-selected="true"]{background:var(--blue);color:#fff;font-weight:600}
+  .oc-t:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+  .oc-p{padding:30px 32px}
+  @media(max-width:640px){.oc-p{padding:22px 20px}}
+  .oc-p[hidden]{display:none}
+  .oc-p h3{font-size:18px;margin-bottom:4px}
+  .oc-p .sub{margin-top:6px}
+  .oc-list{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:12px}
+  .oc-list li{display:flex;gap:11px;font-size:14.5px;line-height:1.55;color:var(--neutral-600)}
+
+  /* anatomy */
+  .anat{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin-top:36px;
+    border:1px solid #EAEEF4;border-radius:16px;overflow:hidden;background:#fff}
+  @media(max-width:980px){.anat{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:560px){.anat{grid-template-columns:1fr}}
+  .an{padding:24px 22px;border-right:1px solid #EAEEF4}
+  .an:last-child{border-right:0}
+  @media(max-width:980px){.an{border-bottom:1px solid #EAEEF4}}
+  .an b{display:block;font-family:var(--font-display);font-size:26px;font-weight:700;
+    color:var(--blue);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+  .an strong{display:block;font-family:var(--font-display);font-size:15px;font-weight:600;
+    color:var(--ink);letter-spacing:-.02em;margin:8px 0 6px}
+  .an p{font-size:13.5px;line-height:1.55;color:var(--muted);margin:0}
+
+  /* tools */
+  .tool-g{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+  .tool{font-size:14px;font-weight:500;color:var(--neutral-600);background:#fff;
+    border:1px solid #EAEEF4;border-radius:8px;padding:10px 16px}
+
+  /* comparison */
+  .cmp{width:100%;border-collapse:collapse;margin-top:34px;font-size:14.5px;
+    border:1px solid #EAEEF4;border-radius:16px;overflow:hidden;background:#fff}
+  .cmp th,.cmp td{padding:16px 18px;text-align:left;border-bottom:1px solid #F2F5F9;
+    vertical-align:top;line-height:1.5}
+  .cmp thead th{background:#FAFBFD;font-family:var(--font-display);font-size:14px;
+    font-weight:600;color:var(--ink);letter-spacing:-.01em;border-bottom:1px solid #EAEEF4}
+  .cmp thead th:first-child{width:26%}
+  .cmp tbody th{font-weight:600;color:var(--ink);font-size:14px}
+  .cmp td{color:var(--muted)}
+  .cmp .own{background:rgba(5,89,179,.04);color:var(--ink)}
+  .cmp tr:last-child th,.cmp tr:last-child td{border-bottom:0}
+  .cmp-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  @media(max-width:760px){.cmp{min-width:640px}}
+
+  /* objection */
+  .obj{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:34px}
+  @media(max-width:760px){.obj{grid-template-columns:1fr}}
+  .obj-c{background:#fff;border:1px solid #EAEEF4;border-radius:14px;padding:24px}
+  .obj-q{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--ink);
+    letter-spacing:-.02em;margin:0 0 10px;display:flex;gap:10px;align-items:flex-start}
+  .obj-q span{color:var(--blue);flex:none}
+  .obj-c p{font-size:14.5px;line-height:1.65;color:var(--muted);margin:0}
+
+  /* ── artwork ─────────────────────────────────────────────────
+     All inline SVG, authored for this page. No external files,
+     no stock photography, no third-party brand marks. */
+  .art-dash{width:100%;height:auto;display:block;border-radius:12px;
+    box-shadow:0 2px 6px rgba(11,30,58,.07),0 20px 48px rgba(11,30,58,.13)}
+  .art-flow{width:100%;height:auto;display:block}
+  .art-time{width:100%;height:auto;display:block;margin:34px 0 -8px}
+  @media(max-width:900px){.art-time{display:none}}
+
+  .prob-a{width:64px;height:64px;display:block;margin-bottom:18px}
+  .fmt-a{width:100%;height:auto;display:block;margin-bottom:16px;max-width:240px}
+
+  .shot{position:relative}
+  /* vertical bleed only — a horizontal inset pushes past the container and
+     shows up as document overflow at tablet widths */
+  .shot::before{content:"";position:absolute;inset:-9% 0 -14%;
+    background:radial-gradient(58% 58% at 50% 42%,rgba(5,89,179,.13),transparent 72%);
+    filter:blur(28px);z-index:0;pointer-events:none}
+  .shot>*{position:relative;z-index:1}
+
+  .hero-art{margin-top:34px}
+  .flow-note{font-size:13px;color:var(--muted);margin:16px 0 0;line-height:1.6}
+
+</style>
+</head>
+<body class="has-fixed-nav">
+
+<div data-include="nav"></div>
+<div class="page-grid"></div>
+
+
+<!-- ══ HERO — the ask is visible before any scrolling ══ -->
+<section class="bz-hero">
+  <div class="wrap">
+    <div>
+      <p class="kick">For Business</p>
+      <h1>Put AI into the work your team<br><em style="font-style:normal;color:var(--blue)">already does</em></h1>
+      <p class="lead">Role-based AI training for HR, finance, marketing, sales and product teams. Built around the tasks your people run every week — not a tour of a chatbot.</p>
+      <ul class="bz-pts">
+        <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Five role tracks</b>, each 10 modules and 39 hands-on labs</span></li>
+        <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>No coding at any point</b> — no technical background needed</span></li>
+        <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Ten projects per track</b> your team keeps and reuses</span></li>
+        <li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Self-paced, cohort or blended</b> delivery</span></li>
+      </ul>
+      <p class="bz-micro">Prefer to read first? <a href="#tracks">See what each track covers</a>.</p>
+    </div>
+
+    <div class="bz-form" id="talk">
+      <h3>Talk to us about your team</h3>
+      <p class="sub">Tell us the roles and the rough headcount. We will come back with a scope and pricing.</p>
+      <div class="fld"><label for="bn">Full name</label><input id="bn" type="text" autocomplete="name"></div>
+      <div class="fld"><label for="be">Work email</label><input id="be" type="email" autocomplete="email"></div>
+      <div class="fld"><label for="bc">Company</label><input id="bc" type="text" autocomplete="organization"></div>
+      <div class="fld"><label for="bs">Team size</label>
+        <select id="bs"><option>1–10</option><option>11–50</option><option>51–200</option><option>201–1000</option><option>1000+</option></select></div>
+      <button class="btn btn-p" type="button">Request a scope and quote <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></button>
+      <p class="bz-fine">We reply within one working day. Your details are never shared — see our <a href="privacy-policy.html">privacy policy</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRUST STRIP — verifiable numbers only ══ -->
+<div class="bz-strip">
+  <div class="wrap">
+    <div class="bz-stat"><b>5</b><span>role-based tracks</span></div>
+    <div class="bz-stat"><b>50</b><span>modules across the catalogue</span></div>
+    <div class="bz-stat"><b>195</b><span>hands-on labs</span></div>
+    <div class="bz-stat"><b>50</b><span>projects your team keeps</span></div>
+  </div>
+</div>
+
+<!-- ══ PROBLEM ══ -->
+<section class="sec bz-prob">
+  <div class="wrap">
+    <div class="ctr" style="margin-bottom:40px">
+      <p class="kick">Why most AI training fails</p>
+      <h2>Three ways it goes wrong</h2>
+      <p class="lead">Every one of these is fixable, and each one shaped how the tracks are built.</p>
+    </div>
+    <div class="g3"><div class="card"><span class="prob-a"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="16" fill="#EEF3F9"/><rect x="16" y="14" width="26" height="34" rx="4" fill="#fff" stroke="#B7C7DA" stroke-width="1.8"/><path d="M23 24h12M23 31h14M23 38h8" stroke="#B7C7DA" stroke-width="2.2" stroke-linecap="round"/><circle cx="44" cy="42" r="12" fill="#FDECEA"/><path d="M39 37l10 10M49 37l-10 10" stroke="#C2453C" stroke-width="2.6" stroke-linecap="round"/></svg></span><h3>Generic AI training doesn't survive Monday</h3><p>A course that teaches prompting in the abstract leaves your team to work out how it applies to a variance report or a hiring rubric. Most never make the jump.</p></div><div class="card"><span class="prob-a"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="16" fill="#EEF3F9"/><rect x="12" y="16" width="40" height="28" rx="5" fill="#fff" stroke="#B7C7DA" stroke-width="1.8"/><path d="M12 24h40" stroke="#B7C7DA" stroke-width="1.8"/><circle cx="18" cy="20" r="1.8" fill="#B7C7DA"/><circle cx="24" cy="20" r="1.8" fill="#B7C7DA"/><path d="M20 33h13" stroke="#B7C7DA" stroke-width="2.2" stroke-linecap="round"/><path d="M36 30l6 5-6 5" stroke="#C2453C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Tool tours age out in a quarter</h3><p>Training built around one vendor's interface is obsolete the moment the interface changes. What lasts is the judgement about when to use AI and when not to.</p></div><div class="card"><span class="prob-a"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="16" fill="#EEF3F9"/><line x1="14" y1="46" x2="50" y2="46" stroke="#B7C7DA" stroke-width="2"/><rect x="18" y="33" width="8" height="13" rx="2.5" fill="#fff" stroke="#B7C7DA" stroke-width="1.8"/><rect x="30" y="27" width="8" height="19" rx="2.5" fill="#fff" stroke="#B7C7DA" stroke-width="1.8"/><rect x="42" y="37" width="8" height="9" rx="2.5" fill="#fff" stroke="#B7C7DA" stroke-width="1.8"/><path d="M16 18h32" stroke="#C2453C" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="5 5"/><circle cx="32" cy="18" r="5.5" fill="#FDECEA" stroke="#C2453C" stroke-width="2"/></svg></span><h3>No one can tell whether it worked</h3><p>Seat licences get bought, completion is never measured, and the following year nobody can point at what changed in the actual work.</p></div></div>
+  </div>
+</section>
+
+<!-- ══ OUTCOMES BY ROLE ══ -->
+<section class="sec">
+  <div class="wrap">
+    <p class="kick">What actually changes</p>
+    <h2>Pick a team. See what is <em>different</em> afterwards.</h2>
+    <p class="lead">Not capabilities in the abstract — the specific tasks that get faster or better once the track is done.</p>
+    <div class="oc"><div class="oc-rail" role="tablist" aria-label="Outcomes by role"><button class="oc-t" type="button" role="tab" id="oct0" aria-controls="ocp0" aria-selected="true">HR</button><button class="oc-t" type="button" role="tab" id="oct1" aria-controls="ocp1" aria-selected="false">Finance</button><button class="oc-t" type="button" role="tab" id="oct2" aria-controls="ocp2" aria-selected="false">Marketing</button><button class="oc-t" type="button" role="tab" id="oct3" aria-controls="ocp3" aria-selected="false">Sales</button><button class="oc-t" type="button" role="tab" id="oct4" aria-controls="ocp4" aria-selected="false">Product</button></div><div><div class="oc-p" role="tabpanel" id="ocp0" aria-labelledby="oct0"><h3>People teams</h3><p class="sub">After the track, this is what changes in the week-to-week work.</p><ul class="oc-list"><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Screen a CV pile against your own rubric, not a keyword filter</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Publish a JD that has passed a bias audit before it goes live</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Turn a messy engagement survey into a board-ready summary</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Draft a 30/60/90 plan in minutes and keep the template</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Write review language that holds up when it is challenged</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Answer policy questions from a knowledge base, not from memory</span></li></ul><div class="btns" style="margin-top:22px"><a class="btn btn-g" href="ai-for-hr.html">See the HR track <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></div></div><div class="oc-p" role="tabpanel" id="ocp1" aria-labelledby="oct1" hidden><h3>Finance teams</h3><p class="sub">After the track, this is what changes in the week-to-week work.</p><ul class="oc-list"><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Explain a variance in plain language before the meeting, not after</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Draft forecast commentary that a CFO will actually read</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Turn a raw ledger export into a board pack section</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Build a reconciliation check you can rerun every month</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Spot the outlier in a dataset without writing a formula</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Answer finance policy questions from your own documents</span></li></ul><div class="btns" style="margin-top:22px"><a class="btn btn-g" href="ai-for-finance.html">See the Finance track <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></div></div><div class="oc-p" role="tabpanel" id="ocp2" aria-labelledby="oct2" hidden><h3>Marketing teams</h3><p class="sub">After the track, this is what changes in the week-to-week work.</p><ul class="oc-list"><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Research an audience properly before writing a single line</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Draft campaign copy that actually sounds like your brand</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Turn messy campaign data into a decision, not a dashboard</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Produce a month of channel-ready posts in an afternoon</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Write briefs an agency cannot misread</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Build a reusable prompt library for your own tone of voice</span></li></ul><div class="btns" style="margin-top:22px"><a class="btn btn-g" href="ai-for-marketing.html">See the Marketing track <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></div></div><div class="oc-p" role="tabpanel" id="ocp3" aria-labelledby="oct3" hidden><h3>Sales teams</h3><p class="sub">After the track, this is what changes in the week-to-week work.</p><ul class="oc-list"><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Research an account in minutes, not half a morning</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Write outreach that sounds like you, at volume</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Turn a call recording into notes, next steps and a CRM update</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Build a battlecard from your own win and loss history</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Keep the pipeline honest with AI-assisted deal review</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Draft a proposal from a discovery call without starting blank</span></li></ul><div class="btns" style="margin-top:22px"><a class="btn btn-g" href="ai-for-sales.html">See the Sales track <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></div></div><div class="oc-p" role="tabpanel" id="ocp4" aria-labelledby="oct4" hidden><h3>Product teams</h3><p class="sub">After the track, this is what changes in the week-to-week work.</p><ul class="oc-list"><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Turn raw interviews into personas you can defend</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Write a spec engineering will read to the end</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Prioritise a backlog with evidence, not the loudest voice</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Summarise a quarter of feedback into three themes</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Draft a launch plan and keep it as a reusable template</span></li><li><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Pressure-test your own roadmap before someone else does</span></li></ul><div class="btns" style="margin-top:22px"><a class="btn btn-g" href="ai-for-product.html">See the Product track <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></div></div></div></div>
+  </div>
+</section>
+
+<!-- ══ TRACKS ══ -->
+<section class="sec" id="tracks">
+  <div class="wrap">
+    <p class="kick">The catalogue</p>
+    <h2>Five tracks, built around <em>real workflows</em></h2>
+    <p class="lead">Each is ten modules, sixty topics and thirty-nine labs. Same structure, content written per role.</p>
+    <div style="margin-top:30px;border-top:1px solid #EAEEF4"><a class="trk" href="ai-for-hr.html" style="text-decoration:none"><span class="trk-n">01</span><span class="trk-r"></span><span class="trk-t">AI for HR Professionals<span>Hiring, onboarding, performance and people data</span></span><span class="trk-m">10 modules · 39 labs · 6 hrs</span></a><a class="trk" href="ai-for-finance.html" style="text-decoration:none"><span class="trk-n">02</span><span class="trk-r"></span><span class="trk-t">AI for Finance Professionals<span>Variance, forecasts, reporting and controls</span></span><span class="trk-m">10 modules · 39 labs · 6 hrs</span></a><a class="trk" href="ai-for-marketing.html" style="text-decoration:none"><span class="trk-n">03</span><span class="trk-r"></span><span class="trk-t">AI for Marketing Professionals<span>Campaigns, copy, content and analytics</span></span><span class="trk-m">10 modules · 39 labs · 6 hrs</span></a><a class="trk" href="ai-for-sales.html" style="text-decoration:none"><span class="trk-n">04</span><span class="trk-r"></span><span class="trk-t">AI for Sales Professionals<span>Research, outreach, discovery and pipeline</span></span><span class="trk-m">10 modules · 39 labs · 6 hrs</span></a><a class="trk" href="ai-for-product.html" style="text-decoration:none"><span class="trk-n">05</span><span class="trk-r"></span><span class="trk-t">AI for Product Managers<span>Research, PRDs, specs and roadmaps</span></span><span class="trk-m">10 modules · 39 labs · 6 hrs</span></a></div>
+    <div class="btns"><a class="btn btn-g" href="index.html#courses">Browse the full catalogue <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></div>
+  </div>
+</section>
+
+<!-- ══ ANATOMY OF A MODULE ══ -->
+<section class="sec" style="background:#FAFBFD">
+  <div class="wrap">
+    <p class="kick">Inside a module</p>
+    <h2>What one of the fifty modules <em>contains</em></h2>
+    <p class="lead">Every module in every track is built to the same shape, so a sponsor knows exactly what a seat buys.</p>
+    <div class="anat"><div class="an"><b>6</b><strong>Topics</strong><p>What the module covers, written for the role rather than the tool.</p></div><div class="an"><b>5</b><strong>Learning outcomes</strong><p>Stated up front, so a sponsor can check them against the job.</p></div><div class="an"><b>1</b><strong>Hands-on lab</strong><p>Run against a real artefact — a CV pile, a ledger export, a call recording.</p></div><div class="an"><b>4</b><strong>Tools</strong><p>The same task attempted across ChatGPT, Claude and Gemini, then compared.</p></div><div class="an"><b>1</b><strong>Project kept</strong><p>Output that stays with the learner and goes back into the work.</p></div></div>
+  </div>
+</section>
+
+<!-- ══ TOOLS ══ -->
+<section class="sec-sm">
+  <div class="wrap">
+    <p class="kick">Tools covered</p>
+    <h2>Fourteen tools, taught <em>side by side</em></h2>
+    <p class="lead">The same task is attempted across more than one assistant and the outputs compared, so your team is not locked to whichever vendor you standardise on this year.</p>
+    <div class="tool-g"><span class="tool">ChatGPT</span><span class="tool">Claude</span><span class="tool">Gamma.app</span><span class="tool">Google Docs</span><span class="tool">Google Forms</span><span class="tool">Google Gemini</span><span class="tool">Google Sheets</span><span class="tool">Google Slides</span><span class="tool">Google Workspace</span><span class="tool">Looker Studio</span><span class="tool">Make.com</span><span class="tool">NotebookLM</span><span class="tool">Notion</span><span class="tool">Zapier</span></div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section class="sec" style="background:#FAFBFD">
+  <div class="wrap">
+    <p class="kick">How a rollout runs</p>
+    <h2>Scope, pilot, roll out, <em>measure</em></h2>
+    <p class="lead">Nothing is bought at full scale before a pilot group has been through it.</p>
+    <svg class="art-time" viewBox="0 0 960 96" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <line x1="60" y1="40" x2="900" y2="40" stroke="#E4E9F0" stroke-width="2"/>
+  <line x1="60" y1="40" x2="340" y2="40" stroke="#0559B3" stroke-width="2"/>
+  <g>
+    <circle cx="60" cy="40" r="11" fill="#0559B3"/><circle cx="60" cy="40" r="4" fill="#fff"/>
+    <circle cx="340" cy="40" r="11" fill="#0559B3"/><circle cx="340" cy="40" r="4" fill="#fff"/>
+    <circle cx="620" cy="40" r="11" fill="#fff" stroke="#C9D5E4" stroke-width="2"/>
+    <circle cx="900" cy="40" r="11" fill="#fff" stroke="#C9D5E4" stroke-width="2"/>
+  </g>
+  <text x="60" y="76" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="600" fill="#0559B3">Scope</text>
+  <text x="340" y="76" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="600" fill="#0559B3">Pilot</text>
+  <text x="620" y="76" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="600" fill="#8A9AAF">Roll out</text>
+  <text x="900" y="76" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="600" fill="#8A9AAF">Measure</text>
+</svg>
+    <div class="steps"><div class="step"><div class="step-n">01</div><h3>Scope</h3><p>We map the roles you want covered against the five tracks and agree what success looks like before anything is bought.</p></div><div class="step"><div class="step-n">02</div><h3>Pilot</h3><p>A small group runs the track end to end. You see completion, the projects they produce, and the questions they raise.</p></div><div class="step"><div class="step-n">03</div><h3>Roll out</h3><p>Seats are issued across the wider team with your admin controlling access, cohorts and reporting.</p></div><div class="step"><div class="step-n">04</div><h3>Measure</h3><p>Completion, project output and tool adoption are reported back against what you agreed at scoping.</p></div></div>
+  </div>
+</section>
+
+<!-- ══ DELIVERY FORMATS ══ -->
+<section class="sec">
+  <div class="wrap">
+    <p class="kick">Delivery</p>
+    <h2>Three ways to run it</h2>
+    <p class="lead">The track content is the same. What changes is the pace and how much live time you want.</p>
+    <div class="fmt"><div class="fmt-c on"><span class="fmt-a"><svg viewBox="0 0 240 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <line x1="14" y1="52" x2="226" y2="52" stroke="#E4E9F0" stroke-width="1.6"/>
+          <circle cx="34" cy="52" r="6" fill="#0559B3"/><circle cx="82" cy="52" r="6" fill="#0559B3"/>
+          <circle cx="106" cy="52" r="6" fill="#0559B3"/><circle cx="168" cy="52" r="6" fill="#0559B3"/>
+          <circle cx="206" cy="52" r="6" fill="#0559B3"/>
+          <rect x="26" y="18" width="16" height="18" rx="3" fill="#DCE9F8"/>
+          <rect x="74" y="24" width="16" height="12" rx="3" fill="#DCE9F8"/>
+          <rect x="98" y="14" width="16" height="22" rx="3" fill="#DCE9F8"/>
+          <rect x="160" y="22" width="16" height="14" rx="3" fill="#DCE9F8"/>
+          <rect x="198" y="26" width="16" height="10" rx="3" fill="#DCE9F8"/></svg></span><span class="fmt-tag">Most common</span><h3>Self-paced</h3><p style="font-size:14.5px;line-height:1.6;color:var(--muted);margin:9px 0 0">Seats are issued and people work through the track on their own time. Lifetime access, so they can return when a task actually comes up.</p></div><div class="fmt-c"><span class="fmt-a"><svg viewBox="0 0 240 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <line x1="14" y1="52" x2="226" y2="52" stroke="#E4E9F0" stroke-width="1.6"/>
+          <g fill="#0559B3"><circle cx="50" cy="52" r="6"/><circle cx="94" cy="52" r="6"/>
+          <circle cx="138" cy="52" r="6"/><circle cx="182" cy="52" r="6"/></g>
+          <rect x="42" y="18" width="148" height="18" rx="5" fill="#DCE9F8"/>
+          <g stroke="#0559B3" stroke-width="1.6" stroke-dasharray="3 3">
+            <line x1="50" y1="36" x2="50" y2="46"/><line x1="94" y1="36" x2="94" y2="46"/>
+            <line x1="138" y1="36" x2="138" y2="46"/><line x1="182" y1="36" x2="182" y2="46"/></g></svg></span><span class="fmt-tag">Fixed dates</span><h3>Cohort</h3><p style="font-size:14.5px;line-height:1.6;color:var(--muted);margin:9px 0 0">The team moves through together on a schedule, with checkpoints at the end of each module block. Better for teams that need shared vocabulary fast.</p></div><div class="fmt-c"><span class="fmt-a"><svg viewBox="0 0 240 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="14" y1="52" x2="226" y2="52" stroke="#E4E9F0" stroke-width="1.6"/>
+      <circle cx="40" cy="52" r="6" fill="#0559B3"/><circle cx="74" cy="52" r="6" fill="#0559B3"/>
+      <circle cx="150" cy="52" r="6" fill="#0559B3"/><circle cx="196" cy="52" r="6" fill="#0559B3"/>
+      <rect x="32" y="24" width="14" height="12" rx="3" fill="#DCE9F8"/>
+      <rect x="66" y="20" width="14" height="16" rx="3" fill="#DCE9F8"/>
+      <rect x="142" y="26" width="14" height="10" rx="3" fill="#DCE9F8"/>
+      <rect x="188" y="22" width="14" height="14" rx="3" fill="#DCE9F8"/>
+      <g><rect x="100" y="14" width="30" height="22" rx="5" fill="#0559B3"/>
+      <path d="M109 25l4 4 8-8" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+      <text x="115" y="66" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" font-weight="600" fill="#0559B3">live</text></svg></span><span class="fmt-tag">Self-paced + live</span><h3>Blended</h3><p style="font-size:14.5px;line-height:1.6;color:var(--muted);margin:9px 0 0">The track is self-paced, with live sessions run against your own workflows and documents at agreed intervals.</p></div></div>
+  </div>
+</section>
+
+<!-- ══ OBJECTIONS ══ -->
+<section class="sec" style="background:#FAFBFD">
+  <div class="wrap">
+    <p class="kick">Fair questions</p>
+    <h2>What sponsors usually <em>push back on</em></h2>
+    <p class="lead">All four are reasonable. Here is the honest answer to each.</p>
+    <div class="obj"><div class="obj-c"><p class="obj-q"><span>&ldquo;</span>We already pay for ChatGPT licences</p><p>Then you have solved access, which is the easy half. The licence does not tell a recruiter which parts of screening are safe to hand over, or a finance analyst which numbers the model will confidently invent. That judgement is what the tracks carry.</p></div><div class="obj-c"><p class="obj-q"><span>&ldquo;</span>Our people can learn this from YouTube</p><p>Some will. The ones who do tend to already be comfortable with the tools. The value of a structured track is the middle of the distribution — the people who will not spend their evenings piecing it together, and who quietly keep doing the task the old way.</p></div><div class="obj-c"><p class="obj-q"><span>&ldquo;</span>We ran AI training last year and nothing changed</p><p>Usually because it was generic and nobody measured it. The two fixes are in this page: content written per role, and a pilot with agreed success criteria before a full rollout is bought.</p></div><div class="obj-c"><p class="obj-q"><span>&ldquo;</span>Our data cannot leave the building</p><p>Labs run in the learner's own tool accounts against material they control, so working documents do not pass through us. If your policy blocks public AI tools entirely, tell us at scoping — that changes which labs are usable.</p></div></div>
+  </div>
+</section>
+
+<!-- ══ COMPARISON ══ -->
+<section class="sec">
+  <div class="wrap">
+    <p class="kick">How this differs</p>
+    <h2>Against the two <em>usual alternatives</em></h2>
+    <p class="lead">A generic AI course, or asking an internal champion to run enablement.</p>
+    <div class="cmp-wrap">
+      <table class="cmp">
+        <thead><tr><th scope="col"></th><th scope="col">Generic AI course</th>
+        <th scope="col" style="color:var(--blue)">edBuddy Pro tracks</th><th scope="col">Internal enablement</th></tr></thead>
+        <tbody><tr><th scope="row">Who it is written for</th><td>Anyone, any role</td><td class="own">Your team, by role</td><td>Whoever volunteers</td></tr><tr><th scope="row">What it teaches</th><td>The tool's interface</td><td class="own">The task, using whichever tool fits</td><td>Whatever the internal champion knows</td></tr><tr><th scope="row">Shelf life</th><td>Until the interface changes</td><td class="own">As long as the workflow exists</td><td>Until that person leaves</td></tr><tr><th scope="row">What the learner keeps</th><td>A completion badge</td><td class="own">Ten projects built on real artefacts</td><td>Notes, usually</td></tr><tr><th scope="row">Failure modes covered</th><td>Rarely</td><td class="own">Bias, confidentiality, invented figures — per role</td><td>Ad hoc</td></tr><tr><th scope="row">How you measure it</th><td>Seats issued</td><td class="own">Completion, projects, tool adoption</td><td>Not measured</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ADMIN DASHBOARD ══ -->
+<section class="sec" style="background:#FAFBFD">
+  <div class="wrap">
+    <div class="ctr" style="margin-bottom:14px">
+      <p class="kick">Administration</p>
+      <h2>One screen that answers <em>&ldquo;did it work?&rdquo;</em></h2>
+      <p class="lead">Seat allocation, completion by team and per-person progress, exportable for your own reporting.</p>
+    </div>
+    <div class="shot" style="margin-top:36px"><svg class="art-dash" viewBox="0 0 720 452" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mockup of the admin dashboard: seat allocation, completion by team and a per-person progress table.">
+  <defs>
+    <linearGradient id="dg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#FAFBFD"/>
+    </linearGradient>
+    <clipPath id="dclip"><rect x="1" y="1" width="718" height="450" rx="13"/></clipPath>
+  </defs>
+  <rect x="1" y="1" width="718" height="450" rx="13" fill="url(#dg)" stroke="#E4E9F0" stroke-width="1.2"/>
+  <g clip-path="url(#dclip)">
+    <!-- window chrome -->
+    <rect x="1" y="1" width="718" height="38" fill="#F4F7FB"/>
+    <line x1="1" y1="39" x2="719" y2="39" stroke="#E4E9F0" stroke-width="1.2"/>
+    <circle cx="23" cy="20" r="4.5" fill="#DDE4EC"/><circle cx="39" cy="20" r="4.5" fill="#DDE4EC"/><circle cx="55" cy="20" r="4.5" fill="#DDE4EC"/>
+    <rect x="76" y="12" width="180" height="16" rx="5" fill="#E8EEF6"/>
+
+    <!-- sidebar -->
+    <rect x="1" y="39" width="152" height="412" fill="#FBFCFE"/>
+    <line x1="153" y1="39" x2="153" y2="451" stroke="#E4E9F0" stroke-width="1.2"/>
+    <rect x="18" y="60" width="20" height="20" rx="6" fill="#0559B3"/>
+    <rect x="46" y="66" width="62" height="8" rx="4" fill="#C9D5E4"/>
+    <rect x="14" y="104" width="126" height="30" rx="7" fill="#E9F1FA"/>
+    <rect x="26" y="115" width="66" height="8" rx="4" fill="#0559B3"/>
+    <rect x="26" y="150" width="82" height="8" rx="4" fill="#CFD9E6"/>
+    <rect x="26" y="182" width="58" height="8" rx="4" fill="#CFD9E6"/>
+    <rect x="26" y="214" width="74" height="8" rx="4" fill="#CFD9E6"/>
+    <rect x="26" y="246" width="50" height="8" rx="4" fill="#CFD9E6"/>
+
+    <!-- stat cards -->
+    <g>
+      <rect x="176" y="62" width="160" height="72" rx="9" fill="#fff" stroke="#E9EEF5"/>
+      <rect x="192" y="78" width="46" height="7" rx="3.5" fill="#C4D0E0"/>
+      <text x="192" y="112" font-family="Plus Jakarta Sans,Inter,sans-serif" font-size="23" font-weight="700" fill="#0B1220">248</text>
+      <rect x="248" y="98" width="34" height="15" rx="4" fill="#E6F6EF"/>
+      <text x="255" y="109" font-family="Inter,sans-serif" font-size="9" font-weight="600" fill="#0E9F6E">+18</text>
+    </g>
+    <g>
+      <rect x="352" y="62" width="160" height="72" rx="9" fill="#fff" stroke="#E9EEF5"/>
+      <rect x="368" y="78" width="62" height="7" rx="3.5" fill="#C4D0E0"/>
+      <text x="368" y="112" font-family="Plus Jakarta Sans,Inter,sans-serif" font-size="23" font-weight="700" fill="#0B1220">71%</text>
+    </g>
+    <g>
+      <rect x="528" y="62" width="160" height="72" rx="9" fill="#fff" stroke="#E9EEF5"/>
+      <rect x="544" y="78" width="54" height="7" rx="3.5" fill="#C4D0E0"/>
+      <text x="544" y="112" font-family="Plus Jakarta Sans,Inter,sans-serif" font-size="23" font-weight="700" fill="#0B1220">1,914</text>
+    </g>
+
+    <!-- bar chart -->
+    <rect x="176" y="152" width="336" height="180" rx="9" fill="#fff" stroke="#E9EEF5"/>
+    <rect x="192" y="170" width="96" height="8" rx="4" fill="#C4D0E0"/>
+    <line x1="192" y1="300" x2="496" y2="300" stroke="#EDF1F7" stroke-width="1.2"/>
+    <line x1="192" y1="262" x2="496" y2="262" stroke="#F2F5F9" stroke-width="1"/>
+    <line x1="192" y1="224" x2="496" y2="224" stroke="#F2F5F9" stroke-width="1"/>
+    <rect x="204" y="212" width="30" height="88" rx="4" fill="#0559B3"/>
+    <rect x="252" y="236" width="30" height="64" rx="4" fill="#4E93D4"/>
+    <rect x="300" y="196" width="30" height="104" rx="4" fill="#0559B3"/>
+    <rect x="348" y="252" width="30" height="48" rx="4" fill="#9CC2E6"/>
+    <rect x="396" y="224" width="30" height="76" rx="4" fill="#4E93D4"/>
+    <rect x="444" y="244" width="30" height="56" rx="4" fill="#9CC2E6"/>
+    <g fill="#C9D5E4">
+      <rect x="206" y="310" width="26" height="6" rx="3"/><rect x="254" y="310" width="26" height="6" rx="3"/>
+      <rect x="302" y="310" width="26" height="6" rx="3"/><rect x="350" y="310" width="26" height="6" rx="3"/>
+      <rect x="398" y="310" width="26" height="6" rx="3"/><rect x="446" y="310" width="26" height="6" rx="3"/>
+    </g>
+
+    <!-- donut -->
+    <rect x="528" y="152" width="160" height="180" rx="9" fill="#fff" stroke="#E9EEF5"/>
+    <rect x="544" y="170" width="66" height="8" rx="4" fill="#C4D0E0"/>
+    <circle cx="608" cy="248" r="46" stroke="#EDF1F7" stroke-width="17" fill="none"/>
+    <circle cx="608" cy="248" r="46" stroke="#0559B3" stroke-width="17" fill="none"
+      stroke-dasharray="205 289" stroke-linecap="round" transform="rotate(-90 608 248)"/>
+    <text x="608" y="254" text-anchor="middle" font-family="Plus Jakarta Sans,Inter,sans-serif" font-size="19" font-weight="700" fill="#0B1220">71%</text>
+
+    <!-- table -->
+    <rect x="176" y="348" width="512" height="88" rx="9" fill="#fff" stroke="#E9EEF5"/>
+    <line x1="176" y1="376" x2="688" y2="376" stroke="#EDF1F7" stroke-width="1.2"/>
+    <line x1="176" y1="406" x2="688" y2="406" stroke="#F2F5F9"/>
+    <g fill="#C9D5E4">
+      <rect x="192" y="359" width="52" height="6" rx="3"/><rect x="330" y="359" width="44" height="6" rx="3"/>
+      <rect x="460" y="359" width="40" height="6" rx="3"/><rect x="596" y="359" width="36" height="6" rx="3"/>
+    </g>
+    <g>
+      <rect x="192" y="387" width="74" height="7" rx="3.5" fill="#B9C6D8"/>
+      <rect x="330" y="387" width="56" height="7" rx="3.5" fill="#CFD9E6"/>
+      <rect x="460" y="386" width="88" height="9" rx="4.5" fill="#EDF1F7"/>
+      <rect x="460" y="386" width="66" height="9" rx="4.5" fill="#0559B3"/>
+      <rect x="596" y="387" width="30" height="7" rx="3.5" fill="#CFD9E6"/>
+    </g>
+    <g>
+      <rect x="192" y="417" width="62" height="7" rx="3.5" fill="#B9C6D8"/>
+      <rect x="330" y="417" width="64" height="7" rx="3.5" fill="#CFD9E6"/>
+      <rect x="460" y="416" width="88" height="9" rx="4.5" fill="#EDF1F7"/>
+      <rect x="460" y="416" width="38" height="9" rx="4.5" fill="#4E93D4"/>
+      <rect x="596" y="417" width="30" height="7" rx="3.5" fill="#CFD9E6"/>
+    </g>
+  </g>
+</svg></div>
+    <p class="ctr" style="margin-top:22px"><span class="fx-note">Illustrative layout — confirm against the LMS build before launch</span></p>
+  </div>
+</section>
+
+<!-- ══ SECURITY ══ -->
+<section class="sec">
+  <div class="wrap bz-sec-split">
+    <div>
+      <p class="kick">Data and security</p>
+      <h2>Where your material <em>sits</em></h2>
+      <p class="sub">The short version: your working documents never pass through us.</p>
+      <svg class="art-flow" viewBox="0 0 660 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram: working documents move only between the learner's device and their own AI tool account. Below a dividing line, edBuddy Pro holds course content, seats and progress only.">
+  <!-- the working loop -->
+  <rect x="18" y="26" width="196" height="120" rx="12" fill="#fff" stroke="#DCE4EE" stroke-width="1.4"/>
+  <rect x="40" y="48" width="26" height="26" rx="8" fill="#E9F1FA"/>
+  <path d="M47 61l4.5 4.5L60 57" stroke="#0559B3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="40" y="98" font-family="Plus Jakarta Sans,Inter,sans-serif" font-size="14" font-weight="600" fill="#0B1220">Your learner</text>
+  <text x="40" y="119" font-family="Inter,sans-serif" font-size="11.5" fill="#5A6B82">Their device, their files</text>
+
+  <rect x="446" y="26" width="196" height="120" rx="12" fill="#fff" stroke="#DCE4EE" stroke-width="1.4"/>
+  <rect x="468" y="48" width="26" height="26" rx="8" fill="#E9F1FA"/>
+  <circle cx="481" cy="61" r="6" stroke="#0559B3" stroke-width="2.2" fill="none"/>
+  <text x="468" y="98" font-family="Plus Jakarta Sans,Inter,sans-serif" font-size="14" font-weight="600" fill="#0B1220">Their own AI account</text>
+  <text x="468" y="119" font-family="Inter,sans-serif" font-size="11.5" fill="#5A6B82">Signed in as them</text>
+
+  <path d="M222 70h206" stroke="#0559B3" stroke-width="1.8" stroke-dasharray="5 5"/>
+  <path d="M422 65l7 5-7 5" stroke="#0559B3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M438 106H232" stroke="#0559B3" stroke-width="1.8" stroke-dasharray="5 5"/>
+  <path d="M238 101l-7 5 7 5" stroke="#0559B3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="252" y="76" width="156" height="24" rx="7" fill="#fff"/>
+  <text x="330" y="92" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" fill="#0559B3">Working documents</text>
+
+  <!-- the line nothing crosses -->
+  <line x1="18" y1="196" x2="642" y2="196" stroke="#E4C9C6" stroke-width="1.6" stroke-dasharray="7 6"/>
+  <rect x="252" y="182" width="156" height="28" rx="14" fill="#FDECEA"/>
+  <path d="M275 190l10 10M285 190l-10 10" stroke="#C2453C" stroke-width="2.1" stroke-linecap="round"/>
+  <text x="342" y="200" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#C2453C">never crosses</text>
+
+  <!-- what we actually hold -->
+  <rect x="176" y="238" width="308" height="66" rx="12" fill="#FAFBFD" stroke="#DCE4EE" stroke-width="1.4"/>
+  <text x="330" y="266" text-anchor="middle" font-family="Plus Jakarta Sans,Inter,sans-serif" font-size="14" font-weight="600" fill="#0B1220">edBuddy Pro</text>
+  <text x="330" y="287" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" fill="#5A6B82">Course content, seats and progress only</text>
+</svg>
+      <p class="flow-note">Labs are run by the learner, signed into their own assistant, against files they already hold. We host the course and the progress record — nothing else crosses the line.</p>
+    </div>
+    <div>
+      <div class="panel" style="margin-top:20px">
+        <h3>Learners use their own tool accounts</h3>
+        <p style="font-size:14.5px;line-height:1.6;color:var(--muted);margin:9px 0 0">Labs are run in the learner's own ChatGPT, Claude or Gemini account against documents they control. We host the course, not your data.</p>
+      </div>
+      <div class="panel" style="margin-top:14px">
+        <h3>Course data under the DPDP Act</h3>
+        <p style="font-size:14.5px;line-height:1.6;color:var(--muted);margin:9px 0 0">Account and progress data is handled under India's Digital Personal Data Protection Act, 2023. Full detail in the <a href="privacy-policy.html">privacy policy</a> and <a href="security.html">security page</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CASE STUDY — needs real data ══ -->
+<section class="sec-sm">
+  <div class="wrap">
+    <p class="kick">Proof</p>
+    <h2>What a rollout looked like</h2>
+    <div class="fx-block" style="max-width:780px;margin:26px auto 0;text-align:left">
+      <strong>Case study — needs a real customer</strong>
+      <p>One named organisation, the roles covered, seat count, what was measured and what moved. A B2B buyer reaches this point looking for evidence, and this is where the page currently has none.</p>
+      <p style="margin-top:12px">Until a customer agrees to be named, an anonymised version works — sector, team size and the measured outcome — but the numbers have to be real. Do not fill this with a stock testimonial; the site already carries unverified ratings and badges that need removing before launch.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICING ══ -->
+<section class="sec">
+  <div class="wrap ctr">
+    <p class="kick">Pricing</p>
+    <h2>Volume pricing, quoted per rollout</h2>
+    <p class="lead">Individual seats are ₹4,999 one-time with lifetime access and GST included. Team pricing depends on headcount, track mix and delivery format.</p>
+    <div class="fx-block" style="max-width:640px;margin:32px auto 0">
+      <strong>Team pricing tiers — to be set</strong>
+      <p>Break points, discounts and any minimum seat count are commercial decisions. This section should carry a real table before the page goes live, or the page should say plainly that pricing is quoted on request.</p>
+    </div>
+    <div class="btns"><a class="btn btn-p" href="#talk">Get a quote <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="sec" style="background:#FAFBFD">
+  <div class="wrap">
+    <p class="kick">Questions</p>
+    <h2>Before you talk to us</h2>
+    <div class="faqx"><details><summary>How many seats do we need to start?<svg class="faqx-i" viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><div class="faqx-a"><p><span class="fx-note">Minimum seat count — to confirm</span> Volume pricing and the point at which it applies are commercial decisions the business needs to set before this page goes live.</p></div></details><details><summary>Can we map the tracks to our own roles?<svg class="faqx-i" viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><div class="faqx-a"><p>The five tracks are built around role workflows rather than job titles, so a people-ops analyst and an HR business partner both fit the HR track. At scoping we go through your org and agree which track each group takes.</p></div></details><details><summary>Do our people need any technical background?<svg class="faqx-i" viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><div class="faqx-a"><p>No. Every track is built on the assumption that nobody writes code at any point. The tools used are ChatGPT, Claude, Gemini and the document and spreadsheet software your team already has.</p></div></details><details><summary>What happens to the work they produce?<svg class="faqx-i" viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><div class="faqx-a"><p>Each track carries ten projects built on real artefacts — a screening rubric, a variance commentary, a campaign brief. Those stay with the learner and with you.</p></div></details><details><summary>How is our data handled?<svg class="faqx-i" viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><div class="faqx-a"><p>Learners work in their own accounts on the AI tools, so their material does not pass through us. Course accounts and progress data are covered by our privacy policy and the DPDP Act.</p></div></details><details><summary>What does reporting look like for an admin?<svg class="faqx-i" viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><div class="faqx-a"><p><span class="fx-note">Admin dashboard scope — to confirm against the LMS build</span> The reporting surface depends on what the platform ships with at launch, so this answer should be written once that is settled.</p></div></details></div>
+  </div>
+</section>
+
+<!-- ══ FINAL CTA ══ -->
+<section class="sec-sm">
+  <div class="wrap">
+    <div class="cta">
+      <h2>Start with a pilot, not a purchase order</h2>
+      <p class="lead">Tell us which roles you want covered. We will scope it, run a small group through it, and you decide from there.</p>
+      <div class="btns">
+        <a class="btn btn-p" href="#talk">Talk to us <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+        <a class="btn btn-g" href="index.html#courses">See the catalogue</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+/* Outcomes tablist. Plain roving-selection tabs — no state beyond which
+   index is showing, and the panels are in the DOM so they are indexable. */
+(function () {
+  var tabs = [].slice.call(document.querySelectorAll('.oc-t'));
+  var panels = [].slice.call(document.querySelectorAll('.oc-p'));
+  if (!tabs.length) return;
+  function show(i) {
+    tabs.forEach(function (t, n) { t.setAttribute('aria-selected', n === i ? 'true' : 'false'); });
+    panels.forEach(function (p, n) { p.hidden = n !== i; });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { show(i); });
+    t.addEventListener('keydown', function (e) {
+      var n = e.key === 'ArrowDown' || e.key === 'ArrowRight' ? i + 1
+            : e.key === 'ArrowUp'   || e.key === 'ArrowLeft'  ? i - 1 : null;
+      if (n === null) return;
+      e.preventDefault();
+      n = (n + tabs.length) % tabs.length;
+      tabs[n].focus(); show(n);
+    });
+  });
+})();
+</script>
+
+<div data-include="footer"></div>
+<div data-include="bottom-bar"></div>
+
+<script src="js/site.js" defer></script>
+</body>
+</html>
